@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/css/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <title>Leggo</title>
+</head>
+
+<body>
+    <div class="list-flight-body" id="list-flight-body">
+        <div class="search-flight-nav">
+            <div class="logo-white">
+                <nav id="nav3">
+                    <ul>
+                        <li><a href="/search-flight.html"> &lt; </a></li>
+                        <li><a href="/">Leggo</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <nav id="nav3">
+                <ul>
+                    <li><a href="/account.html">User</a></li>
+                    <li><a href='/account.html'><i class="material-icons" id="material-icons">account_circle</i></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="list-flight-body-row">
+            <div class="list-flight-panel-search">
+                <div class="list-flight-information-panel" id="search-information-panel">
+                    <!--<div class="list-flight-panel-information-text-big">
+                        Medan, KNO ➟ Bali, DPS
+                    </div>
+                    <div class="list-flight-panel-information-text-small">
+                        Rabu, 10 Jan 2024 | 1 penumpang | Ekonomi
+                </div>-->
+                </div>
+
+                <div class="list-flight-nav">
+                    <ul>
+                        <li><a href="#">Filter</a></li>
+                        <li><a href="#">Promo</a></li>
+                        <li><a href="#">Transit</a></li>
+                        <li><a href="#">Maskapai</a></li>
+                        <li><a href="#">Waktu</a></li>
+                    </ul>
+                </div>
+
+                <div class="list-flight-information" id="list-flight-container">
+                    <!--<div class="list-flight-information-card">
+                    <div class="list-flight-information-card-row">
+                        <div class="list-flight-panel-information-text-big">
+                            Lion Air (KNO ➟ DPS)
+                        </div>
+                    </div>
+                    <div class="list-flight-information-card-row">
+                        <div class="list-flight-panel-information-text-big" style="margin-bottom: 20px;">
+                            05:25 ➟ 14:35
+                        </div>
+                        <div class="list-flight-panel-information-text-big"
+                            style="margin-left: 30px; margin-bottom: 15px;">
+                            IDR 2.296.750/pax
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-flight-information-card">
+                    <div class="list-flight-information-card-row">
+                        <div class="list-flight-panel-information-text-big">
+                            Super Air Jet (KNO ➟ DPS)
+                        </div>
+                    </div>
+                    <div class="list-flight-information-card-row">
+                        <div class="list-flight-panel-information-text-big" style="margin-bottom: 20px;">
+                            05:50 ➟ 11:40
+                        </div>
+                        <div class="list-flight-panel-information-text-big"
+                            style="margin-left: 30px; margin-bottom: 15px;">
+                            IDR 2.396.750/pax
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-flight-information-card">
+                    <div class="list-flight-information-card-row">
+                        <div class="list-flight-panel-information-text-big">
+                            Citilink (KNO ➟ DPS)
+                        </div>
+                    </div>
+                    <div class="list-flight-information-card-row">
+                        <div class="list-flight-panel-information-text-big" style="margin-bottom: 20px;">
+                            13:50 ➟ 20:10
+                        </div>
+                        <div class="list-flight-panel-information-text-big"
+                            style="margin-left: 30px; margin-bottom: 15px;">
+                            IDR 2.796.750/pax
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-flight-information-card">
+                    <div class="list-flight-information-card-row">
+                        <div class="list-flight-panel-information-text-big">
+                            Citilink (KNO ➟ DPS)
+                        </div>
+                    </div>
+                    <div class="list-flight-information-card-row">
+                        <div class="list-flight-panel-information-text-big" style="margin-bottom: 20px;">
+                            04:55 ➟ 18:05
+                        </div>
+                        <div class="list-flight-panel-information-text-big"
+                            style="margin-left: 30px; margin-bottom: 15px;">
+                            IDR 3.296.750/pax
+                        </div>
+                    </div>
+                </div>-->
+                </div>
+            </div>
+        </div>
+
+        <script src="public/js/loadAvailListFlight.js"></script>
+        <script src="public/js/loadInformationCard.js"></script>
+
+        <img src="public/Resources/Globe2.png" alt="Globe" id="globe-image" style="position: absolute; top: 40%;" />
+        <img src="public/Resources/Plane.png" alt="Plane" id="plane-image" style="position: absolute; right:15%; top: 30%" />
+        <img src="public/Resources/Camera.png" alt="Camera" id="camera-image"
+            style="position: absolute; right: 8%; top: 75%; width: 200px;" />
+
+        <script>
+            const globeImage = document.getElementById('globe-image');
+            const planeImage = document.getElementById('plane-image');
+            const cameraImage = document.getElementById('camera-image');
+
+            // Set the display property of the globe, plane, and camera images based on the current media width
+            function updateImageDisplay() {
+                const mediaWidth = window.innerWidth;
+                if (mediaWidth < 1200 || mediaWidth > 1900) {
+                    globeImage.style.display = 'none';
+                    planeImage.style.display = 'none';
+                    cameraImage.style.display = 'none';
+                } else {
+                    globeImage.style.display = 'initial';
+                    planeImage.style.display = 'initial';
+                    cameraImage.style.display = 'initial';
+                }
+            }
+
+            // Call the updateImageDisplay function when the website is first loaded
+            updateImageDisplay();
+
+            window.addEventListener('resize', () => {
+                updateImageDisplay();
+            });
+        </script>
+    </div>
+</body>
+
+</html>

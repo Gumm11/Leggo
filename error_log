@@ -1,0 +1,50 @@
+[06-Jun-2024 11:41:30 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'leggomyi_legolego'@'localhost' to database 'leggomyi_lego' in /home/leggomyi/public_html/tes.php:9
+Stack trace:
+#0 /home/leggomyi/public_html/tes.php(9): mysqli->__construct()
+#1 {main}
+  thrown in /home/leggomyi/public_html/tes.php on line 9
+[06-Jun-2024 11:42:30 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'leggomyi_legolego'@'localhost' to database 'leggomyi_lego' in /home/leggomyi/public_html/tes.php:9
+Stack trace:
+#0 /home/leggomyi/public_html/tes.php(9): mysqli->__construct()
+#1 {main}
+  thrown in /home/leggomyi/public_html/tes.php on line 9
+[06-Jun-2024 11:42:31 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'leggomyi_legolego'@'localhost' to database 'leggomyi_lego' in /home/leggomyi/public_html/tes.php:9
+Stack trace:
+#0 /home/leggomyi/public_html/tes.php(9): mysqli->__construct()
+#1 {main}
+  thrown in /home/leggomyi/public_html/tes.php on line 9
+[06-Jun-2024 11:43:17 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'leggomyi_legolego'@'localhost' to database 'leggomyi_lego' in /home/leggomyi/public_html/tes.php:9
+Stack trace:
+#0 /home/leggomyi/public_html/tes.php(9): mysqli->__construct()
+#1 {main}
+  thrown in /home/leggomyi/public_html/tes.php on line 9
+[06-Jun-2024 11:46:44 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'leggomyi_legolego'@'localhost' to database 'leggomyi_lego' in /home/leggomyi/public_html/tes.php:9
+Stack trace:
+#0 /home/leggomyi/public_html/tes.php(9): mysqli->__construct()
+#1 {main}
+  thrown in /home/leggomyi/public_html/tes.php on line 9
+[06-Jun-2024 11:47:25 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'leggomyi_legolego'@'localhost' to database 'leggomyi_lego' in /home/leggomyi/public_html/tes.php:9
+Stack trace:
+#0 /home/leggomyi/public_html/tes.php(9): mysqli->__construct()
+#1 {main}
+  thrown in /home/leggomyi/public_html/tes.php on line 9
+[07-Jun-2024 02:40:11 UTC] PHP Warning:  Undefined variable $stmt in /home/leggomyi/public_html/tes.php on line 46
+[07-Jun-2024 02:40:11 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/leggomyi/public_html/tes.php:46
+Stack trace:
+#0 {main}
+  thrown in /home/leggomyi/public_html/tes.php on line 46
+[07-Jun-2024 02:40:17 UTC] PHP Warning:  Undefined variable $stmt in /home/leggomyi/public_html/tes.php on line 46
+[07-Jun-2024 02:40:17 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/leggomyi/public_html/tes.php:46
+Stack trace:
+#0 {main}
+  thrown in /home/leggomyi/public_html/tes.php on line 46
+[07-Jun-2024 02:56:01 UTC] PHP Warning:  Undefined variable $stmt in /home/leggomyi/public_html/tes.php on line 46
+[07-Jun-2024 02:56:01 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/leggomyi/public_html/tes.php:46
+Stack trace:
+#0 {main}
+  thrown in /home/leggomyi/public_html/tes.php on line 46
+[07-Jun-2024 02:56:04 UTC] PHP Warning:  Undefined variable $stmt in /home/leggomyi/public_html/tes.php on line 46
+[07-Jun-2024 02:56:04 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/leggomyi/public_html/tes.php:46
+Stack trace:
+#0 {main}
+  thrown in /home/leggomyi/public_html/tes.php on line 46

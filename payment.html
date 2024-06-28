@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/css/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <title>Leggo</title>
+</head>
+
+<body style="overflow-x: hidden;">
+    <div class="bg-purpleRadiant">
+        <div class="bg-img-account">
+            <div class="search-flight-nav">
+                <div class="logo-white">
+                    <nav>
+                        <ul>
+                            <li><a href="/"> &lt; </a></li>
+                            <a href="/">Leggo</a>
+                        </ul>
+                    </nav>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/account.html" style="color: white; font-size: 30px;">User</a></li>
+                        <li><a href='/account.html'><i class="material-icons"
+                                    style="color: white; font-size: 60px;">account_circle</i></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="account-main-body">
+                <div class="account-main-body-row">
+                    <div class="account-main-body-panel-left">
+                        <div class="account-main-body-panel-left-text">
+                            Leggo
+                        </div>
+                        <div class="account-main-body-panel-left-nav">
+                            <button class="account-main-body-panel-left-button" onclick="navigateTo('/account.html')">
+                                Akun
+                            </button>
+
+                            <button class="account-main-body-panel-left-button-current"
+                                onclick="navigateTo('/payment.html')">
+                                Pembayaran
+                            </button>
+
+                            <button class="account-main-body-panel-left-button" onclick="navigateTo('/orders.html')">
+                                Pesanan
+                            </button>
+
+                            <button class="account-main-body-panel-left-button" onclick="navigateTo('/help.html')">
+                                Pusat Bantuan
+                            </button>
+
+                            <button class="account-main-body-panel-left-button" onclick="navigateTo('/settings.html')">
+                                Pengaturan
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="account-main-body-panel-right">
+                        <div class="account-main-body-panel-right-text-current">
+                            Pembayaran
+                        </div>
+                        <div class="account-main-body-panel-right-inside-panel">
+                            <div class="payment-main-body-panel-right-box">
+                                <button id="payment-main-body-panel-right-box-button">
+                                    <div class="payment-main-body-panel-right-box-button-row">
+                                        <div class="payment-main-body-panel-right-box-button-header-text">
+                                            Kartu
+                                        </div>
+                                        <div class="payment-main-body-panel-right-box-button-img">
+                                            <img src="public/Resources/Kartu.png">
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                            <div class="payment-main-body-panel-right-box">
+                                <button id="payment-main-body-panel-right-box-button">
+                                    <div class="payment-main-body-panel-right-box-button-row">
+                                        <div class="payment-main-body-panel-right-box-button-header-text">
+                                            Akun Bank
+                                        </div>
+                                        <div class="payment-main-body-panel-right-box-button-img">
+                                            <img src="public/Resources/AkunBank.png">
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const mediaQuery = window.matchMedia("(max-width: 1020px)");
+
+        // listen for changes to the media query
+        mediaQuery.addListener((event) => {
+            if (event.matches) {
+                // redirect to mobile account page
+                window.location.href = "/mpayment.html";
+            }
+        });
+
+        // check the initial state of the media query
+        if (mediaQuery.matches) {
+            // redirect to mobile account page
+            window.location.href = "/mpayment.html";
+        }
+
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/css/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <title>Leggo</title>
+</head>
+
+<body>
+    <div class="search-flight-body">
+        <div class="search-flight-nav">
+            <div class="logo-white">
+                <nav id="nav3">
+                    <ul>
+                        <li><a href="/"> &lt; </a></li>
+                        <li><a href="/">Leggo</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <nav id="nav3">
+                <ul>
+                    <li><a href="/account.html">User</a></li>
+                    <li><a href='/account.html'><i class="material-icons" id="material-icons">account_circle</i></a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="search-flight-main-row">
+            <div class="search-flight-main">
+                <div class="search-flight-main-text">
+                    Tiket Pesawat
+                </div>
+
+                <div class="search-flight-main-panel-parent" id="search-flight-form">
+                    <div class="search-flight-main-panel">
+                        <div class="search-flight-main-panel-text" style="margin-top: 30px;">
+                            Dari
+                        </div>
+                        <input type="text" id="search-flight-main-panel-from" placeholder="Dari mana" />
+                        <div class="search-flight-main-panel-text">
+                            Ke
+                        </div>
+                        <input type="text" id="search-flight-main-panel-to" placeholder="Mau ke mana" />
+                        <div class="search-flight-main-panel-text">
+                            Tanggal Pergi
+                        </div>
+                        <div class="search-flight-main-panel-input-pergipulang">
+                            <input type="date" id="search-flight-main-panel-input-date-from">
+                            <div class="search-flight-main-panel-input-pergipulang-switch">
+                                <div class="search-flight-main-panel-input-pergipulang-switch-text"> Pulang-Pergi?</div>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="toggle-switch" class="toggle-switch-checkbox" />
+                                    <label for="toggle-switch" class="toggle-switch-label">
+                                        <span class="toggle-switch-inner"></span>
+                                        <span class="toggle-switch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="search-flight-main-panel-teks-pulang" class="search-flight-main-panel-text">
+                            Tanggal Pulang
+                        </div>
+                        <div id="search-flight-main-panel-input-pulang"
+                            class="search-flight-main-panel-input-pergipulang">
+                            <input type="date" id="search-flight-main-panel-input-date-to">
+                        </div>
+                        <div class="search-flight-main-panel-input-kelas-jmlh">
+                            <div class="search-flight-main-panel-input-kelas">
+                                Kelas
+                                <select id="ticketClass" name="ticketClass">
+                                    <option value="Ekonomi">Ekonomi</option>
+                                    <option value="Bisnis">Bisnis</option>
+                                    <option value="FirstClass">First Class</option>
+                                </select>
+                            </div>
+
+                            <div class="search-flight-main-panel-input-jmlh">
+                                Jumlah Penumpang
+                                <input type="text" id="search-flight-main-panel-input-half-jmlh" placeholder="1" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" id="search-flight-button"> Search </button>
+                </div>
+            </div>
+        </div>
+
+        <img src="public/Resources/Globe.png" alt="Globe" id="globe-image" style="position: absolute; left: 0; top: 50%" />
+        <img src="public/Resources/Plane.png" alt="Plane" id="plane-image" style="position: absolute; right: 1%; top: 60%" />
+
+        <script>
+            const globeImage = document.getElementById('globe-image');
+            const planeImage = document.getElementById('plane-image');
+
+            // Set the display property of the globe, plane, and camera images based on the current media width
+            function updateImageDisplay() {
+                const mediaWidth = window.innerWidth;
+                if (mediaWidth < 1200 || mediaWidth > 1900) {
+                    globeImage.style.display = 'none';
+                    planeImage.style.display = 'none';
+                } else {
+                    globeImage.style.display = 'initial';
+                    planeImage.style.display = 'initial';
+                }
+            }
+
+            // Call the updateImageDisplay function when the website is first loaded
+            updateImageDisplay();
+
+            window.addEventListener('resize', () => {
+                updateImageDisplay();
+            });
+        </script>
+
+        <script src="public/js/togglePulangPergi.js"></script>
+        <script src="public/js/searchButton.js"></script>
+    </div>
+</body>
+
+</html>

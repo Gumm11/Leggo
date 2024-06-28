@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/css/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <title>Leggo</title>
+</head>
+
+<body style="min-width: 320px;">
+    <div class="index-nav">
+        <div class="logo">
+            <a href="">Leggo</a>
+        </div>
+        <nav id="nav-index">
+            <ul>
+                <li><a id=aboutLink href="/aboutus.html">About</a></li>
+                <li><a id=notifLink href="#">Notification</a></li>
+                <li><a id="userLink" href="/account.html">User</a></li>
+                <li><a id="accountLink"><i class="material-icons">account_circle</i></a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="index-header">
+        <div class="index-search">
+            <div class="index-text">
+                Welcome,
+            </div>
+            <div>
+                <input type="text" id="index-search-input" placeholder="Let's travel, where do you want to go?">
+            </div>
+        </div>
+        <div class="index-header-image">
+            <img src="public/Resources/WorldTour.png" alt="World Tour" id="worldtour-image"
+                style="position: absolute; top: 400px;" />
+            <img src="public/Resources/Globe.png" alt="Globe" id="globe-image"
+                style="position: absolute; left: 0; top: 650px" />
+            <img src="public/Resources/Plane.png" alt="Plane" id="plane-image"
+                style="position: absolute; right: 1%; top: 600px" />
+        </div>
+    </div>
+
+    <script>
+        const globeImage = document.getElementById('globe-image');
+        const planeImage = document.getElementById('plane-image');
+        const worldtourImage = document.getElementById('worldtour-image');
+
+        // Set the display property of the globe, plane, and camera images based on the current media width
+        function updateImageDisplay() {
+            const mediaWidth = window.innerWidth;
+            if (mediaWidth < 1200 || mediaWidth > 1900) {
+                globeImage.style.display = 'none';
+                planeImage.style.display = 'none';
+            } else {
+                globeImage.style.display = 'initial';
+                planeImage.style.display = 'initial';
+            }
+
+            if (mediaWidth < 900) {
+                worldtourImage.style.display = 'none';
+            } else {
+                worldtourImage.style.display = 'initial';
+            }
+        }
+
+        // Call the updateImageDisplay function when the website is first loaded
+        updateImageDisplay();
+
+        window.addEventListener('resize', () => {
+            updateImageDisplay();
+        });
+    </script>
+
+    <div class="index-body">
+        <div class="index-body-main">
+            <div class="index-text" style="color: black">
+                Recommendations
+            </div>
+            <div class="index-body-main-recommendation">
+                <div class="index-body-main-recommendation-inside" id="recommendation-container">
+                    <!-- <div class="index-body-main-recommendation-panel">
+                        <img src="https://ik.imagekit.io/iwrtsyly3o/Leggo/attraction_1.png" alt="National Monument"
+                            style="border-radius: 10px;">
+                        <p style="text-align: center;">
+                            <span style="font-size: 20px; font-weight: bold;">National Monument</span><br>
+                            Jakarta
+                        </p>
+                    </div>
+                    <div class="index-body-main-recommendation-panel">
+                        <img src="https://ik.imagekit.io/iwrtsyly3o/Leggo/attraction_2.png" alt="Twin Tower"
+                            style="border-radius: 10px;">
+                        <p style="text-align: center;">
+                            <span style="font-size: 20px; font-weight: bold;">Twin Tower</span><br>
+                            Kuala Lumpur
+                        </p>
+                    </div>
+                    <div class="index-body-main-recommendation-panel">
+                        <img src="https://ik.imagekit.io/iwrtsyly3o/Leggo/attraction_3.png" alt="Kuta Beach"
+                            style="border-radius: 10px;">
+                        <p style="text-align: center;">
+                            <span style="font-size: 20px; font-weight: bold;">Kuta Beach</span><br>
+                            Bali
+                        </p>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="public/js/loadRecommendationCard.js"></script>
+
+    <script>
+        const userLink = document.getElementById("userLink");
+        const accountLink = document.getElementById("accountLink");
+
+        userLink.addEventListener("click", (event) => {
+            if (window.matchMedia("(max-width: 1020px)").matches) {
+                // redirect to mobile account page
+                window.location.href = "/maccount.html";
+                event.preventDefault();
+            }
+        });
+
+        accountLink.addEventListener("click", (event) => {
+            if (window.matchMedia("(max-width: 1020px)").matches) {
+                // redirect to mobile account page
+                window.location.href = "/maccount.html";
+                event.preventDefault();
+            }
+        });
+
+        const inputElement = document.getElementById('index-search-input');
+
+        inputElement.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                navigateTo('/search-flight.html');
+            }
+        });
+
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+
+</html>

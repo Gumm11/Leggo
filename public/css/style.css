@@ -1,0 +1,1829 @@
+body {
+  font-family: "League Spartan";
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  align-self: center;
+}
+
+.bg-purpleRadiant {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: radial-gradient(
+    ellipse at 0% 1.51%,
+    #9ab0ff 0%,
+    #9aa4ff 51.6%,
+    rgba(48, 0, 239, 0.72) 100%
+  );
+}
+
+.bg-white-login {
+  position: absolute;
+  width: 60%;
+  height: 80%;
+  left: -15%;
+  top: 10%;
+  bottom: 10%;
+
+  background: #ffffff;
+  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 239px;
+}
+
+.bg-img-account {
+  background-image: url("https://ik.imagekit.io/iwrtsyly3o/Leggo/WorldTour.png"),
+    url("https://ik.imagekit.io/iwrtsyly3o/Leggo/Map.png"),
+    url("https://ik.imagekit.io/iwrtsyly3o/Leggo/Camera.png");
+  background-size: 50%, 12%, 10%;
+  background-position: right -5% bottom 0px, right -2% top 12%,
+    left -2% bottom 30%;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.index-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px 10px;
+}
+
+.search-flight-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1% 2%;
+}
+
+.logo a {
+  color: #605ff1;
+  margin: 20px;
+
+  font-family: "Lemon";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+}
+
+.logo-white {
+  display: flex;
+  flex-direction: row;
+}
+
+.logo-white a {
+  font-weight: bold;
+  color: #ffffff;
+  margin: 20px;
+
+  font-family: "Lemon";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+}
+
+#nav2 ul li a {
+  font-size: 30px;
+  color: #ffffff;
+}
+
+#nav3 ul li a {
+  font-size: 30px;
+  color: #ffffff;
+}
+
+#material-icons {
+  font-size: 60px;
+  color: #ffffff;
+}
+
+.index-header {
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    180.42deg,
+    #ffffff 5%,
+    #bdc3fa 44.11%,
+    #878ff4 71.95%,
+    rgba(82, 82, 225, 0.81) 97.76%,
+    rgba(139, 126, 245, 0.21) 122.16%,
+    rgba(119, 90, 237, 0) 144.39%
+  );
+}
+
+.index-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+}
+
+.index-text {
+  font-family: "League Spartan";
+  font-size: 40px;
+  font-weight: bold;
+  color: #605ff1;
+  margin: 20px;
+}
+
+.index-header-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#index-search-input {
+  width: 500px;
+  height: 50px;
+  border: 1px solid #a9a9a9;
+  border-radius: 30px;
+  padding: 20px;
+
+  font-size: 20px;
+  text-align: center;
+}
+
+.index-body {
+  position: absolute;
+  top: 990px;
+  left: 0px;
+  right: 0px;
+  border-radius: 70px;
+
+  background: #ffffff;
+}
+
+.index-body-main {
+  margin: 70px;
+}
+
+.index-body-main-recommendation {
+  display: flex;
+  flex-direction: column;
+  border-radius: 70px;
+  margin: 20px;
+  width: 100%;
+
+  background: #f9faff;
+}
+
+.index-body-main-recommendation-inside {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 40px;
+  border-radius: 30px;
+  width: 95%;
+  background-color: #f9faff;
+}
+
+@media screen and (max-width: 1300px) {
+  .index-body-main-recommendation-inside {
+    flex-direction: column;
+  }
+
+  .index-body-main {
+    margin: 50px;
+  }
+}
+
+.index-body-main-recommendation-panel {
+  display: flex;
+  flex-direction: column;
+
+  margin: 20px;
+  border-radius: 30px;
+  background-color: #ffffff;
+
+  width: 500px;
+  height: 350px;
+}
+
+.index-body-main-recommendation-panel img {
+  width: 90%;
+  height: 68%;
+  margin: 20px;
+}
+
+.index-body-main-recommendation-panel p {
+  font-size: 20px;
+  text-align: center;
+}
+
+.index-body-main-recommendation-panel p span {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.search-flight-body {
+  min-height: 780px;
+
+  background: radial-gradient(
+    ellipse at 0% 1.51%,
+    #9ab0ff 0%,
+    #9aa4ff 51.6%,
+    rgba(48, 0, 239, 0.72) 100%
+  );
+}
+
+@media screen and (max-width: 550px) {
+  .index-text {
+    font-size: 20px;
+  }
+
+  .logo a {
+    font-size: 20px;
+  }
+
+  .index-nav {
+    padding: 5px 3px;
+  }
+
+  #nav-index ul li {
+    margin-left: 10px;
+  }
+
+  #userLink,
+  #accountLink,
+  #aboutLink,
+  #notifLink {
+    font-size: 14px;
+  }
+
+  .index-text {
+    font-size: 20px;
+  }
+
+  #index-search-input {
+    width: 210px;
+    height: 20px;
+    padding: 15px;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .index-body {
+    position: absolute;
+    top: 450px;
+    left: 0px;
+    right: 0px;
+    border-radius: 20px;
+
+    background: #ffffff;
+  }
+
+  .index-body-main {
+    margin: 40px;
+  }
+
+  .index-body-main-recommendation {
+    border-radius: 20px;
+    margin: 0px;
+  }
+
+  .index-body-main-recommendation-inside {
+    margin: 0px;
+  }
+
+  .index-body-main-recommendation-panel {
+    margin: 10px;
+    border-radius: 20px;
+    width: 200px;
+    height: 140px;
+  }
+
+  .index-body-main-recommendation-panel img {
+    margin: 10px;
+  }
+
+  .index-body-main-recommendation-panel p {
+    font-size: 10px;
+  }
+
+  .index-body-main-recommendation-panel p span {
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
+
+.search-flight-main-row {
+  height: 100vh;
+}
+
+.search-flight-main {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+
+  justify-content: center;
+}
+
+.search-flight-main-text {
+  font-size: 25px;
+  color: #ffffff;
+
+  margin: 25px;
+}
+
+.search-flight-main-panel-parent {
+  display: flex;
+  flex-direction: column;
+
+  background-color: #ffffff;
+  width: 500px;
+  border-radius: 70px;
+}
+
+.search-flight-main-panel {
+  background-color: #ffffff;
+  width: 500px;
+  border-radius: 70px;
+}
+
+.search-flight-main-panel-text {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-left: 60px;
+}
+
+#search-flight-main-panel-to {
+  width: 400px;
+  height: 50px;
+  border: 1px solid #a9a9a9;
+  border-radius: 30px;
+  padding: 25px;
+
+  margin-top: 15px;
+  margin-left: 60px;
+
+  font-size: 15px;
+}
+
+#search-flight-main-panel-from {
+  width: 400px;
+  height: 50px;
+  border: 1px solid #a9a9a9;
+  border-radius: 30px;
+  padding: 25px;
+
+  margin-top: 15px;
+  margin-left: 60px;
+
+  font-size: 15px;
+}
+
+#search-flight-main-panel-input-half {
+  width: 200px;
+  height: 50px;
+  border: 1px solid #a9a9a9;
+  border-radius: 30px;
+  padding: 25px;
+
+  margin-top: 15px;
+  margin-left: 60px;
+
+  font-size: 15px;
+}
+
+#search-flight-main-panel-input-half-jmlh {
+  width: 195px;
+  height: 50px;
+  border: 1px solid #a9a9a9;
+  border-radius: 30px;
+  padding: 25px;
+
+  margin-top: 10px;
+
+  font-size: 15px;
+}
+
+.search-flight-main-panel-input-pergipulang {
+  display: flex;
+  flex-direction: row;
+}
+
+#search-flight-main-panel-input-date-from {
+  width: 190px;
+  height: 50px;
+  border: 1px solid #a9a9a9;
+  border-radius: 30px;
+  padding: 25px;
+
+  margin-top: 15px;
+  margin-left: 60px;
+
+  font-size: 15px;
+}
+
+#search-flight-main-panel-input-date-to {
+  width: 190px;
+  height: 50px;
+  border: 1px solid #a9a9a9;
+  border-radius: 30px;
+  padding: 25px;
+
+  margin-top: 15px;
+  margin-left: 60px;
+
+  font-size: 15px;
+}
+
+.search-flight-main-panel-input-pergipulang-switch {
+  width: 200px;
+  height: 50px;
+  border: 1px solid #a9a9a9;
+  border-radius: 30px;
+  padding: 25px;
+
+  margin-top: 15px;
+  margin-left: 10px;
+
+  font-size: 15px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.search-flight-main-panel-input-pergipulang-switch-text {
+  margin-right: 5px;
+  font-size: 15px;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-switch-checkbox {
+  display: none;
+}
+
+.toggle-switch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 34px;
+}
+
+.toggle-switch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+
+.toggle-switch-inner:before,
+.toggle-switch-inner:after {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 34px;
+  padding: 0;
+  line-height: 34px;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.toggle-switch-inner:before {
+  content: "";
+  background-color: #4d4d4d;
+  border-radius: 34px 0 0 34px;
+}
+
+.toggle-switch-inner:after {
+  content: "";
+  background-color: #e6e6e6;
+  border-radius: 0 34px 34px 0;
+}
+
+.toggle-switch-switch {
+  display: block;
+  width: 26px;
+  margin: 4px;
+  background: #fff;
+  height: 26px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 50%;
+  transition: all 0.8s ease-out;
+}
+
+.toggle-switch-checkbox:checked + .toggle-switch-label .toggle-switch-inner {
+  margin-left: 0;
+}
+
+.toggle-switch-checkbox:checked + .toggle-switch-label .toggle-switch-switch {
+  right: 0;
+}
+
+.search-flight-main-panel-input-kelas-jmlh {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-flight-main-panel-input-kelas {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-left: 60px;
+}
+
+.search-flight-main-panel-input-jmlh {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+#ticketClass {
+  width: 190px;
+  height: 50px;
+  border: 1px solid #a9a9a9;
+  border-radius: 30px;
+  padding: 15px;
+
+  margin-top: 10px;
+
+  font-size: 15px;
+  color: black;
+}
+
+#search-flight-button {
+  width: 190px;
+  height: 50px;
+  border: 1px solid #a9a9a9;
+  background-color: #a7acff;
+  border-radius: 30px;
+  padding: 15px;
+
+  margin: 30px;
+
+  font-size: 15px;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 767px) {
+  #material-icons {
+    font-size: 36px;
+    color: white;
+  }
+
+  .logo-white a {
+    font-size: 34px;
+  }
+
+  .search-flight-main {
+    padding: 40px 0px 40px 0px;
+  }
+
+  .search-flight-main-panel-parent {
+    width: 300px;
+  }
+
+  #nav3 ul {
+    display: flex;
+    list-style: none;
+  }
+
+  #nav3 ul li {
+    margin-left: 3px;
+  }
+
+  #nav3 ul li::marker {
+    display: "none";
+  }
+
+  #nav3 ul li a {
+    color: white;
+    font-size: 18px;
+  }
+
+  #material-icons {
+    font-size: 36px;
+    color: white;
+  }
+
+  .search-flight-main-panel {
+    width: 300px;
+    border-radius: 50px;
+  }
+
+  .search-flight-main-panel-text {
+    font-size: 14px;
+    margin-left: 30px;
+  }
+
+  #search-flight-main-panel-from,
+  #search-flight-main-panel-to {
+    width: 250px;
+    height: 30px;
+    padding: 10px;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 30px;
+  }
+
+  .search-flight-main-panel-input-pergipulang-switch {
+    width: 125px;
+    height: 30px;
+    padding: 10px;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  #search-flight-main-panel-input-half-jmlh {
+    width: 125px;
+    height: 30px;
+    padding: 10px;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+  .toggle-switch {
+    width: 40px;
+    height: 20px;
+  }
+
+  .toggle-switch-switch {
+    width: 15px;
+    height: 15px;
+  }
+
+  .toggle-switch-inner:before,
+  .toggle-switch-inner:after {
+    height: 20px;
+    padding: 0;
+    line-height: 20px;
+    font-size: 10px;
+    border-radius: 20px 0 0 20px;
+  }
+
+  .search-flight-main-panel-input-pergipulang-switch-text {
+    font-size: 10px;
+  }
+
+  #search-flight-main-panel-input-date-from,
+  #search-flight-main-panel-input-date-to {
+    width: 120px;
+    height: 30px;
+    padding: 10px;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 30px;
+  }
+
+  #ticketClass {
+    width: 120px;
+    height: 30px;
+    padding: 8px;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+  .search-flight-main-panel-input-kelas {
+    font-size: 14px;
+    margin-top: 10px;
+    margin-left: 30px;
+  }
+
+  .search-flight-main-panel-input-jmlh {
+    font-size: 14px;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  #search-flight-button {
+    width: 120px;
+    height: 40px;
+    border-radius: 30px;
+    padding: 10px;
+
+    font-size: 12px;
+  }
+}
+
+.list-flight-body-row{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.list-flight-body {
+  min-height: 900px;
+  min-width: 100vw;
+  background: radial-gradient(
+    ellipse at 0% 1.51%,
+    #9ab0ff 0%,
+    #9aa4ff 51.6%,
+    rgba(48, 0, 239, 0.72) 100%
+  );
+  padding: 10px;
+}
+
+.list-flight-panel-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.list-flight-information {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border-radius: 30px;
+}
+
+.list-flight-information-panel {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border-radius: 30px;
+
+  background-color: #ffffff;
+}
+
+.list-flight-information-card {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border-radius: 30px;
+  margin: 20px;
+
+  background-color: #ffffff;
+}
+
+.list-flight-information-card-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.list-flight-information-panel-text {
+  display: flex;
+  flex-direction: row;
+}
+
+.list-flight-panel-information-text-big {
+  margin-top: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.list-flight-panel-information-text-small {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.list-flight-text-small-white {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+
+  color: #ffffff;
+}
+
+.list-flight-nav ul {
+  margin: 20px;
+  display: flex;
+  list-style: none;
+}
+
+.list-flight-nav ul li {
+  margin-left: 20px;
+}
+
+.list-flight-nav ul li::marker {
+  display: "none";
+}
+
+.list-flight-nav ul li a {
+  color: #ffffff;
+}
+
+@media screen and (max-width: 767px) {
+  .list-flight-body{
+    min-height: 700px;
+  }
+
+  .list-flight-panel-search {
+    margin-top: 20px;
+  }
+
+  .list-flight-information-panel {
+    width: 300px;
+    border-radius: 24px;
+  }
+
+  .list-flight-information {
+    width: 300px;
+  }
+
+  .list-flight-panel-information-text-big {
+    margin-top: 10px;
+    font-size: 18px;
+    margin-bottom: 0px;
+  }
+
+  .list-flight-panel-information-text-small {
+    margin-top: 16px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .list-flight-nav ul li a {
+    font-size: 12px;
+  }
+
+  .list-flight-information-card {
+    width: 300px;
+    border-radius: 24px;
+    margin: 10px;
+  }
+}
+
+.account-main-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+
+  height: 73%;
+  width: 100%;
+}
+
+.account-main-body-row {
+  display: flex;
+  flex-direction: row;
+  width: 63%;
+  height: 100%;
+
+  justify-content: center;
+}
+
+.account-main-body-col {
+  display: flex;
+
+  background-color: #ffffff;
+  width: 30%;
+  height: 70%;
+}
+
+.account-main-body-panel-left {
+  background-color: #ffffff;
+  margin: 10px;
+  width: 312px;
+  height: 600px;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.account-main-body-panel-left-text {
+  color: #605ff1;
+  margin: 24px;
+
+  font-family: "Lemon";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+}
+
+.account-main-body-panel-left-nav {
+  width: 312px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.account-main-body-panel-left-button-current {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 15px;
+
+  background-color: #f4f4f4;
+
+  padding-left: 20px;
+  text-align: left;
+
+  border-style: none;
+
+  width: 250px;
+  height: 48px;
+  border-radius: 30px;
+}
+
+.account-main-body-panel-left-button-current a {
+  font-size: 25px;
+}
+
+.account-main-body-panel-left-button {
+  font-size: 25px;
+  margin: 12px;
+
+  background-color: #ffffff;
+
+  padding-left: 20px;
+  text-align: left;
+
+  border-style: none;
+
+  width: 250px;
+  height: 48px;
+  border-radius: 30px;
+}
+
+.account-main-body-panel-left-button a {
+  font-size: 25px;
+}
+
+.account-main-body-panel-right {
+  margin: 20px;
+  width: 550px;
+  border-radius: 30px;
+  bottom: 0px;
+}
+
+.account-main-body-panel-right-text-current {
+  font-size: 35px;
+  color: #ffffff;
+  margin-left: 20px;
+  margin-top: 30px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.account-main-body-panel-right-text {
+  font-size: 40px;
+  color: #ffffff;
+  margin-left: 30px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.account-main-body-panel-right-current {
+  background-color: #ffffff;
+  margin: 20px;
+  border-radius: 30px;
+}
+
+.account-main-body-panel-right-text-black-big {
+  font-size: 40px;
+  color: #000000;
+  margin-left: 30px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.account-main-body-panel-right-text-black-small {
+  font-size: 200%;
+  color: black;
+  margin-left: 30px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.account-main-body-panel-right-inside-panel {
+  background-color: white;
+  border-radius: 50px;
+  margin: 20px;
+  padding: 24px;
+
+  width: 500px;
+  height: 400px;
+}
+
+.account-main-body-panel-right-box {
+  border: 1px solid gray;
+  background-color: white;
+  border-radius: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.account-main-body-panel-right-box-text-gray {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 14px;
+  color: gray;
+  font-size: 16px;
+}
+
+.account-main-body-panel-right-box-text-black {
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 14px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li::marker {
+  display: "none";
+}
+
+nav ul li a {
+  color: #605ff1;
+  font-size: 20px;
+}
+
+nav ul li img {
+  width: 24px;
+  height: 24px;
+}
+
+.material-icons {
+  font-size: 100px;
+  color: #a7acff;
+}
+
+@media screen and (max-width: 1039px) {
+  .bg-img-account {
+    min-height: 900px;
+  }
+
+  .account-main-body {
+    min-height: 600px;
+  }
+
+  .account-main-body-row {
+    height: 400px;
+    width: 780px;
+  }
+
+  .account-main-body-panel-left {
+    min-width: 300px;
+    min-height: 600px;
+    border-radius: 30px;
+  }
+
+  .account-main-body-panel-right {
+    min-width: 480px;
+    min-height: 380px;
+  }
+}
+
+@media screen and (max-width: 2000px) {
+  .bg-img-account {
+    min-height: 900px;
+  }
+}
+
+@media screen and (max-width: 3000px) {
+  .bg-img-account {
+    min-height: 1000px;
+  }
+}
+
+.account-footbar-nav {
+  background-color: white;
+  min-height: 80px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  padding-bottom: 30px;
+}
+
+.account-footbar-sekat {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 50px;
+  height: 65px;
+
+  margin: 10px;
+  padding: 10px;
+}
+
+.account-footbar-text {
+  font-size: 14px;
+}
+
+#account-icon,
+#settings-icon,
+#payment-icon,
+#support-icon,
+#order-icon {
+  font-size: 40px;
+  color: gray;
+}
+
+@media screen and (max-width: 767px) {
+  .search-flight-body {
+    min-width: 100vw;
+    min-height: 600px;
+  }
+  .bg-img-account {
+    min-height: 1000px;
+  }
+
+  .account-main-body-panel-right-text-current {
+    font-size: 25px;
+    margin-top: 0px;
+  }
+
+  .account-main-body-panel-right-text-black-big {
+    font-size: 20px;
+  }
+
+  .account-main-body-panel-right {
+    margin: 0px;
+    min-width: 250px;
+    border-radius: 10px;
+    bottom: 0px;
+
+    width: 300px;
+  }
+
+  .account-main-body-panel-right-box {
+    border-radius: 20px;
+  }
+
+  .account-main-body-panel-right-box-text-gray,
+  .account-main-body-panel-right-box-text-black {
+    font-size: 13px;
+  }
+
+  .account-main-body-panel-right-inside-panel {
+    background-color: white;
+    border-radius: 35px;
+    margin: 2%;
+    padding: 3%;
+    padding-bottom: 7%;
+
+    width: 280px;
+    height: 300px;
+  }
+
+  #nav2 ul {
+    display: flex;
+    list-style: none;
+  }
+
+  #nav2 ul li {
+    margin-left: 3px;
+  }
+
+  #nav2 ul li::marker {
+    display: "none";
+  }
+
+  #nav2 ul li a {
+    color: white;
+    font-size: 18px;
+  }
+
+  #material-icons {
+    font-size: 36px;
+    color: white;
+  }
+
+  .logo-white a {
+    font-size: 34px;
+  }
+
+  .account-footbar-nav {
+    min-height: 40px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    padding-bottom: 10px;
+  }
+
+  .account-footbar-sekat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-width: 30px;
+    height: 45px;
+
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .account-footbar-text {
+    font-size: 8px;
+    text-align: center;
+  }
+
+  #account-icon,
+  #settings-icon,
+  #payment-icon,
+  #support-icon,
+  #order-icon {
+    font-size: 30px;
+    color: gray;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .bg-img-account {
+    min-height: 700px;
+  }
+}
+
+.payment-main-body-panel-right-box {
+  border-radius: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 25px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  height: 140px;
+}
+
+#payment-main-body-panel-right-box-button {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border: 1px solid rgb(202, 202, 202);
+  border-radius: 30px;
+}
+
+.payment-main-body-panel-right-box-button-row {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.payment-main-body-panel-right-box-button-header-text {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.payment-main-body-panel-right-box-button-img img {
+  width: 150px;
+}
+
+@media screen and (max-width: 767px) {
+  .payment-main-body-panel-right-box {
+    height: 100px;
+  }
+
+  #payment-main-body-panel-right-box-button {
+    border-radius: 20px;
+  }
+
+  .payment-main-body-panel-right-box-button-row {
+    padding: 10px;
+  }
+
+  .payment-main-body-panel-right-box-button-header-text {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .payment-main-body-panel-right-box-button-img img {
+    width: 90px;
+  }
+}
+
+.orders-main-body-panel-right-inside-panel-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.orders-main-body-panel-right-inside-panel-img {
+  margin: 20px;
+}
+
+.orders-main-body-panel-right-inside-panel-img img {
+  width: 300px;
+}
+
+.orders-main-body-panel-right-inside-panel-box {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid rgb(202, 202, 202);
+  border-radius: 30px;
+  margin: 20px;
+}
+
+.orders-main-body-panel-right-inside-panel-box-header-text {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.orders-main-body-panel-right-inside-panel-box-text {
+  text-align: center;
+  font-size: 16px;
+  color: gray;
+}
+
+@media screen and (max-width: 767px) {
+  .orders-main-body-panel-right-inside-panel-img {
+    margin: 20px;
+  }
+
+  .orders-main-body-panel-right-inside-panel-img img {
+    width: 150px;
+  }
+
+  .orders-main-body-panel-right-inside-panel-box {
+    margin: 20px;
+  }
+
+  .orders-main-body-panel-right-inside-panel-box-header-text {
+    font-size: 14px;
+  }
+
+  .orders-main-body-panel-right-inside-panel-box-text {
+    font-size: 10px;
+  }
+}
+
+.help-main-body-panel-right-inside-panel-img img {
+  width: 400px;
+}
+
+.help-main-body-panel-right-inside-panel-text {
+  margin: 20px;
+  font-size: 25px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#help-input {
+  border: 1px solid rgb(202, 202, 202);
+  border-radius: 30px;
+  width: 70%;
+  padding: 12px;
+  margin: 10px;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 767px) {
+  .help-main-body-panel-right-inside-panel-img img {
+    width: 230px;
+  }
+
+  .help-main-body-panel-right-inside-panel-text {
+    margin: 10px;
+    font-size: 18px;
+  }
+
+  #help-input {
+    border-radius: 20px;
+    width: 70%;
+    padding: 6px;
+    margin: 10px;
+    font-size: 12px;
+  }
+}
+
+#orders-main-body-panel-right-inside-panel-button-email,
+#orders-main-body-panel-right-inside-panel-button-notifikasi,
+#orders-main-body-panel-right-inside-panel-button-password,
+#orders-main-body-panel-right-inside-panel-button-security {
+  width: 80%;
+  height: 20%;
+  border: 2px solid rgb(202, 202, 202);
+  border-radius: 30px;
+  background-color: white;
+  margin: 10px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 767px) {
+  #orders-main-body-panel-right-inside-panel-button-email,
+  #orders-main-body-panel-right-inside-panel-button-notifikasi,
+  #orders-main-body-panel-right-inside-panel-button-password,
+  #orders-main-body-panel-right-inside-panel-button-security {
+    margin: 5px;
+    font-size: 15px;
+  }
+}
+
+.login-img-container {
+  background-image: url(https://ik.imagekit.io/iwrtsyly3o/Leggo/Cloud.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/Cloud.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/Map.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/Plane.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/HoomanBoiFlip.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/HoomanGirl.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/Camera.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/WorldTourFlip.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/WorldTour.png);
+  background-size: 10%, 12%, 12%, 10%, 15%, 16%, 7%, 50%, 50%;
+  background-position: top 4% left 4%, 
+  right 5% top 9%, 
+  right 16% top 20%,
+  left 18% top 20%, 
+  left 17% bottom 0%,
+  right 14% bottom 0%,
+  right -3% bottom 24%,
+  left 0% bottom 0%,
+  right 0% bottom 0%;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.login-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-body img{
+  width: 200px;
+  margin: 5px;
+}
+
+#login-logo{
+  margin-top: 60px;
+}
+
+.login-body-col{
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 300px;
+  height: 300px;
+  border-radius: 30px;
+  box-shadow: inset 0px 0px 10px #00000040;
+  margin-bottom: 30px;
+}
+
+.login-body-header-text{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#login-email,
+#login-password{
+  box-shadow: inset 0px 0px 10px #00000040;
+  width: 260px;
+  height: 16px;
+  border-radius: 30px;
+  padding: 16px;
+  margin: 8px;
+
+  font-size: 12px;
+  color: gray;
+}
+
+#btnlogin {
+  width: 160px;
+  margin: 8px;
+  border-radius: 20px;
+  background: linear-gradient(
+    180deg,
+    rgb(167, 185, 255) 0%,
+    rgb(166.9, 146.98, 255) 100%
+  );
+}
+
+.textbtnlogin {
+  font-family: "League Spartan", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 7px;
+  text-align: center;
+}
+
+.teksatau {
+  font-family: "League Spartan", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+}
+
+.image-wrappergoogle {
+  margin: 8px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 4px #00000040;
+}
+
+.image-wrappergoogle img{
+  width: 24px;
+}
+
+.belum-punya-akun {
+  font-family: "League Spartan", Helvetica;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+  text-decoration: none;
+}
+
+button {
+  outline: none; /* Remove the outline */
+  border: none; /* Remove any borders */
+}
+
+input[type="text"] {
+  outline: none; /* Remove the outline */
+  border: none; /* Remove any borders */
+}
+
+input[type="Password"] {
+  outline: none; /* Remove the outline */
+  border: none; /* Remove any borders */
+}
+
+@media screen and (min-width:768px) {
+  .login-body img{
+    width: 250px;
+  }
+
+  .login-body-col{
+    width: 500px;
+    height: 450px;
+  }
+  
+  .login-body-header-text{
+    font-size: 30px;
+  }
+  
+  #login-email,
+  #login-password{
+    width: 400px;
+    margin: 12px;
+    padding: 20px;
+  
+    font-size: 16px;
+  }
+  
+  #btnlogin {
+    width: 200px;
+    margin: 12px;
+  }
+  
+  .textbtnlogin {
+    font-size: 20px;
+    padding: 10px;
+  }
+  
+  .teksatau,
+  .belum-punya-akun {
+    font-size: 16px;
+  }
+  
+  .image-wrappergoogle {
+    margin: 12px;
+  }
+  
+  .image-wrappergoogle img{
+    width: 30px;
+  }
+}
+
+Here's the modified CSS for the registration page:
+cssCopy code.login-img-container {
+  background-image: url(https://ik.imagekit.io/iwrtsyly3o/Leggo/Cloud.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/Cloud.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/Map.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/Plane.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/HoomanBoiFlip.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/HoomanGirl.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/Camera.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/WorldTourFlip.png),
+    url(https://ik.imagekit.io/iwrtsyly3o/Leggo/WorldTour.png);
+  background-size: 10%, 12%, 12%, 10%, 15%, 16%, 7%, 50%, 50%;
+  background-position: top 4% left 4%, 
+  right 5% top 9%, 
+  right 16% top 20%,
+  left 18% top 20%, 
+  left 17% bottom 0%,
+  right 14% bottom 0%,
+  right -3% bottom 24%,
+  left 0% bottom 0%,
+  right 0% bottom 0%;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+.login-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.login-body img{
+  width: 200px;
+  margin: 5px;
+}
+#login-logo{
+  margin-top: 60px;
+}
+.login-body-col{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 350px; /* Increased height to accommodate the new input field */
+  border-radius: 30px;
+  box-shadow: inset 0px 0px 10px #00000040;
+  margin-bottom: 30px;
+}
+.login-body-header-text{
+  font-size: 20px;
+  font-weight: 600;
+}
+#register-email,
+#register-password,
+#register-confirm-password,
+#register-username { /* Added styles for the new input field */
+  box-shadow: inset 0px 0px 10px #00000040;
+  width: 260px;
+  height: 16px;
+  border-radius: 30px;
+  padding: 16px;
+  margin: 8px;
+  font-size: 12px;
+  color: gray;
+}
+#btnregister { /* Modified styles for the register button */
+  width: 160px;
+  margin: 8px;
+  border-radius: 20px;
+  background: linear-gradient(
+    180deg,
+    rgb(167, 185, 255) 0%,
+    rgb(166.9, 146.98, 255) 100%
+  );
+}
+.textbtnregister { /* Added styles for the register button text */
+  font-family: "League Spartan", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 7px;
+  text-align: center;
+}
+.teksatau {
+  font-family: "League Spartan", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+}
+.image-wrappergoogle {
+  margin: 8px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 4px #00000040;
+}
+.image-wrappergoogle img{
+  width: 24px;
+}
+.sudah-punya-akun { /* Modified styles for the "Sudah punya akun" text */
+  font-family: "League Spartan", Helvetica;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+  text-decoration: none;
+}
+button {
+  outline: none; /* Remove the outline */
+  border: none; /* Remove any borders */
+}
+input[type="text"] {
+  outline: none; /* Remove the outline */
+  border: none; /* Remove any borders */
+}
+input[type="Password"] {
+  outline: none; /* Remove the outline */
+  border: none; /* Remove any borders */
+}
+@media screen and (min-width:768px) {
+  .login-body img{
+    width: 250px;
+  }
+  .login-body-col{
+    width: 500px;
+    height: 550px; /* Increased height to accommodate the new input field */
+  }
+  
+  .login-body-header-text{
+    font-size: 30px;
+  }
+  
+  #register-email,
+  #register-password,
+  #register-confirm-password,
+  #register-username {
+    width: 400px;
+    margin: 12px;
+    padding: 20px;
+  
+    font-size: 16px;
+  }
+  
+  #btnregister {
+    width: 200px;
+    margin: 12px;
+  }
+  
+  .textbtnregister {
+    font-size: 20px;
+    padding: 10px;
+  }
+  
+  .teksatau,
+  .sudah-punya-akun {
+    font-size: 16px;
+  }
+  
+  .image-wrappergoogle {
+    margin: 12px;
+  }
+  
+  .image-wrappergoogle img{
+    width: 30px;
+  }
+}

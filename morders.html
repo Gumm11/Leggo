@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/css/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <title>Leggo</title>
+</head>
+
+<body style="overflow-x: hidden;">
+    <div class="bg-purpleRadiant">
+        <div class="bg-img-account">
+            <div class="search-flight-nav">
+                <div class="logo-white">
+                    <nav id="nav2">
+                        <ul>
+                            <li><a href="/"> &lt; </a></li>
+                            <li><a href="/">Leggo</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <nav id="nav2">
+                    <ul>
+                        <li><a href="/maccount.html">User</a></li>
+                        <li><a href='/maccount.html'><i class="material-icons" id="material-icons">account_circle</i></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="account-main-body">
+                <div class="account-main-body-row">
+                    <div class="account-main-body-panel-right">
+                        <div class="account-main-body-panel-right-text-current">
+                            Pesanan Anda
+                        </div>
+                        <div class="account-main-body-panel-right-inside-panel">
+                            <div class="orders-main-body-panel-right-inside-panel-col">
+                                <div class="orders-main-body-panel-right-inside-panel-img">
+                                    <img src="public/Resources/NoOrders.png">
+                                </div>
+                                <div class="orders-main-body-panel-right-inside-panel-box">
+                                    <div class="orders-main-body-panel-right-inside-panel-box-header-text">
+                                        Belum ada pesanan
+                                    </div>
+                                    <div class="orders-main-body-panel-right-inside-panel-box-text">
+                                        Semua pesanan yang dilakukan akan ditampilkan disini termasuk e-tiket milikmu.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="account-footbar-nav">
+                <div class="account-footbar-sekat">
+                    <i class="material-icons" id="account-icon">account_circle</i>
+                    <div class="account-footbar-text">
+                        Akun
+                    </div>
+                </div>
+                <div class="account-footbar-sekat">
+                    <i class="material-icons" id="payment-icon">credit_card</i>
+                    <div class="account-footbar-text">
+                        Pembayaran
+                    </div>
+                </div>
+                <div class="account-footbar-sekat">
+                    <i class="material-icons" id="order-icon">confirmation_number</i>
+                    <div class="account-footbar-text">
+                        Pesanan
+                    </div>
+                </div>
+                <div class="account-footbar-sekat">
+                    <i class="material-icons" id="support-icon">support_agent</i>
+                    <div class="account-footbar-text">
+                        Pusat Bantuan
+                    </div>
+                </div>
+                <div class="account-footbar-sekat">
+                    <i class="material-icons" id="settings-icon">settings</i>
+                    <div class="account-footbar-text">
+                        Pengaturan
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const mediaQuery = window.matchMedia("(min-width: 1020px)");
+
+        // listen for changes to the media query
+        mediaQuery.addListener((event) => {
+            if (event.matches) {
+                // redirect to pc account page
+                window.location.href = "/orders.html";
+            }
+        });
+
+        // check the initial state of the media query
+        if (mediaQuery.matches) {
+            // redirect to pc account page
+            window.location.href = "/orders.html";
+        }
+    </script>
+</body>
+
+</html>
