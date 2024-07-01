@@ -577,11 +577,16 @@ body {
   background-color: #a7acff;
   border-radius: 30px;
   padding: 15px;
-
   margin: 30px;
-
   font-size: 15px;
   color: #ffffff;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s; /* Add transition for smooth effect */
+}
+
+#search-flight-button:hover {
+  background-color: #949aff; /* Change background color on hover */
+  transform: scale(1.05); /* Slightly increase the size on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect on hover */
 }
 
 @media screen and (max-width: 767px) {
@@ -771,9 +776,15 @@ body {
   width: 500px;
   border-radius: 30px;
   margin: 20px;
-
   background-color: #ffffff;
+  transition: transform 0.2s, box-shadow 0.2s; /* Add transition for smooth effect */
 }
+
+.list-flight-information-card:hover {
+  transform: scale(1.05); /* Slightly increase the size on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect on hover */
+}
+
 
 .list-flight-information-card-row {
   display: flex;

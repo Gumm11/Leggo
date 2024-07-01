@@ -102,5 +102,19 @@ async function createFlightCard(penerbangan) {
                             </div>
                         </div>`;
 
+    card.addEventListener('click', function() {
+        let bookingUrl = 'http://localhost/github/leggo/booking.html';
+        let queryParams = [
+            `Nama_maskapai=${encodeURIComponent(penerbangan.Nama_maskapai)}`,
+            `bandara_keberangkatan=${encodeURIComponent(penerbangan.bandara_keberangkatan)}`,
+            `bandara_kedatangan=${encodeURIComponent(penerbangan.bandara_kedatangan)}`,
+            `departureTime=${encodeURIComponent(departureTime)}`,
+            `arrivalTime=${encodeURIComponent(arrivalTime)}`,
+            `price=${encodeURIComponent(price)}`
+        ];
+        bookingUrl += '?' + queryParams.join('&');
+        window.location.href = bookingUrl;
+    });
+
     div.appendChild(card);
 }

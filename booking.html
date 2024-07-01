@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <link rel="stylesheet" href="public/css/style.css">
+</head>
+<body>
+    <h1>Flight Booking</h1>
+    <div id="flight-info"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const flightInfo = {
+                Nama_maskapai: urlParams.get('Nama_maskapai'),
+                bandara_keberangkatan: urlParams.get('bandara_keberangkatan'),
+                bandara_kedatangan: urlParams.get('bandara_kedatangan'),
+                departureTime: urlParams.get('departureTime'),
+                arrivalTime: urlParams.get('arrivalTime'),
+                price: urlParams.get('price')
+            };
+
+            let flightInfoDiv = document.getElementById("flight-info");
+            flightInfoDiv.innerHTML = `
+                <p>Maskapai: ${flightInfo.Nama_maskapai}</p>
+                <p>Bandara Keberangkatan: ${flightInfo.bandara_keberangkatan}</p>
+                <p>Bandara Kedatangan: ${flightInfo.bandara_kedatangan}</p>
+                <p>Waktu Keberangkatan: ${flightInfo.departureTime}</p>
+                <p>Waktu Kedatangan: ${flightInfo.arrivalTime}</p>
+                <p>Harga: IDR ${flightInfo.price}/pax</p>
+            `;
+        });
+    </script>
+</body>
+</html>
