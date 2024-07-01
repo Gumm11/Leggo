@@ -1,8 +1,10 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 require 'database.php';
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ambil data dari formulir
@@ -11,52 +13,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
-    // Validasi sederhana
-    if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
-        header('Location: https://leggo.my.id/register.html?error=Semua+field+harus+diisi!');
-        exit();
-    }
-
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header('Location: https://leggo.my.id/register.html?error=Email+tidak+valid!');
-        exit();
-    }
-
+    // Validate password and confirm password match
     if ($password !== $confirm_password) {
-        header('Location: https://leggo.my.id/register.html?error=Password+dan+konfirmasi+password+tidak+sama!');
+        header('Location: https://localhost/github/leggo/register.php?error=Password dan konfirmasi password tidak sama!');
         exit();
     }
 
-    // Hashing password
-    $password_hash = password_hash($password, PASSWORD_DEFAULT);
+    // Check if username already exists
+    $stmt_username = $conn->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt_username->bind_param("s", $username);
+    $stmt_username->execute();
+    $result_username = $stmt_username->get_result();
 
-    // Cek apakah username sudah ada di database
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
-    $stmt->bind_param("ss", $username, $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
-        // Username atau email sudah ada
-        header('Location: https://leggo.my.id/register.html?error=Username+atau+Email+sudah+terdaftar,+silakan+gunakan+yang+lain!');
+    // Check if email already exists
+    $stmt_email = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt_email->bind_param("s", $email);
+    $stmt_email->execute();
+    $result_email = $stmt_email->get_result();
+
+    if ($result_username->num_rows > 0 && $result_email->num_rows > 0) {
+        // Both username and email already exist
+        header('Location: https://localhost/github/leggo/register.php?error=Username dan Email sudah terdaftar, silakan gunakan yang lain!');
+        exit();
+    } elseif ($result_username->num_rows > 0) {
+        // Username already exists
+        header('Location: https://localhost/github/leggo/register.php?error=Username sudah terdaftar, silakan gunakan yang lain!');
+        exit();
+    } elseif ($result_email->num_rows > 0) {
+        // Email already exists
+        header('Location: https://localhost/github/leggo/register.php?error=Email sudah terdaftar, silakan gunakan yang lain!');
         exit();
     } else {
-        // Menyiapkan statement SQL untuk menghindari SQL injection
-        $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $username, $email, $password_hash);
+        // Hash the password
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-        // Menjalankan statement
-        if ($stmt->execute()) {
-            header('Location: https://leggo.my.id/login.html');
+        // Insert the new user into the database
+        $stmt_insert = $conn->prepare("INSERT INTO users (email, username, password) VALUES (?, ?, ?)");
+        $stmt_insert->bind_param("sss", $email, $username, $password_hash);
+
+        if ($stmt_insert->execute()) {
+            header('Location: https://localhost/github/leggo/login.php?success=Registration successful! Please login.');
+            exit();
         } else {
-            header('Location: https://leggo.my.id/register.html?error=Error:+'. $stmt->error);
+            header('Location: https://localhost/github/leggo/register.php?error=Error: ' . $stmt_insert->error);
             exit();
         }
-
-        // Menutup statement
-        $stmt->close();
     }
 } else {
-    header('Location: https://leggo.my.id/register.html?error=Metode+pengiriman+tidak+valid.');
+    header('Location: register.php?error=Metode pengiriman tidak valid.');
     exit();
 }
 

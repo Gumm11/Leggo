@@ -1,8 +1,8 @@
 <?php
 $db_host = 'localhost';
-$db_username = 'leggomyi_legolego';
-$db_password = 'Leggoo1234!';
-$db_name = 'leggomyi_lego';
+$db_username = 'root';
+$db_password = '123';
+$db_name = 'db_leggo';
 
 // Membuat koneksi ke database
 $conn = new mysqli($db_host, $db_username, $db_password, $db_name);
