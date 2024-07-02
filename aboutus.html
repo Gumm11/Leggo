@@ -23,7 +23,12 @@
 				<ul>
 					<li><a id=aboutLink href="aboutus.html">About</a></li>
 					<li><a id=notifLink href="#">Notification</a></li>
-					<li><a id="userLink" href="account.html">User</a></li>
+					<li class="dropdown">
+						<a id="userLink" href="#">User</a>
+						<div class="dropdown-content" id="dropdown-content">
+							<!-- Dropdown content will be populated here -->
+						</div>
+					</li>
 					<li><a id="accountLink"><i class="material-icons">account_circle</i></a></li>
 				</ul>
 			</nav>
@@ -60,6 +65,32 @@
 			<p>Copyright © 2024 Leggo</p> <br>
 		</div>
 	</div>
+
+	<script>
+		// Fetch user information and update the menu accordingly
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('public/php/get_username.php')
+                .then(response => response.json())
+                .then(data => {
+                    const userLink = document.getElementById('userLink');
+                    const dropdownContent = document.getElementById('dropdown-content');
+                    
+                    userLink.textContent = data.username;
+                    
+                    if (data.logged_in) {
+                        dropdownContent.innerHTML = `
+                            <a href="account.html">Account</a>
+                            <a href="public/php/logout.php">Logout</a>
+                        `;
+                    } else {
+                        dropdownContent.innerHTML = `
+                            <a href="login.php">Login</a>
+                        `;
+                    }
+                })
+                .catch(error => console.error('Error fetching username:', error));
+        });
+	</script>
 
 </body>
 

@@ -731,7 +731,7 @@ body {
   }
 }
 
-.list-flight-body-row{
+.list-flight-body-row {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -786,7 +786,6 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect on hover */
 }
 
-
 .list-flight-information-card-row {
   display: flex;
   flex-direction: row;
@@ -838,7 +837,7 @@ body {
 }
 
 @media screen and (max-width: 767px) {
-  .list-flight-body{
+  .list-flight-body {
     min-height: 700px;
   }
 
@@ -949,6 +948,14 @@ body {
   width: 250px;
   height: 48px;
   border-radius: 30px;
+
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.account-main-body-panel-left-button-current:hover {
+  background-color: #e0e0e0; /* Change to a slightly darker color */
+  color: #333; /* Change text color */
+  cursor: pointer; /* Change cursor to pointer */
 }
 
 .account-main-body-panel-left-button-current a {
@@ -969,6 +976,14 @@ body {
   width: 250px;
   height: 48px;
   border-radius: 30px;
+
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.account-main-body-panel-left-button:hover {
+  background-color: #f0f0f0; /* Change to a slightly darker color */
+  color: #333; /* Change text color */
+  cursor: pointer; /* Change cursor to pointer */
 }
 
 .account-main-body-panel-left-button a {
@@ -1483,20 +1498,14 @@ nav ul li img {
     url(https://ik.imagekit.io/iwrtsyly3o/Leggo/WorldTourFlip.png),
     url(https://ik.imagekit.io/iwrtsyly3o/Leggo/WorldTour.png);
   background-size: 10%, 12%, 12%, 10%, 15%, 16%, 7%, 50%, 50%;
-  background-position: top 4% left 4%, 
-  right 5% top 9%, 
-  right 16% top 20%,
-  left 18% top 20%, 
-  left 17% bottom 0%,
-  right 14% bottom 0%,
-  right -3% bottom 24%,
-  left 0% bottom 0%,
-  right 0% bottom 0%;
+  background-position: top 4% left 4%, right 5% top 9%, right 16% top 20%,
+    left 18% top 20%, left 17% bottom 0%, right 14% bottom 0%,
+    right -3% bottom 24%, left 0% bottom 0%, right 0% bottom 0%;
   background-repeat: no-repeat;
   min-height: 100vh;
 }
 
-.login-body{
+.login-body {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1504,16 +1513,16 @@ nav ul li img {
   min-height: 100vh;
 }
 
-.login-body img{
+.login-body img {
   width: 200px;
   margin: 5px;
 }
 
-#login-logo{
+#login-logo {
   margin-top: 60px;
 }
 
-.login-body-col{
+.login-body-col {
   background-color: white;
 
   display: flex;
@@ -1528,7 +1537,7 @@ nav ul li img {
   margin-bottom: 30px;
 }
 
-.login-body-header-text{
+.login-body-header-text {
   font-size: 20px;
   font-weight: 600;
   display: flex;
@@ -1538,7 +1547,7 @@ nav ul li img {
 }
 
 #login-email,
-#login-password{
+#login-password {
   box-shadow: inset 0px 0px 10px #00000040;
   width: 260px;
   height: 16px;
@@ -1563,9 +1572,9 @@ nav ul li img {
 
 #btnlogin:hover {
   background: linear-gradient(
-      180deg,
-      rgb(166.9, 146.98, 255) 0%,
-      rgb(167, 185, 255) 100%
+    180deg,
+    rgb(166.9, 146.98, 255) 0%,
+    rgb(167, 185, 255) 100%
   );
 }
 
@@ -1592,7 +1601,7 @@ nav ul li img {
   box-shadow: inset 0px 0px 4px #00000040;
 }
 
-.image-wrappergoogle img{
+.image-wrappergoogle img {
   width: 24px;
 }
 
@@ -1629,49 +1638,49 @@ input[type="Password"] {
   border: none; /* Remove any borders */
 }
 
-@media screen and (min-width:768px) {
-  .login-body img{
+@media screen and (min-width: 768px) {
+  .login-body img {
     width: 250px;
   }
 
-  .login-body-col{
+  .login-body-col {
     width: 500px;
     height: 450px;
   }
-  
-  .login-body-header-text{
+
+  .login-body-header-text {
     font-size: 30px;
   }
-  
+
   #login-email,
-  #login-password{
+  #login-password {
     width: 400px;
     margin: 12px;
     padding: 20px;
-  
+
     font-size: 16px;
   }
-  
+
   #btnlogin {
     width: 200px;
     margin: 12px;
   }
-  
+
   .textbtnlogin {
     font-size: 20px;
     padding: 10px;
   }
-  
+
   .teksatau,
   .belum-punya-akun {
     font-size: 16px;
   }
-  
+
   .image-wrappergoogle {
     margin: 12px;
   }
-  
-  .image-wrappergoogle img{
+
+  .image-wrappergoogle img {
     width: 30px;
   }
 }
@@ -1687,33 +1696,27 @@ cssCopy code.login-img-container {
     url(https://ik.imagekit.io/iwrtsyly3o/Leggo/WorldTourFlip.png),
     url(https://ik.imagekit.io/iwrtsyly3o/Leggo/WorldTour.png);
   background-size: 10%, 12%, 12%, 10%, 15%, 16%, 7%, 50%, 50%;
-  background-position: top 4% left 4%, 
-  right 5% top 9%, 
-  right 16% top 20%,
-  left 18% top 20%, 
-  left 17% bottom 0%,
-  right 14% bottom 0%,
-  right -3% bottom 24%,
-  left 0% bottom 0%,
-  right 0% bottom 0%;
+  background-position: top 4% left 4%, right 5% top 9%, right 16% top 20%,
+    left 18% top 20%, left 17% bottom 0%, right 14% bottom 0%,
+    right -3% bottom 24%, left 0% bottom 0%, right 0% bottom 0%;
   background-repeat: no-repeat;
   min-height: 100vh;
 }
-.login-body{
+.login-body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
-.login-body img{
+.login-body img {
   width: 200px;
   margin: 5px;
 }
-#login-logo{
+#login-logo {
   margin-top: 60px;
 }
-.login-body-col{
+.login-body-col {
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -1725,7 +1728,7 @@ cssCopy code.login-img-container {
   box-shadow: inset 0px 0px 10px #00000040;
   margin-bottom: 30px;
 }
-.login-body-header-text{
+.login-body-header-text {
   font-size: 20px;
   font-weight: 600;
 }
@@ -1733,7 +1736,8 @@ cssCopy code.login-img-container {
 #register-password,
 #register-confirm-password,
 #register-username,
-#register-phone-number { /* Added styles for the new input field */
+#register-phone-number {
+  /* Added styles for the new input field */
   box-shadow: inset 0px 0px 10px #00000040;
   width: 260px;
   height: 16px;
@@ -1743,7 +1747,8 @@ cssCopy code.login-img-container {
   font-size: 12px;
   color: gray;
 }
-#btnregister { /* Modified styles for the register button */
+#btnregister {
+  /* Modified styles for the register button */
   width: 160px;
   margin: 8px;
   border-radius: 20px;
@@ -1756,9 +1761,9 @@ cssCopy code.login-img-container {
 
 #btnregister:hover {
   background: linear-gradient(
-      180deg,
-      rgb(166.9, 146.98, 255) 0%,
-      rgb(167, 185, 255) 100%
+    180deg,
+    rgb(166.9, 146.98, 255) 0%,
+    rgb(167, 185, 255) 100%
   );
 }
 
@@ -1772,7 +1777,8 @@ cssCopy code.login-img-container {
   text-align: center;
 }
 
-.textbtnregister { /* Added styles for the register button text */
+.textbtnregister {
+  /* Added styles for the register button text */
   font-family: "League Spartan", Helvetica;
   font-weight: 400;
   color: #ffffff;
@@ -1792,10 +1798,11 @@ cssCopy code.login-img-container {
   border-radius: 10px;
   box-shadow: inset 0px 0px 4px #00000040;
 }
-.image-wrappergoogle img{
+.image-wrappergoogle img {
   width: 24px;
 }
-.sudah-punya-akun { /* Modified styles for the "Sudah punya akun" text */
+.sudah-punya-akun {
+  /* Modified styles for the "Sudah punya akun" text */
   font-family: "League Spartan", Helvetica;
   font-weight: 400;
   font-size: 14px;
@@ -1823,19 +1830,19 @@ input[type="Password"] {
   outline: none; /* Remove the outline */
   border: none; /* Remove any borders */
 }
-@media screen and (min-width:768px) {
-  .login-body img{
+@media screen and (min-width: 768px) {
+  .login-body img {
     width: 250px;
   }
-  .login-body-col{
+  .login-body-col {
     width: 500px;
     height: 550px; /* Increased height to accommodate the new input field */
   }
-  
-  .login-body-header-text{
+
+  .login-body-header-text {
     font-size: 30px;
   }
-  
+
   #register-email,
   #register-password,
   #register-confirm-password,
@@ -1844,30 +1851,30 @@ input[type="Password"] {
     width: 400px;
     margin: 12px;
     padding: 20px;
-  
+
     font-size: 16px;
   }
-  
+
   #btnregister {
     width: 200px;
     margin: 12px;
   }
-  
+
   .textbtnregister {
     font-size: 20px;
     padding: 10px;
   }
-  
+
   .teksatau,
   .sudah-punya-akun {
     font-size: 16px;
   }
-  
+
   .image-wrappergoogle {
     margin: 12px;
   }
-  
-  .image-wrappergoogle img{
+
+  .image-wrappergoogle img {
     width: 30px;
   }
 }
@@ -1901,10 +1908,10 @@ input[type="Password"] {
   border-bottom: 1px solid #ccc;
 }
 
-.inside-container p{
+.inside-container p {
   padding: 10px;
 }
-.inside-container span{
+.inside-container span {
   padding: 20px;
 }
 .inside-container img {
@@ -1927,7 +1934,7 @@ input[type="Password"] {
   background-color: white;
 }
 
-.booking-info p{
+.booking-info p {
   padding: 4px;
 }*/
 
@@ -1946,7 +1953,7 @@ input[type="Password"] {
 
 .pp-container {
   border-radius: 10px;
-  background-color: rgba(255, 255, 255); 
+  background-color: rgba(255, 255, 255);
   padding: 30px;
   margin-bottom: 20px;
 }
@@ -1960,13 +1967,12 @@ input[type="Password"] {
 label {
   display: block;
   margin-bottom: 5px;
-  padding-top: 10px;
 }
 
 .data-container {
-  background-color: rgba(255, 255, 255); 
+  background-color: rgba(255, 255, 255);
   border-radius: 10px;
-  width: 600px; 
+  width: 600px;
   text-align: center;
 }
 
@@ -1995,9 +2001,10 @@ label {
   margin-bottom: 20px;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"],
+input[type="password"] {
   height: 40px;
-  width: 100%; 
+  width: 100%;
   padding: 10px;
   box-sizing: border-box;
   border: 1px solid #ddd;
@@ -2005,7 +2012,7 @@ input[type="text"], input[type="password"] {
 }
 
 #age-group {
-  width: 520px; 
+  width: 520px;
   padding: 8px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -2026,9 +2033,9 @@ input[type="text"], input[type="password"] {
 
 .customer-container {
   margin-top: 20px;
-  background-color: rgba(255, 255, 255); 
+  background-color: rgba(255, 255, 255);
   border-radius: 10px;
-  width: 600px; 
+  width: 600px;
   text-align: center;
 }
 
@@ -2038,15 +2045,15 @@ input[type="text"], input[type="password"] {
   padding-top: 10px;
   padding-left: 8px;
 }
-.select-usia{
+.select-usia {
   padding-bottom: 22px;
 }
 
 .fasilitasekstra-container {
   margin-top: 20px;
-  background-color: rgba(255, 255, 255); 
+  background-color: rgba(255, 255, 255);
   border-radius: 10px;
-  width: 600px; 
+  width: 600px;
   text-align: center;
 }
 
@@ -2078,7 +2085,7 @@ input[type="text"], input[type="password"] {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -2095,4 +2102,22 @@ input[type="text"], input[type="password"] {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 50px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  font-size: 24px;
+  display: none;
+  z-index: 1000;
+}
+
+.popup p{
+  margin: 10px;
 }

@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 // Prepare and execute query to fetch user information
-$query = $conn->prepare("SELECT email, phone_number, password FROM users WHERE Id_users = ?");
+$query = $conn->prepare("SELECT username, email, phone_number, password FROM users WHERE Id_users = ?");
 $query->bind_param("i", $user_id);
 $query->execute();
 $result = $query->get_result();

@@ -2,15 +2,18 @@
 session_start();
 require 'database.php'; // file yang berisi koneksi ke database
 
-// Define the base URL
-$base_url = 'https://localhost/github/leggo/';
+header('Content-Type: application/json');
+
+$response = [];
 
 $email_or_username = $_POST['email'];
 $password = $_POST['password'];
 
 // Check if email/username or password is empty
 if (empty($email_or_username) || empty($password)) {
-    header("Location: " . $base_url . "login.php?error=Semua+field+harus+diisi!");
+    $response['status'] = 'error';
+    $response['message'] = 'Semua field harus diisi!';
+    echo json_encode($response);
     exit();
 }
 
@@ -22,19 +25,30 @@ $user = $query->get_result()->fetch_assoc();
 
 if (!$user) {
     // User tidak ditemukan berdasarkan username atau email
-    header("Location: " . $base_url . "login.php?error=Username+atau+email+tidak+ditemukan!");
+    $response['status'] = 'error';
+    $response['message'] = 'Username atau email tidak ditemukan!';
+    echo json_encode($response);
     exit();
 }
 
 // Check if the password is correct
 if (!password_verify($password, $user['password'])) {
     // Password tidak cocok
-    header("Location: " . $base_url . "login.php?error=Password+salah!");
+    $response['status'] = 'error';
+    $response['message'] = 'Password salah!';
+    echo json_encode($response);
     exit();
 }
 
 // Password cocok, buat sesi
 $_SESSION['user_id'] = $user['Id_users'];
-header("Location: " . $base_url . "index.html");
+$response['status'] = 'success';
+$response['user'] = [
+    'id' => $user['Id_users'],
+    'username' => $user['username'],
+    'email' => $user['email'],
+    'phone_number' => $user['phone_number']
+];
+echo json_encode($response);
 exit();
 ?>
