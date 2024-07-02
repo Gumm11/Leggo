@@ -16,6 +16,7 @@ body {
   bottom: 0px;
   min-height: 100vh;
   min-width: 100vw;
+  background-size: 100% 100%;
   background: radial-gradient(
     ellipse at 0% 1.51%,
     #9ab0ff 0%,
@@ -65,12 +66,12 @@ body {
 
 .logo a {
   color: #605ff1;
-  margin: 20px;
+  margin-left: 10px;
 
   font-family: "Lemon";
   font-style: normal;
   font-weight: 400;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .logo-white {
@@ -1652,7 +1653,6 @@ input[type="Password"] {
   }
 }
 
-Here's the modified CSS for the registration page:
 cssCopy code.login-img-container {
   background-image: url(https://ik.imagekit.io/iwrtsyly3o/Leggo/Cloud.png),
     url(https://ik.imagekit.io/iwrtsyly3o/Leggo/Cloud.png),
@@ -1826,4 +1826,201 @@ input[type="Password"] {
   .image-wrappergoogle img{
     width: 30px;
   }
+}
+
+.index-navv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.logoo a {
+  color: #ffffff;
+  margin-left: 10px;
+
+  font-family: "Lemon";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+}
+
+.main-container {
+  margin: 60px auto;
+  width: 600px;
+  border: 1px solid #eeecec;
+  border-radius: 10px;
+  background-color: white;
+  
+
+}
+.inside-container {
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.inside-container p{
+  padding: 10px;
+}
+.inside-container span{
+  padding: 20px;
+}
+.inside-container img {
+  vertical-align: middle;
+}
+.scroll-container {
+  height: 300px;
+  overflow-y: auto;
+  padding: 30px;
+  background-color: rgb(242, 245, 255);
+}
+.booking-info {
+  max-width: 400px;
+  font-size: 20px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  margin-left: 80px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.booking-info p{
+  padding: 4px;
+}
+
+#navv-index ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+#navv-index ul li a:hover {
+  text-decoration: underline;
+}
+
+#navv-index .material-icons {
+  color: white;
+}
+
+.pp-container {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255); 
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.pergi-container {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 17px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  padding-top: 10px;
+}
+
+.data-container {
+  background-color: rgba(255, 255, 255); 
+  border-radius: 10px;
+  width: 600px; 
+  text-align: center;
+}
+
+h2 {
+  padding: 20px;
+}
+.header h1 {
+  font-size: 40px;
+  color: #000000;
+  text-shadow: 2px 2px 4px rgb(255, 255, 255);
+}
+
+.form-group {
+  text-align: left;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 20px;
+}
+.mainn-container {
+  margin: 60px auto;
+  width: 600px;
+  border-radius: 10px;
+}
+label {
+  display: block;
+  margin-bottom: 20px;
+}
+
+input[type="text"], input[type="password"] {
+  height: 40px;
+  width: 100%; 
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+#age-group {
+  width: 520px; 
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: white;
+  cursor: pointer;
+}
+
+#age-group:hover {
+  border-color: #888;
+}
+
+#age-group:focus {
+  outline: none;
+  border-color: #ffffff;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.customer-container {
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255); 
+  border-radius: 10px;
+  width: 600px; 
+  text-align: center;
+}
+
+.labelcustomer {
+  display: block;
+  margin-bottom: 0px;
+  padding-top: 10px;
+  padding-left: 8px;
+}
+.select-usia{
+  padding-bottom: 22px;
+}
+
+.fasilitasekstra-container {
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255); 
+  border-radius: 10px;
+  width: 600px; 
+  text-align: center;
+}
+
+.bagasi-container {
+  display: inline-block;
+  min-width: 100px;
+  margin-left: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 17px;
+  margin-bottom: 20px;
+}
+
+.labelbagasi {
+  display: block;
+  margin-bottom: 0px;
+  padding: 30px;
+  padding-left: 8px;
 }
