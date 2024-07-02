@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <base href="https://localhost/github/leggo/">
     <title>Leggo</title>
 </head>
 
@@ -18,9 +19,15 @@
         </div>
         <nav id="nav-index">
             <ul>
-                <li><a id=aboutLink href="https://localhost/github/leggo/aboutus.html">About</a></li>
-                <li><a id=notifLink href="#">Notification</a></li>
-                <li><a id="userLink" href="https://localhost/github/leggo/account.html">User</a></li>
+                <li><a id="aboutLink" href="aboutus.html">About</a></li>
+                <li><a id="notifLink" href="#">Notification</a></li>
+                <li class="dropdown">
+                    <a id="userLink" href="account.html">User</a>
+                    <div class="dropdown-content">
+                        <a href="account.html">Account</a>
+                        <a href="public/php/logout.php">Logout</a>
+                    </div>
+                </li>
                 <li><a id="accountLink"><i class="material-icons">account_circle</i></a></li>
             </ul>
         </nav>
@@ -73,6 +80,17 @@
         window.addEventListener('resize', () => {
             updateImageDisplay();
         });
+
+        // Fetch username and update the user link
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('public/php/get_username.php')
+                .then(response => response.json())
+                .then(data => {
+                    const userLink = document.getElementById('userLink');
+                    userLink.textContent = data.username;
+                })
+                .catch(error => console.error('Error fetching username:', error));
+        });
     </script>
 
     <div class="index-body">
@@ -119,7 +137,7 @@
         userLink.addEventListener("click", (event) => {
             if (window.matchMedia("(max-width: 1020px)").matches) {
                 // redirect to mobile account page
-                window.location.href = "https://localhost/github/leggo/maccount.html";
+                window.location.href = "maccount.html";
                 event.preventDefault();
             }
         });
@@ -127,7 +145,7 @@
         accountLink.addEventListener("click", (event) => {
             if (window.matchMedia("(max-width: 1020px)").matches) {
                 // redirect to mobile account page
-                window.location.href = "https://localhost/github/leggo/maccount.html";
+                window.location.href = "maccount.html";
                 event.preventDefault();
             }
         });
@@ -136,7 +154,7 @@
 
         inputElement.addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
-                navigateTo('https://localhost/github/leggo/search-flight.html');
+                navigateTo('search-flight.html');
             }
         });
 

@@ -1,13 +1,5 @@
-<?php
-session_start();
-if (isset($_SESSION['user_username'])) {
-    header("Location: index.html");
-    exit();
-}
-?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -16,6 +8,7 @@ if (isset($_SESSION['user_username'])) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <base href="https://localhost/github/leggo/">
 </head>
 
 <body>
@@ -25,9 +18,10 @@ if (isset($_SESSION['user_username'])) {
             let username = document.getElementById("register-username").value;
             let password = document.getElementById("register-password").value;
             let confirmPassword = document.getElementById("register-confirm-password").value;
+            let phoneNumber = document.getElementById("register-phone-number").value;
             let errorMsg = '';
 
-            if (username.trim() === '' || email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
+            if (username.trim() === '' || email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '' || phoneNumber.trim() === '') {
                 errorMsg += "Semua field harus diisi.<br>";
             }
 
@@ -47,6 +41,10 @@ if (isset($_SESSION['user_username'])) {
                 errorMsg += "Password dan konfirmasi password tidak sama.<br>";
             }
 
+            if (!validatePhoneNumber(phoneNumber)) {
+                errorMsg += "Nomor telepon tidak valid.<br>";
+            }
+
             if (errorMsg) {
                 document.getElementById("error-message").innerHTML = errorMsg;
                 return false;
@@ -58,6 +56,11 @@ if (isset($_SESSION['user_username'])) {
         function validateEmail(email) {
             const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(String(email).toLowerCase());
+        }
+
+        function validatePhoneNumber(phoneNumber) {
+            const re = /^[0-9]{10,15}$/; // Adjust the regex based on the phone number format you expect
+            return re.test(phoneNumber);
         }
 
         function getParameterByName(name, url) {
@@ -97,6 +100,7 @@ if (isset($_SESSION['user_username'])) {
                         </div>
                         <input type="text" id="register-username" name="username" placeholder="Username">
                         <input type="text" id="register-email" name="email" placeholder="Alamat email">
+                        <input type="text" id="register-phone-number" name="phone_number" placeholder="Nomor Telepon">
                         <input type="password" id="register-password" name="password" placeholder="Password">
                         <input type="password" id="register-confirm-password" name="confirm_password"
                             placeholder="Confirm Password">
@@ -106,7 +110,7 @@ if (isset($_SESSION['user_username'])) {
                         <div class="posisibuatakun">
                             <p class="sudah-punya-akun">
                                 <span class="span">Sudah punya akun?</span>
-                                <a href="http://www.leggo.my.id/login.php">Log in!</a>
+                                <a href="login.php">Log in!</a>
                             </p>
                         </div>
                     </div>

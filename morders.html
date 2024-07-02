@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <base href="https://localhost/github/leggo/">
     <title>Leggo</title>
 </head>
 
@@ -27,8 +28,9 @@
                 </div>
                 <nav id="nav2">
                     <ul>
-                        <li><a href="/maccount.html">User</a></li>
-                        <li><a href='/maccount.html'><i class="material-icons" id="material-icons">account_circle</i></a></li>
+                        <li><a href="maccount.html">User</a></li>
+                        <li><a href='maccount.html'><i class="material-icons"
+                                    id="material-icons">account_circle</i></a></li>
                     </ul>
                 </nav>
             </div>
@@ -98,14 +100,14 @@
         mediaQuery.addListener((event) => {
             if (event.matches) {
                 // redirect to pc account page
-                window.location.href = "/orders.html";
+                window.location.href = "orders.html";
             }
         });
 
         // check the initial state of the media query
         if (mediaQuery.matches) {
             // redirect to pc account page
-            window.location.href = "/orders.html";
+            window.location.href = "orders.html";
         }
     </script>
 </body>
