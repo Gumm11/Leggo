@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <base href="https://localhost/github/leggo/">
     <title>Leggo</title>
 </head>
 
@@ -20,15 +21,16 @@
                 <div class="logo-white">
                     <nav>
                         <ul>
-                            <li><a href="/"> &lt; </a></li>
-                            <a href="/">Leggo</a>
+                            <li><a href=""> &lt; </a></li>
+                            <a href="">Leggo</a>
                         </ul>
                     </nav>
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="/account.html" style="color: white; font-size: 30px;">User</a></li>
-                        <li><a href='/account.html'><i class="material-icons"
+                        <li><a href="account.html" style="color: white; font-size: 30px;" id="usernameLink">User</a>
+                        </li>
+                        <li><a href='account.html'><i class="material-icons"
                                     style="color: white; font-size: 60px;">account_circle</i></a></li>
                     </ul>
                 </nav>
@@ -41,25 +43,16 @@
                         </div>
                         <div class="account-main-body-panel-left-nav">
                             <div class="account-main-body-panel-left-nav">
-                                <button class="account-main-body-panel-left-button-current" onclick="navigateTo('/account.html')">
-                                    Akun
-                                </button>
-
-                                <button class="account-main-body-panel-left-button" onclick="navigateTo('/payment.html')">
-                                    Pembayaran
-                                </button>
-
-                                <button class="account-main-body-panel-left-button" onclick="navigateTo('/orders.html')">
-                                    Pesanan
-                                </button>
-
-                                <button class="account-main-body-panel-left-button" onclick="navigateTo('/help.html')">
-                                    Pusat Bantuan
-                                </button>
-
-                                <button class="account-main-body-panel-left-button" onclick="navigateTo('/settings.html')">
-                                    Pengaturan
-                                </button>
+                                <button class="account-main-body-panel-left-button-current"
+                                    onclick="navigateTo('account.html')">Akun</button>
+                                <button class="account-main-body-panel-left-button"
+                                    onclick="navigateTo('payment.html')">Pembayaran</button>
+                                <button class="account-main-body-panel-left-button"
+                                    onclick="navigateTo('orders.html')">Pesanan</button>
+                                <button class="account-main-body-panel-left-button"
+                                    onclick="navigateTo('help.html')">Pusat Bantuan</button>
+                                <button class="account-main-body-panel-left-button"
+                                    onclick="navigateTo('settings.html')">Pengaturan</button>
                             </div>
                         </div>
                     </div>
@@ -76,24 +69,24 @@
                                 <div class="account-main-body-panel-right-box-text-gray">
                                     Nomor Ponsel
                                 </div>
-                                <div class="account-main-body-panel-right-box-text-black">
-                                    12345678
+                                <div class="account-main-body-panel-right-box-text-black" id="phoneNumber">
+                                    <!-- Phone Number will be displayed here -->
                                 </div>
                             </div>
                             <div class="account-main-body-panel-right-box">
                                 <div class="account-main-body-panel-right-box-text-gray">
                                     Email
                                 </div>
-                                <div class="account-main-body-panel-right-box-text-black">
-                                    user@gmail.com
+                                <div class="account-main-body-panel-right-box-text-black" id="email">
+                                    <!-- Email will be displayed here -->
                                 </div>
                             </div>
                             <div class="account-main-body-panel-right-box">
                                 <div class="account-main-body-panel-right-box-text-gray">
                                     Password
                                 </div>
-                                <div class="account-main-body-panel-right-box-text-black">
-                                    *******
+                                <div class="account-main-body-panel-right-box-text-black" id="password">
+                                    <!-- Password will be displayed here -->
                                 </div>
                             </div>
                         </div>
@@ -110,19 +103,35 @@
         mediaQuery.addListener((event) => {
             if (event.matches) {
                 // redirect to mobile account page
-                window.location.href = "/maccount.html";
+                window.location.href = "maccount.html";
             }
         });
 
         // check the initial state of the media query
         if (mediaQuery.matches) {
             // redirect to mobile account page
-            window.location.href = "/maccount.html";
+            window.location.href = "maccount.html";
         }
 
         function navigateTo(url) {
             window.location.href = url;
         }
+
+        // Fetch user information
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('public/php/get_user_info.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        console.error(data.error);
+                    } else {
+                        document.getElementById('phoneNumber').textContent = data.phone_number;
+                        document.getElementById('email').textContent = data.email;
+                        document.getElementById('password').textContent = data.password;
+                    }
+                })
+                .catch(error => console.error('Error fetching user info:', error));
+        });
     </script>
 </body>
 

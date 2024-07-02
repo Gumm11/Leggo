@@ -1,62 +1,85 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 require 'database.php';
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+define('BASE_URL', 'https://localhost/github/leggo/');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ambil data dari formulir
     $username = htmlspecialchars($_POST['username']);
     $email = htmlspecialchars($_POST['email']);
+    $phone_number = htmlspecialchars($_POST['phone_number']);
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
-    // Validasi sederhana
-    if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
-        header('Location: https://leggo.my.id/register.html?error=Semua+field+harus+diisi!');
-        exit();
-    }
-
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header('Location: https://leggo.my.id/register.html?error=Email+tidak+valid!');
-        exit();
-    }
-
+    // Validate password and confirm password match
     if ($password !== $confirm_password) {
-        header('Location: https://leggo.my.id/register.html?error=Password+dan+konfirmasi+password+tidak+sama!');
+        header('Location: ' . BASE_URL . 'register.php?error=Password dan konfirmasi password tidak sama!');
         exit();
     }
 
-    // Hashing password
-    $password_hash = password_hash($password, PASSWORD_DEFAULT);
+    // Validate phone number
+    if (!preg_match('/^[0-9]{10,15}$/', $phone_number)) {
+        header('Location: ' . BASE_URL . 'register.php?error=Nomor telepon tidak valid!');
+        exit();
+    }
 
-    // Cek apakah username sudah ada di database
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
-    $stmt->bind_param("ss", $username, $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
-        // Username atau email sudah ada
-        header('Location: https://leggo.my.id/register.html?error=Username+atau+Email+sudah+terdaftar,+silakan+gunakan+yang+lain!');
+    // Check if username already exists
+    $stmt_username = $conn->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt_username->bind_param("s", $username);
+    $stmt_username->execute();
+    $result_username = $stmt_username->get_result();
+
+    // Check if email already exists
+    $stmt_email = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt_email->bind_param("s", $email);
+    $stmt_email->execute();
+    $result_email = $stmt_email->get_result();
+    
+    // Check if phone number already exists
+    $stmt_phone = $conn->prepare("SELECT * FROM users WHERE phone_number = ?");
+    $stmt_phone->bind_param("s", $phone_number);
+    $stmt_phone->execute();
+    $result_phone = $stmt_phone->get_result();
+
+    if ($result_username->num_rows > 0 && $result_email->num_rows > 0 && $result_phone->num_rows > 0) {
+        // Username, email, and phone number already exist
+        header('Location: ' . BASE_URL . 'register.php?error=Username, Email, dan Nomor telepon sudah terdaftar, silakan gunakan yang lain!');
+        exit();
+    } elseif ($result_username->num_rows > 0) {
+        // Username already exists
+        header('Location: ' . BASE_URL . 'register.php?error=Username sudah terdaftar, silakan gunakan yang lain!');
+        exit();
+    } elseif ($result_email->num_rows > 0) {
+        // Email already exists
+        header('Location: ' . BASE_URL . 'register.php?error=Email sudah terdaftar, silakan gunakan yang lain!');
+        exit();
+    } elseif ($result_phone->num_rows > 0) {
+        // Phone number already exists
+        header('Location: ' . BASE_URL . 'register.php?error=Nomor telepon sudah terdaftar, silakan gunakan yang lain!');
         exit();
     } else {
-        // Menyiapkan statement SQL untuk menghindari SQL injection
-        $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $username, $email, $password_hash);
+        // Hash the password
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-        // Menjalankan statement
-        if ($stmt->execute()) {
-            header('Location: https://leggo.my.id/login.html');
+        // Insert the new user into the database
+        $stmt_insert = $conn->prepare("INSERT INTO users (email, username, phone_number, password) VALUES (?, ?, ?, ?)");
+        $stmt_insert->bind_param("ssss", $email, $username, $phone_number, $password_hash);
+
+        if ($stmt_insert->execute()) {
+            header('Location: ' . BASE_URL . 'login.php?success=Registration successful! Please login.');
+            exit();
         } else {
-            header('Location: https://leggo.my.id/register.html?error=Error:+'. $stmt->error);
+            header('Location: ' . BASE_URL . 'register.php?error=Error: ' . $stmt_insert->error);
             exit();
         }
-
-        // Menutup statement
-        $stmt->close();
     }
 } else {
-    header('Location: https://leggo.my.id/register.html?error=Metode+pengiriman+tidak+valid.');
+    header('Location: ' . BASE_URL . 'register.php?error=Metode pengiriman tidak valid.');
     exit();
 }
 

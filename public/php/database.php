@@ -1,9 +1,9 @@
 <?php
 // Konfigurasi database
 $host = 'localhost';
-$dbname = 'leggomyi_leggo';
-$username = 'leggomyi_legolego';
-$password = 'Leggoo1234!';
+$dbname = 'db_leggo';
+$username = 'root';
+$password = '123';
 
 // Membuat koneksi ke database
 $conn = new mysqli($host, $username, $password, $dbname);
