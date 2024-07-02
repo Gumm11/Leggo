@@ -1895,10 +1895,8 @@ input[type="Password"] {
   border: 1px solid #eeecec;
   border-radius: 10px;
   background-color: white;
-  
-
 }
-.inside-container {
+/*.inside-container {
   padding: 20px;
   border-bottom: 1px solid #ccc;
 }
@@ -1931,7 +1929,7 @@ input[type="Password"] {
 
 .booking-info p{
   padding: 4px;
-}
+}*/
 
 #navv-index ul li a {
   color: white;
