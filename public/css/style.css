@@ -1965,8 +1965,10 @@ input[type="Password"] {
 }
 
 label {
+  margin-top: 10px;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
+  padding-left: 8px;
 }
 
 .data-container {
@@ -1990,6 +1992,11 @@ h2 {
   padding-left: 40px;
   padding-right: 40px;
   padding-bottom: 20px;
+}
+.form-groupp {
+  text-align: left;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 .mainn-container {
   margin: 60px auto;
@@ -2041,9 +2048,8 @@ input[type="password"] {
 
 .labelcustomer {
   display: block;
-  margin-bottom: 0px;
-  padding-top: 10px;
   padding-left: 8px;
+  font-size: 12px;
 }
 .select-usia {
   padding-bottom: 22px;
