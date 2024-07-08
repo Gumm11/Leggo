@@ -12,7 +12,7 @@ $returnDate = isset($_GET['returnDate']) ? $_GET['returnDate'] : '';
 $ticketClass = isset($_GET['ticketClass']) ? $_GET['ticketClass'] : '';
 $passengers = isset($_GET['passengers']) ? $_GET['passengers'] : '';
 
-// Construct the SQL query
+// Construct the SQL query for flights
 $sql = "
     SELECT 
         p.*,
@@ -48,9 +48,6 @@ if (!empty($arrival)) {
 if (!empty($departureDate)) {
     $sql .= " AND DATE(p.Tanggal_keberangkatan) = '" . $conn->real_escape_string($departureDate) . "'";
 }
-if (!empty($returnDate)) {
-    $sql .= " AND DATE(p.Tanggal_kepulangan) = '" . $conn->real_escape_string($returnDate) . "'";
-}
 if (!empty($ticketClass)) {
     $sql .= " AND p.Kelas = '" . $conn->real_escape_string($ticketClass) . "'";
 }
@@ -58,18 +55,22 @@ if (!empty($passengers)) {
     $sql .= " AND p.Jumlah_kursi >= " . intval($passengers);
 }
 
-// Execute the query
+// Execute the query for flights
 $result = $conn->query($sql);
 
-if ($result) {
-    $data = array();
+// Prepare response data array
+$data = array();
+
+// Fetch flights data
+if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $data[] = $row;
     }
-    echo json_encode($data);
-} else {
-    echo json_encode(array("error" => "Query failed."));
 }
 
+// Return JSON response
+echo json_encode($data);
+
+// Close database connection
 $conn->close();
 ?>

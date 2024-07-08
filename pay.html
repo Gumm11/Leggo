@@ -8,105 +8,111 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <base href="https://localhost/github/leggo/">
     <title>Leggo</title>
 </head>
 
 <body style="min-width: 320px;">
-    <div class="bg-purpleRadiant">
+    <div class="bg-purpleRadiant" style="min-width: 0;">
         <div class="index-navv">
             <div class="logoo">
                 <a href="">Leggo</a>
             </div>
             <nav id="navv-index">
                 <ul>
-                    <li><a id=aboutLink href="/aboutus.html">About</a></li>
+                    <li><a id=aboutLink href="aboutus.html">About</a></li>
                     <li><a id=notifLink href="#">Notification</a></li>
-                    <li><a id="userLink" href="/account.html">User</a></li>
+                    <li><a id="userLink" href="account.html">User</a></li>
                     <li><a id="accountLink"><i class="material-icons">account_circle</i></a></li>
                 </ul>
             </nav>
         </div>
-        <div class="login-img-container">
+        <div class="login-img-container" style="min-height: 120vh;">
             <div class="mainn-container">
                 <div class="pp-container">
-                    <label class="labelpergi" for="pergi">Pergi</label></label>
-                    <div class="pergi-container">
-                        <span>Medan, KNO</span>
+                    <label class="labelpergi" id="labelPergi" for="pergi">Pergi</label>
+                    <div class="pergi-container" id="pergi-container">
+                        <span id="departure-city"></span>
                         <img src="public/Resources/Arrow.png" alt="" style="max-height: 20px; max-width: 20px"/>
-                        <span>Bali, DPS</span>
+                        <span id="arrival-city"></span>
                     </div>
-                    <label class="labelpergi" for="pergi">Pulang</label></label>
-                    <div class="pergi-container">
-                        <span>Bali, DPS</span>
+                    <label class="labelpergi" id="labelPulang" for="pergi">Pulang</label>
+                    <div class="pergi-container" id="pulang-container">
+                        <span id="return-departure-city"></span>
                         <img src="public/Resources/Arrow.png" alt="" style="max-height: 20px; max-width: 20px"/>
-                        <span>Medan, KNO</span>
+                        <span id="return-arrival-city"></span>
                     </div>
                 </div>
                 <div class="data-container">
                     <h2><b>Data Pemesanan</b></h2>
-                        <div class="form-group">
-                            <input type="text" id="NamaLengkap" name="nama" value="Nama Lengkap" style="color: gray" required
-                             onfocus="if(this.value==='Nama Lengkap'){this.value=''; this.style.color='gray'}" 
-                             onblur="if(this.value===''){this.value='Nama Lengkap'; this.style.color='gray'} else {this.style.color='black'}" 
-                             oninput="this.style.color='black'">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="Nomor Telepon" name="Notelp" value="Nomor Telepon" style="color: gray" required 
-                                onfocus="if(this.value==='Nomor Telepon'){this.value=''; this.type='Nomor Telepon'; this.style.color='gray'}" 
-                                onblur="if(this.value===''){this.value='Nomor Telepon'; this.type='text'; this.style.color='gray'} else {this.style.color='black'}" 
-                                oninput="this.style.color='black'">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="Email" name="Email" value="Email" style="color: gray" required 
-                                onfocus="if(this.value==='Email'){this.value=''; this.type='Email'; this.style.color='gray'}" 
-                                onblur="if(this.value===''){this.value='Email'; this.type='text'; this.style.color='gray'} else {this.style.color='black'}" 
-                                oninput="this.style.color='black'">
-                        </div>
-            </div>
-            <div class="customer-container">
-                <h2><b>Data Customer</b></h2>
-                    <div class="form-groupp">
-                        <input type="text" id="NamaLengkap" name="nama" value="Nama Lengkap" style="color: gray" required
-                         onfocus="if(this.value==='Nama Lengkap'){this.value=''; this.style.color='gray'}" 
-                         onblur="if(this.value===''){this.value='Nama Lengkap'; this.style.color='gray'} else {this.style.color='black'}" 
-                         oninput="this.style.color='black'">
-                         <label class="labelcustomer" for="laberlcustomer">Isi sesuai KTP/Paspor/SIM (tanpa tanda baca dan gelar)</label></label>
+                    <div class="form-group">
+                        <input type="text" id="NamaLengkap" name="nama" placeholder="Nama Lengkap" style="color: gray">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="NomorTelepon" name="Notelp" placeholder="Nomor Telepon" style="color: gray">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="Email" name="Email" placeholder="Email" style="color: gray">
+                    </div>
+                </div>
+                <div class="customer-container">
+                    <h2><b>Data Customer</b></h2>
+                    <div class="form-group">
+                        <input type="text" id="NamaLengkapCustomer" name="nama" placeholder="Nama Lengkap" style="color: gray">
+                        <label class="labelcustomer" for="laberlcustomer">Isi sesuai KTP/Paspor/SIM (tanpa tanda baca
+                            dan gelar)</label>
                     </div>
                     <div class="select-usia">
                         <select id="age-group">
                             <option value="">Pilih kategori usia</option>
                             <option value="dewasa">Dewasa</option>
                             <option value="anak-anak">Anak-anak</option>
-                          </select>
+                        </select>
                     </div>
-            </div>
-            <div class="fasilitasekstra-container">
-                <label class="labelbagasi" for="pergi">Pilih Bagasi | Kamu punya bagasi gratis 20kg</label></label>
-                <div class="bagasi-container">
-                    <span>5 Kg</span>
                 </div>
-                <div class="bagasi-container">
-                    <span>10 Kg</span>
+                <div class="fasilitasekstra-container">
+                    <label class="labelbagasi" for="bagasi">Pilih Bagasi | Kamu punya bagasi gratis 20kg</label>
+                    <div class="bagasi-container" data-weight="5">
+                        <span>5 Kg</span>
+                    </div>
+                    <div class="bagasi-container" data-weight="10">
+                        <span>10 Kg</span>
+                    </div>
+                    <div class="bagasi-container" data-weight="15">
+                        <span>15 Kg</span>
+                    </div>
+                    <div class="bagasi-container selected" data-weight="20">
+                        <span>20 Kg</span>
+                    </div>
                 </div>
-                <div class="bagasi-container">
-                    <span>15 Kg</span>
+                <div class="fasilitasekstra-container">
+                    <h2><b>Pembayaran</b></h2>
+                    <div class="Total">Total Pembayaran :
+                        <span id="total-price">IDR 4.593.500</span>
+                    </div>
+                    <button id="btnpayment">
+                        <p class="textbtnpayment">Lanjutkan pembayaran</p>
+                    </button>
                 </div>
-                <div class="bagasi-container">
-                    <span>20 Kg</span>
-                </div>
-            </div>
-            <div class="fasilitasekstra-container">
-                <h2><b>Pembayaran</b></h2>
-                <div class="Total">Total Pembayaran : 
-                    <span>IDR 4.593.500</span>
-                </div>
-                <button id="btnlogin">
-                    <p class="textbtnlogin">Lanjutkan pembayaran</p>
-                </button>
             </div>
         </div>
-           
+    </div>
 
+    <div id="payment-overlay" class="pay-overlay">
+        <div class="pay-overlay-content">
+            <h2>Konfirmasi Pembayaran</h2>
+            <p id="confirm-departure"></p>
+            <p id="confirm-return"></p>
+            <p>Total Pembayaran: <span id="confirm-total-price"></span></p>
+            <button id="confirm-payment">Konfirmasi</button>
+            <button id="cancel-payment">Batal</button>
+            <div id="qris-container">
+                <img id="qris-code" src="" alt="QR Code">
+            </div>
+        </div>
+    </div>
+
+    <script src="public/js/payment.js"></script>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 const toggleSwitch = document.getElementById('toggle-switch');
 const searchFlightMainPanelTeksPulang = document.getElementById('search-flight-main-panel-teks-pulang');
 const searchFlightMainPanelInputPulang = document.getElementById('search-flight-main-panel-input-pulang');
-const searchFlightMainPanelInputPulangDate = document.getElementById('search-flight-main-panel-input-pulang-date');
+const searchFlightMainPanelInputPulangDate = document.getElementById('search-flight-main-panel-input-date-to');
 
 toggleSwitch.addEventListener('change', () => {
   if (toggleSwitch.checked) {
