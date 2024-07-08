@@ -2111,11 +2111,15 @@ input[type="password"] {
   transform: translate(-50%, -50%);
   background: white;
   padding: 50px;
-  border: 1px solid #000;
+  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.4);
   border-radius: 10px;
   font-size: 24px;
   display: none;
   z-index: 1000;
+}
+
+.popup.popup {
+  border: transparent;
 }
 
 .popup p{
