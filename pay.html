@@ -22,24 +22,56 @@
                 <ul>
                     <li><a id=aboutLink href="aboutus.html">About</a></li>
                     <li><a id=notifLink href="#">Notification</a></li>
-                    <li><a id="userLink" href="account.html">User</a></li>
+                    <li class="dropdown">
+                        <a id="userLink" href="#">User</a>
+                        <div class="dropdown-content" id="dropdown-content">
+                            <!-- Dropdown content will be populated here -->
+                        </div>
+                    </li>
                     <li><a id="accountLink"><i class="material-icons">account_circle</i></a></li>
                 </ul>
             </nav>
         </div>
+
+        <script>
+            // Fetch user information and update the menu accordingly
+            document.addEventListener('DOMContentLoaded', () => {
+                fetch('public/php/get_username.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        const userLink = document.getElementById('userLink');
+                        const dropdownContent = document.getElementById('dropdown-content');
+
+                        userLink.textContent = data.username;
+
+                        if (data.logged_in) {
+                            dropdownContent.innerHTML = `
+                                <a href="account.html">Account</a>
+                                <a href="public/php/logout.php">Logout</a>
+                            `;
+                        } else {
+                            dropdownContent.innerHTML = `
+                                <a href="login.php">Login</a>
+                            `;
+                        }
+                    })
+                    .catch(error => console.error('Error fetching username:', error));
+            });
+        </script>
+
         <div class="login-img-container" style="min-height: 120vh;">
             <div class="mainn-container">
                 <div class="pp-container">
                     <label class="labelpergi" id="labelPergi" for="pergi">Pergi</label>
                     <div class="pergi-container" id="pergi-container">
                         <span id="departure-city"></span>
-                        <img src="public/Resources/Arrow.png" alt="" style="max-height: 20px; max-width: 20px"/>
+                        <img src="public/Resources/Arrow.png" alt="" style="max-height: 20px; max-width: 20px" />
                         <span id="arrival-city"></span>
                     </div>
                     <label class="labelpergi" id="labelPulang" for="pergi">Pulang</label>
                     <div class="pergi-container" id="pulang-container">
                         <span id="return-departure-city"></span>
-                        <img src="public/Resources/Arrow.png" alt="" style="max-height: 20px; max-width: 20px"/>
+                        <img src="public/Resources/Arrow.png" alt="" style="max-height: 20px; max-width: 20px" />
                         <span id="return-arrival-city"></span>
                     </div>
                 </div>
@@ -49,7 +81,8 @@
                         <input type="text" id="NamaLengkap" name="nama" placeholder="Nama Lengkap" style="color: gray">
                     </div>
                     <div class="form-group">
-                        <input type="text" id="NomorTelepon" name="Notelp" placeholder="Nomor Telepon" style="color: gray">
+                        <input type="text" id="NomorTelepon" name="Notelp" placeholder="Nomor Telepon"
+                            style="color: gray">
                     </div>
                     <div class="form-group">
                         <input type="text" id="Email" name="Email" placeholder="Email" style="color: gray">
@@ -58,7 +91,8 @@
                 <div class="customer-container">
                     <h2><b>Data Customer</b></h2>
                     <div class="form-group">
-                        <input type="text" id="NamaLengkapCustomer" name="nama" placeholder="Nama Lengkap" style="color: gray">
+                        <input type="text" id="NamaLengkapCustomer" name="nama" placeholder="Nama Lengkap"
+                            style="color: gray">
                         <label class="labelcustomer" for="laberlcustomer">Isi sesuai KTP/Paspor/SIM (tanpa tanda baca
                             dan gelar)</label>
                     </div>
@@ -106,13 +140,11 @@
             <p>Total Pembayaran: <span id="confirm-total-price"></span></p>
             <button id="confirm-payment">Konfirmasi</button>
             <button id="cancel-payment">Batal</button>
-            <div id="qris-container">
-                <img id="qris-code" src="" alt="QR Code">
-            </div>
         </div>
     </div>
 
     <script src="public/js/payment.js"></script>
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-nqmA0y3mgdTDHwmg"></script>
 </body>
 
 </html>

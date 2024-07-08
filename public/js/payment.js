@@ -109,14 +109,44 @@ function processPayment() {
         returnFlight: new URLSearchParams(window.location.search).get('returnFlight') ? JSON.parse(new URLSearchParams(window.location.search).get('returnFlight')) : null
     };
 
-    console.log(paymentData);
+    console.log('Payment Data:', JSON.stringify(paymentData, null, 2));
 
-    // Here, you would typically send the paymentData to your server for processing
-    // For this example, we'll just log it to the console
-
-    // Hide overlay after processing payment
-    hideOverlay();
-
-    // Show success message or redirect to a success page
-    alert('Pembayaran berhasil! Terima kasih telah memesan.');
+    // Send paymentData to server for processing
+    fetch('public/php/process_payment.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(paymentData)
+    })
+    .then(response => response.text()) // Get the response text
+    .then(text => {
+        console.log('Response Text:', text); // Log the response text
+        const data = JSON.parse(text); // Attempt to parse the text as JSON
+        if (data.token) {
+            snap.pay(data.token, {
+                onSuccess: function(result) {
+                    console.log('Payment success:', result);
+                    alert('Pembayaran berhasil! Terima kasih telah memesan.');
+                },
+                onPending: function(result) {
+                    console.log('Payment pending:', result);
+                    alert('Pembayaran sedang diproses. Silakan selesaikan pembayaran Anda.');
+                },
+                onError: function(result) {
+                    console.log('Payment error:', result);
+                    alert('Terjadi kesalahan saat memproses pembayaran. Silakan coba lagi.');
+                },
+                onClose: function() {
+                    console.log('Payment popup closed');
+                }
+            });
+        } else {
+            throw new Error('Failed to get token');
+        }
+    })
+    .catch(error => {
+        console.error('Error processing payment:', error);
+        alert(`Error processing payment: ${error.message}`);
+    });
 }
