@@ -2,7 +2,7 @@
 // Configuration
 $db_host = 'localhost';
 $db_username = 'leggomyi_legolego';
-$db_password = 'Leggoo1234!';
+$db_password = '';
 $db_name = 'leggomyi_lego';
 
 // Create connection

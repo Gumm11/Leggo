@@ -1,7 +1,7 @@
 <?php
 $db_host = 'localhost';
 $db_username = 'root';
-$db_password = '123';
+$db_password = '0000';
 $db_name = 'db_leggo';
 
 // Membuat koneksi ke database
