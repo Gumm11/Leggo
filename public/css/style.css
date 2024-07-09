@@ -1723,7 +1723,7 @@ cssCopy code.login-img-container {
   justify-content: center;
   align-items: center;
   width: 300px;
-  height: 400px; /* Increased height to accommodate the new input field */
+  height: 350px; /* Increased height to accommodate the new input field */
   border-radius: 30px;
   box-shadow: inset 0px 0px 10px #00000040;
   margin-bottom: 30px;
@@ -1962,13 +1962,6 @@ input[type="Password"] {
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 17px;
-}
-
-label {
-  margin-top: 10px;
-  display: block;
-  margin-bottom: 4px;
-  padding-left: 8px;
 }
 
 .data-container {
