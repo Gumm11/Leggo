@@ -1733,7 +1733,7 @@ cssCopy code.login-img-container {
   justify-content: center;
   align-items: center;
   width: 300px;
-  height: 350px; /* Increased height to accommodate the new input field */
+  height: 400px; /* Increased height to accommodate the new input field */
   border-radius: 30px;
   box-shadow: inset 0px 0px 10px #00000040;
   margin-bottom: 30px;
