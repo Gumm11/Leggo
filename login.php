@@ -97,7 +97,7 @@ if (isset($_SESSION['user_id'])) {
 
                             setTimeout(() => {
                                 window.location.href = 'index.html';
-                            }, 1000000);
+                            }, 1000);
                         } else {
                             document.getElementById('error-message').textContent = result.message;
                         }
