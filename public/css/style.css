@@ -120,6 +120,128 @@ body {
   );
 }
 
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 20px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.908);
+}
+
+.register-container {
+  background-color: rgba(255, 255, 255); 
+  padding: 6px 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 500px; 
+  text-align: center;
+}
+
+
+.form-group {
+  text-align: left;
+  padding: 4px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+  height: 40px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+button {
+  width: 45%;
+  padding: 12px;
+  background: linear-gradient(to bottom, #bdc3fa,rgba(82, 82, 225, 0.81));;
+  border: none;
+  border-radius: 20px; 
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px; 
+  margin-bottom: 10px;
+}
+
+.input-error-message {
+  color: #e44353;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center; /* Center-align text */
+}
+button:hover {
+  background: linear-gradient(to bottom,rgba(82, 82, 225, 0.81), #bdc3fa);;
+}
+
+.error-container {
+  text-align: left;
+  margin-bottom: 2px;
+}
+
+.error-message {
+  /*background-color: #f8d7da; */
+  color: #e44353; 
+  padding: 0px;
+  /*border: 1px solid #f5c6cb; */ 
+  border-radius: 5px;
+  margin-bottom: 0px;    
+  text-align: left; /* Changed to left */
+  font-size: 16px; /* Adjust font size if necessary */
+}
+
+.loginpage p{
+  padding-bottom: 20px;
+  font-size: 16px;
+  font-weight: 100px;
+}
+
+@media screen and (max-width: 500px) {
+  .register-container {
+      background-color: rgba(255, 255, 255); 
+      padding: 6px 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 280px; 
+      text-align: center;
+  }
+
+  .form-group {
+      margin-bottom: 10px;
+      text-align: left;
+      padding: 2px;
+      padding-left: 20px;
+      padding-right: 20px;
+  }
+
+  button {
+      width: 80%;
+      padding: 12px;
+      background-color: linear-gradient(to bottom, #bdc3fa,rgba(82, 82, 225, 0.81));
+      border: none;
+      border-radius: 20px; 
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px; 
+      margin-bottom: 10px;
+  }
+
+  .loginpage p{
+      padding-bottom: 10px;
+      font-size: 14px;
+  }
+  
+}
 .index-search {
   display: flex;
   flex-direction: column;
@@ -477,7 +599,6 @@ body {
   overflow: hidden;
   cursor: pointer;
   border-radius: 34px;
-  margin: 0;
 }
 
 .toggle-switch-inner {
@@ -816,10 +937,6 @@ body {
   font-weight: bold;
   margin-bottom: 20px;
 
-  color: #ffffff;
-}
-
-.select-return-label {
   color: #ffffff;
 }
 
@@ -1564,8 +1681,7 @@ nav ul li img {
   color: gray;
 }
 
-#btnlogin,
-#btnpayment {
+#btnlogin {
   width: 160px;
   margin: 8px;
   border-radius: 20px;
@@ -1576,8 +1692,7 @@ nav ul li img {
   );
 }
 
-#btnlogin:hover,
-#btnpayment:hover {
+#btnlogin:hover {
   background: linear-gradient(
     180deg,
     rgb(166.9, 146.98, 255) 0%,
@@ -1585,8 +1700,7 @@ nav ul li img {
   );
 }
 
-.textbtnlogin,
-.textbtnpayment {
+.textbtnlogin {
   font-family: "League Spartan", Helvetica;
   font-weight: 400;
   color: #ffffff;
@@ -1669,14 +1783,12 @@ input[type="Password"] {
     font-size: 16px;
   }
 
-  #btnlogin,
-  #btnpayment {
+  #btnlogin {
     width: 200px;
     margin: 12px;
   }
 
-  .textbtnlogin,
-  .textbtnpayment {
+  .textbtnlogin {
     font-size: 20px;
     padding: 10px;
   }
@@ -1913,7 +2025,7 @@ input[type="Password"] {
   border-radius: 10px;
   background-color: white;
 }
-.inside-container {
+/*.inside-container {
   padding: 20px;
   border-bottom: 1px solid #ccc;
 }
@@ -1946,7 +2058,7 @@ input[type="Password"] {
 
 .booking-info p {
   padding: 4px;
-}
+}*/
 
 #navv-index ul li a {
   color: white;
@@ -1972,12 +2084,13 @@ input[type="Password"] {
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 17px;
-  margin-bottom: 20px;
 }
 
 label {
+  margin-top: 10px;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
+  padding-left: 8px;
 }
 
 .data-container {
@@ -2002,6 +2115,11 @@ h2 {
   padding-right: 40px;
   padding-bottom: 20px;
 }
+.form-groupp {
+  text-align: left;
+  padding-left: 40px;
+  padding-right: 40px;
+}
 .mainn-container {
   margin: 60px auto;
   width: 600px;
@@ -2012,8 +2130,8 @@ label {
   margin-bottom: 20px;
 }
 
-.form-group input[type="text"],
-.form-group input[type="password"] {
+input[type="text"],
+input[type="password"] {
   height: 40px;
   width: 100%;
   padding: 10px;
@@ -2030,7 +2148,6 @@ label {
   border-radius: 10px;
   background-color: white;
   cursor: pointer;
-  color: gray;
 }
 
 #age-group:hover {
@@ -2039,6 +2156,7 @@ label {
 
 #age-group:focus {
   outline: none;
+  border-color: #ffffff;
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
@@ -2052,9 +2170,8 @@ label {
 
 .labelcustomer {
   display: block;
-  margin-bottom: 0px;
-  padding-top: 10px;
   padding-left: 8px;
+  font-size: 12px;
 }
 .select-usia {
   padding-bottom: 22px;
@@ -2076,17 +2193,6 @@ label {
   border: 1px solid #ddd;
   border-radius: 17px;
   margin-bottom: 20px;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.bagasi-container:hover {
-  background-color: #f3e5f5; /* Soft purple background */
-  border-color: #d1c4e9; /* Soft purple border */
-}
-
-.bagasi-container.selected {
-  background-color: #d1c4e9; /* Soft purple background for selected */
-  border-color: #7e57c2; /* Darker purple border for selected */
 }
 
 .labelbagasi {
@@ -2094,44 +2200,6 @@ label {
   margin-bottom: 0px;
   padding: 30px;
   padding-left: 8px;
-}
-
-.pay-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.pay-overlay-content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.pay-overlay-content button {
-  margin: 10px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#confirm-payment {
-  background-color: #4CAF50;
-  color: white;
-}
-
-#cancel-payment {
-  background-color: #f44336;
-  color: white;
 }
 
 /* Additional styles for the dropdown menu */
@@ -2143,7 +2211,7 @@ label {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: transparent;
+  background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -2151,13 +2219,13 @@ label {
 
 .dropdown-content a {
   color: black;
-  padding: 16px;
+  padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
 .dropdown-content a:hover {
-  background-color: transparent;
+  background-color: #f1f1f1;
 }
 
 .dropdown:hover .dropdown-content {
@@ -2171,17 +2239,13 @@ label {
   transform: translate(-50%, -50%);
   background: white;
   padding: 50px;
-  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid #000;
   border-radius: 10px;
   font-size: 24px;
   display: none;
   z-index: 1000;
 }
 
-.popup.popup {
-  border: transparent;
-}
-
-.popup p {
+.popup p{
   margin: 10px;
 }
