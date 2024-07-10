@@ -984,6 +984,26 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
+.order-card {
+  border: 1px solid rgb(202, 202, 202);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  width: 90%;
+}
+.order-card-header {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.order-card-body {
+  font-size: 14px;
+}
+.orders-main-body-panel-right-inside-panel-col.no-orders {
+  justify-content: center;
+  align-items: center;
+}
+
 .account-main-body-panel-left-button:hover {
   background-color: #f0f0f0; /* Change to a slightly darker color */
   color: #333; /* Change text color */
@@ -1051,7 +1071,7 @@ body {
   padding: 24px;
 
   width: 500px;
-  height: 400px;
+  height: 450px;
 }
 
 .account-main-body-panel-right-box {
@@ -1395,8 +1415,8 @@ nav ul li img {
 
 .orders-main-body-panel-right-inside-panel-col {
   display: flex;
+  overflow: auto;
   flex-direction: column;
-  justify-content: center;
   height: 100%;
 }
 
@@ -1429,6 +1449,29 @@ nav ul li img {
 }
 
 @media screen and (max-width: 767px) {
+  .order-card {
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 90%;
+  }
+
+  .order-card-header {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .order-card-body {
+    font-size: 10px;
+  }
+
+  .orders-main-body-panel-right-inside-panel-col.no-orders {
+    justify-content: center;
+    align-items: center;
+  }
+
   .orders-main-body-panel-right-inside-panel-img {
     margin: 20px;
   }
@@ -1493,25 +1536,25 @@ nav ul li img {
 #orders-main-body-panel-right-inside-panel-button-notifikasi,
 #orders-main-body-panel-right-inside-panel-button-password,
 #orders-main-body-panel-right-inside-panel-button-security {
-    width: 80%;
-    height: 20%;
-    border: 2px solid rgb(202, 202, 202);
-    border-radius: 30px;
-    background-color: white;
-    margin: 10px;
-    font-size: 24px;
-    font-weight: 500;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    cursor: pointer;
+  width: 80%;
+  height: 20%;
+  border: 2px solid rgb(202, 202, 202);
+  border-radius: 30px;
+  background-color: white;
+  margin: 10px;
+  font-size: 24px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
 }
 
 #orders-main-body-panel-right-inside-panel-button-email:hover,
 #orders-main-body-panel-right-inside-panel-button-notifikasi:hover,
 #orders-main-body-panel-right-inside-panel-button-password:hover,
 #orders-main-body-panel-right-inside-panel-button-security:hover {
-    background-color: #f0f0f0; /* Change background color on hover */
-    color: #333; /* Change text color on hover */
-    transform: scale(1.1); /* Scale up slightly on hover */
+  background-color: #f0f0f0; /* Change background color on hover */
+  color: #333; /* Change text color on hover */
+  transform: scale(1.1); /* Scale up slightly on hover */
 }
 
 @media screen and (max-width: 767px) {
@@ -2161,7 +2204,7 @@ label {
 }
 
 #confirm-payment {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
 }
 
@@ -2214,6 +2257,6 @@ label {
   z-index: 1000;
 }
 
-.popup p{
+.popup p {
   margin: 10px;
 }

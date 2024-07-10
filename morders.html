@@ -37,21 +37,13 @@
             <div class="account-main-body">
                 <div class="account-main-body-row">
                     <div class="account-main-body-panel-right">
-                        <div class="account-main-body-panel-right-text-current">
-                            Pesanan Anda
-                        </div>
-                        <div class="account-main-body-panel-right-inside-panel">
-                            <div class="orders-main-body-panel-right-inside-panel-col">
-                                <div class="orders-main-body-panel-right-inside-panel-img">
-                                    <img src="public/Resources/NoOrders.png">
-                                </div>
-                                <div class="orders-main-body-panel-right-inside-panel-box">
-                                    <div class="orders-main-body-panel-right-inside-panel-box-header-text">
-                                        Belum ada pesanan
-                                    </div>
-                                    <div class="orders-main-body-panel-right-inside-panel-box-text">
-                                        Semua pesanan yang dilakukan akan ditampilkan disini termasuk e-tiket milikmu.
-                                    </div>
+                        <div class="account-main-body-panel-right">
+                            <div class="account-main-body-panel-right-text-current">
+                                Pesanan Anda
+                            </div>
+                            <div class="account-main-body-panel-right-inside-panel">
+                                <div class="orders-main-body-panel-right-inside-panel-col" id="ordersContainer">
+                                    <!-- Order cards will be inserted here -->
                                 </div>
                             </div>
                         </div>
@@ -94,6 +86,52 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('public/php/fetch_orders.php')
+                .then(response => response.json())
+                .then(orders => {
+                    const ordersContainer = document.getElementById('ordersContainer');
+                    if (orders.error) {
+                        console.error(orders.error);
+                        window.location.href = 'login.php'; // Redirect if not logged in
+                    } else if (orders.length === 0) {
+                        ordersContainer.classList.add('no-orders');
+                        ordersContainer.innerHTML = `
+                            <div class="orders-main-body-panel-right-inside-panel-img">
+                                <img src="public/Resources/NoOrders.png">
+                            </div>
+                            <div class="orders-main-body-panel-right-inside-panel-box">
+                                <div class="orders-main-body-panel-right-inside-panel-box-header-text">
+                                    Belum ada pesanan
+                                </div>
+                                <div class="orders-main-body-panel-right-inside-panel-box-text">
+                                    Semua pesanan yang dilakukan akan ditampilkan disini termasuk e-tiket milikmu.
+                                </div>
+                            </div>`;
+                    } else {
+                        orders.forEach(order => {
+                            const orderCard = document.createElement('div');
+                            orderCard.classList.add('order-card');
+                            orderCard.innerHTML = `
+                                <div class="order-card-header">Order ID: ${order.id_pemesanan}</div>
+                                <div class="order-card-body">
+                                    <p><strong>Nama Lengkap:</strong> ${order.nama_lengkap}</p>
+                                    <p><strong>Nomor Telepon:</strong> ${order.nomor_telepon}</p>
+                                    <p><strong>Email:</strong> ${order.email}</p>
+                                    <p><strong>Jumlah Penumpang:</strong> ${order.jumlah_penumpang}</p>
+                                    <p><strong>Total Bayar:</strong> ${order.total_bayar}</p>
+                                    <p><strong>Status Pembayaran:</strong> ${order.status_pembayaran}</p>
+                                    <p><strong>Selected Bagasi:</strong> ${order.selected_bagasi}</p>
+                                </div>`;
+                            ordersContainer.appendChild(orderCard);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching orders:', error);
+                });
+        });
+
         const mediaQuery = window.matchMedia("(min-width: 1020px)");
 
         // listen for changes to the media query

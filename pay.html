@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,147 +7,171 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <base href="https://localhost/github/leggo/">
     <title>Leggo</title>
+    <style>
+        .order-card {
+            border: 1px solid rgb(202, 202, 202);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            width: 80%;
+        }
+        .order-card-header {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .order-card-body {
+            font-size: 14px;
+        }
+        .orders-main-body-panel-right-inside-panel-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            overflow-y: auto; /* Allows vertical scrolling */
+            overflow-x: hidden; /* Hides horizontal overflow */
+        }
+    </style>
 </head>
-
-<body style="min-width: 320px; ">
-    <div class="bg-purpleRadiant" style="min-width: 0;">
-        <div class="index-navv">
-            <div class="logoo">
-                <a href="">Leggo</a>
+<body style="overflow-x: hidden;">
+    <div class="bg-purpleRadiant">
+        <div class="bg-img-account">
+            <div class="search-flight-nav">
+                <div class="logo-white">
+                    <nav>
+                        <ul>
+                            <li><a href=""> &lt; </a></li>
+                            <a href="">Leggo</a>
+                        </ul>
+                    </nav>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="account.html" style="color: white; font-size: 30px;" id="usernameLink">User</a></li>
+                        <li><a href='account.html'><i class="material-icons"
+                                    style="color: white; font-size: 60px;">account_circle</i></a></li>
+                    </ul>
+                </nav>
             </div>
-            <nav id="navv-index">
-                <ul>
-                    <li><a id="aboutLink" href="aboutus.html">About</a></li>
-                    <li><a id="notifLink" href="#">Notification</a></li>
-                    <li><a id="usernameLink" href="account.html">User</a></li>
-                    <li><a id="accountLink"><i class="material-icons">account_circle</i></a></li>
-                </ul>
-            </nav>
-        </div>
-
-        <script>
-            // Fetch user information
-            document.addEventListener('DOMContentLoaded', () => {
-                fetch('public/php/get_user_info.php')
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.error) {
-                            console.error(data.error);
-                            window.location.href = 'login.php'; // Redirect in case of error
-                        } else {
-                            document.getElementById('usernameLink').textContent = data.username;
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error fetching login status:', error);
-                    });
-            });
-        </script>
-
-        <div class="login-img-container" style="min-height: 150vh;">
-            <div class="mainn-container">
-                <div class="pp-container">
-                    <label class="labelpergi" id="labelPergi" for="pergi">Pergi</label>
-                    <div class="pergi-container" id="pergi-container">
-                        <span id="departure-city"></span>
-                        <img src="public/Resources/Arrow.png" alt="" style="max-height: 20px; max-width: 20px" />
-                        <span id="arrival-city"></span>
+            <div class="account-main-body">
+                <div class="account-main-body-row">
+                    <div class="account-main-body-panel-left">
+                        <div class="account-main-body-panel-left-text">
+                            Leggo
+                        </div>
+                        <div class="account-main-body-panel-left-nav">
+                            <button class="account-main-body-panel-left-button" onclick="navigateTo('account.html')">
+                                Akun
+                            </button>
+                            <button class="account-main-body-panel-left-button" onclick="navigateTo('payment.html')">
+                                Pembayaran
+                            </button>
+                            <button class="account-main-body-panel-left-button-current" onclick="navigateTo('orders.html')">
+                                Pesanan
+                            </button>
+                            <button class="account-main-body-panel-left-button" onclick="navigateTo('help.html')">
+                                Pusat Bantuan
+                            </button>
+                            <button class="account-main-body-panel-left-button" onclick="navigateTo('settings.html')">
+                                Pengaturan
+                            </button>
+                        </div>
                     </div>
-                    <label class="labelpergi" id="labelPulang" for="pergi">Pulang</label>
-                    <div class="pergi-container" id="pulang-container">
-                        <span id="return-departure-city"></span>
-                        <img src="public/Resources/Arrow.png" alt="" style="max-height: 20px; max-width: 20px" />
-                        <span id="return-arrival-city"></span>
+                    <div class="account-main-body-panel-right">
+                        <div class="account-main-body-panel-right-text-current">
+                            Pesanan Anda
+                        </div>
+                        <div class="account-main-body-panel-right-inside-panel">
+                            <div class="orders-main-body-panel-right-inside-panel-col" id="ordersContainer">
+                                <!-- Order cards will be inserted here -->
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="data-container" id="data-container">
-                    <h2><b>Data Pemesanan</b></h2>
-                    <div class="form-group">
-                        <input type="text" id="NamaLengkap" name="nama" placeholder="Nama Lengkap" style="color: gray">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="NomorTelepon" name="Notelp" placeholder="Nomor Telepon"
-                            style="color: gray">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="Email" name="Email" placeholder="Email" style="color: gray">
-                    </div>
-                </div>
-                <div class="customer-container" id="customer-container">
-                    <h2><b>Data Customer</b></h2>
-                    <!-- Passenger data will be dynamically generated here -->
-                </div>
-                <div class="fasilitasekstra-container">
-                    <label class="labelbagasi" for="bagasi">Pilih Bagasi | Kamu punya bagasi gratis 20kg</label>
-                    <div class="bagasi-container" data-weight="5">
-                        <span>5 Kg</span>
-                    </div>
-                    <div class="bagasi-container" data-weight="10">
-                        <span>10 Kg</span>
-                    </div>
-                    <div class="bagasi-container" data-weight="15">
-                        <span>15 Kg</span>
-                    </div>
-                    <div class="bagasi-container selected" data-weight="20">
-                        <span>20 Kg</span>
-                    </div>
-                </div>
-                <div class="fasilitasekstra-container">
-                    <h2><b>Pembayaran</b></h2>
-                    <div class="Total">Total Pembayaran :
-                        <span id="total-price">IDR 4.593.500</span>
-                    </div>
-                    <button id="btnpayment">
-                        <p class="textbtnpayment">Lanjutkan pembayaran</p>
-                    </button>
                 </div>
             </div>
         </div>
     </div>
-
-    <div id="payment-overlay" class="pay-overlay">
-        <div class="pay-overlay-content">
-            <h2>Konfirmasi Pembayaran</h2>
-            <p id="confirm-departure"></p>
-            <p id="confirm-return"></p>
-            <p>Total Pembayaran: <span id="confirm-total-price"></span></p>
-            <button id="confirm-payment">Konfirmasi</button>
-            <button id="cancel-payment">Batal</button>
-        </div>
-    </div>
-
-    <script src="public/js/payment.js"></script>
-    <script src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="SB-Mid-client-nqmA0y3mgdTDHwmg"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const passengers = parseInt(urlParams.get('passengers')) || 1;
-            const customerContainer = document.getElementById('customer-container');
+            fetch('fetch_orders.php')
+                .then(response => response.json())
+                .then(orders => {
+                    const ordersContainer = document.getElementById('ordersContainer');
+                    if (orders.error) {
+                        console.error(orders.error);
+                        window.location.href = 'login.php'; // Redirect if not logged in
+                    } else if (orders.length === 0) {
+                        ordersContainer.innerHTML = `
+                            <div class="orders-main-body-panel-right-inside-panel-col">
+                                <div class="orders-main-body-panel-right-inside-panel-img">
+                                    <img src="public/Resources/NoOrders.png">
+                                </div>
+                                <div class="orders-main-body-panel-right-inside-panel-box">
+                                    <div class="orders-main-body-panel-right-inside-panel-box-header-text">
+                                        Belum ada pesanan
+                                    </div>
+                                    <div class="orders-main-body-panel-right-inside-panel-box-text">
+                                        Semua pesanan yang dilakukan akan ditampilkan disini termasuk e-tiket milikmu.
+                                    </div>
+                                </div>
+                            </div>`;
+                    } else {
+                        orders.forEach(order => {
+                            const orderCard = document.createElement('div');
+                            orderCard.classList.add('order-card');
+                            orderCard.innerHTML = `
+                                <div class="order-card-header">Order ID: ${order.id_pemesanan}</div>
+                                <div class="order-card-body">
+                                    <p><strong>Nama Lengkap:</strong> ${order.nama_lengkap}</p>
+                                    <p><strong>Nomor Telepon:</strong> ${order.nomor_telepon}</p>
+                                    <p><strong>Email:</strong> ${order.email}</p>
+                                    <p><strong>Jumlah Penumpang:</strong> ${order.jumlah_penumpang}</p>
+                                    <p><strong>Total Bayar:</strong> ${order.total_bayar}</p>
+                                    <p><strong>Status Pembayaran:</strong> ${order.status_pembayaran}</p>
+                                    <p><strong>Selected Bagasi:</strong> ${order.selected_bagasi}</p>
+                                </div>`;
+                            ordersContainer.appendChild(orderCard);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching orders:', error);
+                });
+        });
 
-            for (let i = 0; i < passengers; i++) {
-                const passengerDiv = document.createElement('div');
-                passengerDiv.classList.add('form-group');
-                passengerDiv.innerHTML = `
-                    ${passengers > 1 ? `<label class="labelPassenger">Passenger ${i + 1}</label>` : ''}
-                    <input type="text" id="NamaLengkapCustomer${i}" name="namaCustomer${i}" placeholder="Nama Lengkap" style="color: gray">
-                    <label class="labelcustomer" for="laberlcustomer">Isi sesuai KTP/Paspor/SIM (tanpa tanda baca dan gelar)</label>
-                    <div class="select-usia">
-                        <select class="age-group" id="age-group${i}">
-                            <option value="">Pilih kategori usia</option>
-                            <option value="dewasa">Dewasa</option>
-                            <option value="anak-anak">Anak-anak</option>
-                        </select>
-                    </div>
-                `;
-                customerContainer.appendChild(passengerDiv);
+        const mediaQuery = window.matchMedia("(max-width: 1020px)");
+
+        mediaQuery.addListener((event) => {
+            if (event.matches) {
+                window.location.href = "morders.html";
             }
         });
+
+        if (mediaQuery.matches) {
+            window.location.href = "morders.html";
+        }
+
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+
+        fetch('public/php/get_user_info.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    console.error(data.error);
+                    window.location.href = 'login.php';
+                } else {
+                    document.getElementById('usernameLink').textContent = data.username;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching login status:', error);
+            });
     </script>
-
 </body>
-
 </html>
