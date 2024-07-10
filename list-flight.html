@@ -25,7 +25,7 @@
             </div>
             <nav id="nav3">
                 <ul>
-                    <li><a href="account.html">User</a></li>
+                    <li><a href="account.html" id="usernameLink">User</a></li>
                     <li><a href='account.html'><i class="material-icons" id="material-icons">account_circle</i></a></li>
                 </ul>
             </nav>
@@ -128,7 +128,8 @@
         <script src="public/js/loadInformationCard.js"></script>
 
         <img src="public/Resources/Globe2.png" alt="Globe" id="globe-image" style="position: absolute; top: 40%;" />
-        <img src="public/Resources/Plane.png" alt="Plane" id="plane-image" style="position: absolute; right:15%; top: 30%" />
+        <img src="public/Resources/Plane.png" alt="Plane" id="plane-image"
+            style="position: absolute; right:15%; top: 30%" />
         <img src="public/Resources/Camera.png" alt="Camera" id="camera-image"
             style="position: absolute; right: 8%; top: 75%; width: 200px;" />
 
@@ -156,6 +157,23 @@
 
             window.addEventListener('resize', () => {
                 updateImageDisplay();
+            });
+
+            // Fetch user information
+            document.addEventListener('DOMContentLoaded', () => {
+                fetch('public/php/get_user_info.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            console.error(data.error);
+                            window.location.href = 'login.php'; // Redirect in case of error
+                        } else {
+                            document.getElementById('usernameLink').textContent = data.username;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching login status:', error);
+                    });
             });
         </script>
     </div>

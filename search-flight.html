@@ -25,7 +25,7 @@
             </div>
             <nav id="nav3">
                 <ul>
-                    <li><a href="account.html">User</a></li>
+                    <li><a href="account.html" id="userLink">User</a></li>
                     <li><a href='account.html'><i class="material-icons" id="material-icons">account_circle</i></a></li>
                 </ul>
             </nav>
@@ -82,7 +82,8 @@
 
                             <div class="search-flight-main-panel-input-jmlh">
                                 Jumlah Penumpang
-                                <input type="text" id="search-flight-main-panel-input-half-jmlh" placeholder="Masukkan Jumlah" />
+                                <input type="text" id="search-flight-main-panel-input-half-jmlh"
+                                    placeholder="Masukkan Jumlah" />
                             </div>
                         </div>
                     </div>
@@ -91,8 +92,10 @@
             </div>
         </div>
 
-        <img src="public/Resources/Globe.png" alt="Globe" id="globe-image" style="position: absolute; left: 0; top: 50%" />
-        <img src="public/Resources/Plane.png" alt="Plane" id="plane-image" style="position: absolute; right: 1%; top: 60%" />
+        <img src="public/Resources/Globe.png" alt="Globe" id="globe-image"
+            style="position: absolute; left: 0; top: 50%" />
+        <img src="public/Resources/Plane.png" alt="Plane" id="plane-image"
+            style="position: absolute; right: 1%; top: 60%" />
 
         <script>
             const globeImage = document.getElementById('globe-image');
@@ -113,12 +116,12 @@
 
             function updateDateInputs() {
                 const today = new Date().toISOString().split('T')[0];
-                
+
                 dateFromInput.min = today;
                 if (!dateFromInput.value) {
                     dateFromInput.value = today;
                 }
-                
+
                 updateReturnDateMin();
             }
 
@@ -129,19 +132,32 @@
                 }
             }
 
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 updateDateInputs();
                 updateImageDisplay();
 
                 dateFromInput.addEventListener('change', updateReturnDateMin);
 
-                dateToInput.addEventListener('change', function() {
+                dateToInput.addEventListener('change', function () {
                     if (this.value < dateFromInput.value) {
                         this.value = dateFromInput.value;
                     }
                 });
 
                 window.addEventListener('resize', updateImageDisplay);
+            });
+
+            // Fetch user information and update the menu accordingly
+            document.addEventListener('DOMContentLoaded', () => {
+                fetch('public/php/get_username.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        const userLink = document.getElementById('userLink');
+                        const dropdownContent = document.getElementById('dropdown-content');
+
+                        userLink.textContent = data.username;
+                    })
+                    .catch(error => console.error('Error fetching username:', error));
             });
         </script>
 
