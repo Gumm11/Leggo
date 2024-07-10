@@ -120,112 +120,6 @@ body {
   );
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.header h1 {
-  font-size: 20px;
-  color: #ffffff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.908);
-}
-
-.register-container {
-  background-color: rgba(255, 255, 255); 
-  padding: 6px 20px;
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 500px; 
-  text-align: center;
-}
-
-
-.form-group {
-  text-align: left;
-  padding: 4px;
-  padding-left: 40px;
-  padding-right: 40px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-input[type="text"], input[type="password"], input[type="email"] {
-  height: 40px;
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.input-error-message {
-  color: #e44353;
-  font-size: 14px;
-  margin-top: 5px;
-  text-align: center; /* Center-align text */
-}
-
-.error-container {
-  text-align: left;
-  margin-bottom: 2px;
-}
-
-.error-message {
-  /*background-color: #f8d7da; */
-  color: #e44353; 
-  padding: 0px;
-  /*border: 1px solid #f5c6cb; */ 
-  border-radius: 5px;
-  margin-bottom: 0px;    
-  text-align: left; /* Changed to left */
-  font-size: 16px; /* Adjust font size if necessary */
-}
-
-.loginpage p{
-  padding-bottom: 20px;
-  font-size: 16px;
-  font-weight: 100px;
-}
-
-@media screen and (max-width: 500px) {
-  .register-container {
-      background-color: rgba(255, 255, 255); 
-      padding: 6px 20px;
-      border-radius: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 280px; 
-      text-align: center;
-  }
-
-  .form-group {
-      margin-bottom: 10px;
-      text-align: left;
-      padding: 2px;
-      padding-left: 20px;
-      padding-right: 20px;
-  }
-
-  button {
-      width: 80%;
-      padding: 12px;
-      background-color: linear-gradient(to bottom, #bdc3fa,rgba(82, 82, 225, 0.81));
-      border: none;
-      border-radius: 20px; 
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 20px; 
-      margin-bottom: 10px;
-  }
-
-  .loginpage p{
-      padding-bottom: 10px;
-      font-size: 14px;
-  }
-  
-}
 .index-search {
   display: flex;
   flex-direction: column;
@@ -1867,7 +1761,7 @@ cssCopy code.login-img-container {
   justify-content: center;
   align-items: center;
   width: 300px;
-  height: 400px; /* Increased height to accommodate the new input field */
+  height: 350px; /* Increased height to accommodate the new input field */
   border-radius: 30px;
   box-shadow: inset 0px 0px 10px #00000040;
   margin-bottom: 30px;
@@ -2106,11 +2000,6 @@ input[type="Password"] {
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 17px;
-}
-
-label {
-  display: block;
-  margin-bottom: 4px;
 }
 
 .data-container {

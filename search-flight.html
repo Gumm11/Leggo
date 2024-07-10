@@ -82,7 +82,7 @@
 
                             <div class="search-flight-main-panel-input-jmlh">
                                 Jumlah Penumpang
-                                <input type="text" id="search-flight-main-panel-input-half-jmlh" placeholder="1" />
+                                <input type="text" id="search-flight-main-panel-input-half-jmlh" placeholder="Masukkan Jumlah" />
                             </div>
                         </div>
                     </div>
@@ -97,8 +97,9 @@
         <script>
             const globeImage = document.getElementById('globe-image');
             const planeImage = document.getElementById('plane-image');
+            const dateFromInput = document.getElementById('search-flight-main-panel-input-date-from');
+            const dateToInput = document.getElementById('search-flight-main-panel-input-date-to');
 
-            // Set the display property of the globe, plane, and camera images based on the current media width
             function updateImageDisplay() {
                 const mediaWidth = window.innerWidth;
                 if (mediaWidth < 1200 || mediaWidth > 1900) {
@@ -110,11 +111,37 @@
                 }
             }
 
-            // Call the updateImageDisplay function when the website is first loaded
-            updateImageDisplay();
+            function updateDateInputs() {
+                const today = new Date().toISOString().split('T')[0];
+                
+                dateFromInput.min = today;
+                if (!dateFromInput.value) {
+                    dateFromInput.value = today;
+                }
+                
+                updateReturnDateMin();
+            }
 
-            window.addEventListener('resize', () => {
+            function updateReturnDateMin() {
+                dateToInput.min = dateFromInput.value;
+                if (dateToInput.value && dateToInput.value < dateFromInput.value) {
+                    dateToInput.value = dateFromInput.value;
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                updateDateInputs();
                 updateImageDisplay();
+
+                dateFromInput.addEventListener('change', updateReturnDateMin);
+
+                dateToInput.addEventListener('change', function() {
+                    if (this.value < dateFromInput.value) {
+                        this.value = dateFromInput.value;
+                    }
+                });
+
+                window.addEventListener('resize', updateImageDisplay);
             });
         </script>
 
