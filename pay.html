@@ -12,7 +12,7 @@
     <title>Leggo</title>
 </head>
 
-<body style="min-width: 320px;">
+<body style="min-width: 320px; ">
     <div class="bg-purpleRadiant" style="min-width: 0;">
         <div class="index-navv">
             <div class="logoo">
@@ -20,8 +20,8 @@
             </div>
             <nav id="navv-index">
                 <ul>
-                    <li><a id=aboutLink href="aboutus.html">About</a></li>
-                    <li><a id=notifLink href="#">Notification</a></li>
+                    <li><a id="aboutLink" href="aboutus.html">About</a></li>
+                    <li><a id="notifLink" href="#">Notification</a></li>
                     <li class="dropdown">
                         <a id="userLink" href="#">User</a>
                         <div class="dropdown-content" id="dropdown-content">
@@ -59,7 +59,7 @@
             });
         </script>
 
-        <div class="login-img-container" style="min-height: 120vh;">
+        <div class="login-img-container" style="min-height: 150vh;">
             <div class="mainn-container">
                 <div class="pp-container">
                     <label class="labelpergi" id="labelPergi" for="pergi">Pergi</label>
@@ -75,7 +75,7 @@
                         <span id="return-arrival-city"></span>
                     </div>
                 </div>
-                <div class="data-container">
+                <div class="data-container" id="data-container">
                     <h2><b>Data Pemesanan</b></h2>
                     <div class="form-group">
                         <input type="text" id="NamaLengkap" name="nama" placeholder="Nama Lengkap" style="color: gray">
@@ -88,21 +88,9 @@
                         <input type="text" id="Email" name="Email" placeholder="Email" style="color: gray">
                     </div>
                 </div>
-                <div class="customer-container">
+                <div class="customer-container" id="customer-container">
                     <h2><b>Data Customer</b></h2>
-                    <div class="form-group">
-                        <input type="text" id="NamaLengkapCustomer" name="nama" placeholder="Nama Lengkap"
-                            style="color: gray">
-                        <label class="labelcustomer" for="laberlcustomer">Isi sesuai KTP/Paspor/SIM (tanpa tanda baca
-                            dan gelar)</label>
-                    </div>
-                    <div class="select-usia">
-                        <select id="age-group">
-                            <option value="">Pilih kategori usia</option>
-                            <option value="dewasa">Dewasa</option>
-                            <option value="anak-anak">Anak-anak</option>
-                        </select>
-                    </div>
+                    <!-- Passenger data will be dynamically generated here -->
                 </div>
                 <div class="fasilitasekstra-container">
                     <label class="labelbagasi" for="bagasi">Pilih Bagasi | Kamu punya bagasi gratis 20kg</label>
@@ -144,7 +132,35 @@
     </div>
 
     <script src="public/js/payment.js"></script>
-    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-nqmA0y3mgdTDHwmg"></script>
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="SB-Mid-client-nqmA0y3mgdTDHwmg"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const passengers = parseInt(urlParams.get('passengers')) || 1;
+            const customerContainer = document.getElementById('customer-container');
+
+            for (let i = 0; i < passengers; i++) {
+                const passengerDiv = document.createElement('div');
+                passengerDiv.classList.add('form-group');
+                passengerDiv.innerHTML = `
+                    ${passengers > 1 ? `<label class="labelPassenger">Passenger ${i + 1}</label>` : ''}
+                    <input type="text" id="NamaLengkapCustomer${i}" name="namaCustomer${i}" placeholder="Nama Lengkap" style="color: gray">
+                    <label class="labelcustomer" for="laberlcustomer">Isi sesuai KTP/Paspor/SIM (tanpa tanda baca dan gelar)</label>
+                    <div class="select-usia">
+                        <select class="age-group" id="age-group${i}">
+                            <option value="">Pilih kategori usia</option>
+                            <option value="dewasa">Dewasa</option>
+                            <option value="anak-anak">Anak-anak</option>
+                        </select>
+                    </div>
+                `;
+                customerContainer.appendChild(passengerDiv);
+            }
+        });
+    </script>
+
 </body>
 
 </html>

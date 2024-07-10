@@ -21,8 +21,8 @@
                 <div class="logo-white">
                     <nav id="nav2">
                         <ul>
-                            <li><a href="/"> &lt; </a></li>
-                            <li><a href="/">Leggo</a></li>
+                            <li><a href=""> &lt; </a></li>
+                            <li><a href="">Leggo</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -73,36 +73,36 @@
                 </div>
             </div>
             <div class="account-footbar-nav">
-                <div class="account-footbar-sekat">
+                <a href="maccount.html" class="account-footbar-sekat">
                     <i class="material-icons" id="account-icon">account_circle</i>
                     <div class="account-footbar-text">
                         Akun
                     </div>
-                </div>
-                <div class="account-footbar-sekat">
+                </a>
+                <a href="mpayment.html" class="account-footbar-sekat">
                     <i class="material-icons" id="payment-icon">credit_card</i>
                     <div class="account-footbar-text">
                         Pembayaran
                     </div>
-                </div>
-                <div class="account-footbar-sekat">
+                </a>
+                <a href="morders.html" class="account-footbar-sekat">
                     <i class="material-icons" id="order-icon">confirmation_number</i>
                     <div class="account-footbar-text">
                         Pesanan
                     </div>
-                </div>
-                <div class="account-footbar-sekat">
+                </a>
+                <a href="mhelp.html" class="account-footbar-sekat">
                     <i class="material-icons" id="support-icon">support_agent</i>
                     <div class="account-footbar-text">
                         Pusat Bantuan
                     </div>
-                </div>
-                <div class="account-footbar-sekat">
+                </a>
+                <a href="msettings.html" class="account-footbar-sekat">
                     <i class="material-icons" id="settings-icon">settings</i>
                     <div class="account-footbar-text">
                         Pengaturan
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -114,14 +114,14 @@
         mediaQuery.addListener((event) => {
             if (event.matches) {
                 // redirect to pc account page
-                window.location.href = "/account.html";
+                window.location.href = "account.html";
             }
         });
 
         // check the initial state of the media query
         if (mediaQuery.matches) {
             // redirect to pc account page
-            window.location.href = "/account.html";
+            window.location.href = "account.html";
         }
     </script>
 </body>

@@ -160,27 +160,11 @@ input[type="text"], input[type="password"], input[type="email"] {
   border-radius: 10px;
 }
 
-button {
-  width: 45%;
-  padding: 12px;
-  background: linear-gradient(to bottom, #bdc3fa,rgba(82, 82, 225, 0.81));;
-  border: none;
-  border-radius: 20px; 
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 20px; 
-  margin-bottom: 10px;
-}
-
 .input-error-message {
   color: #e44353;
   font-size: 14px;
   margin-top: 5px;
   text-align: center; /* Center-align text */
-}
-button:hover {
-  background: linear-gradient(to bottom,rgba(82, 82, 225, 0.81), #bdc3fa);;
 }
 
 .error-container {
@@ -1286,12 +1270,27 @@ nav ul li img {
 .account-footbar-sekat {
   display: flex;
   flex-direction: column;
-
   min-width: 50px;
   height: 65px;
-
   margin: 10px;
   padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  user-select: none; /* Prevent text selection */
+}
+
+.account-footbar-nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.account-footbar-nav a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.account-footbar-sekat:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .account-footbar-text {
@@ -1448,6 +1447,12 @@ nav ul li img {
   background-color: white;
   border: 1px solid rgb(202, 202, 202);
   border-radius: 30px;
+  transition: background-color 0.3s ease; /* Add transition for background-color */
+}
+
+#payment-main-body-panel-right-box-button:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
+  cursor: pointer; /* Change cursor to pointer on hover */
 }
 
 .payment-main-body-panel-right-box-button-row {
@@ -1480,6 +1485,7 @@ nav ul li img {
   }
 
   .payment-main-body-panel-right-box-button-header-text {
+    color: black;
     font-size: 15px;
     font-weight: 600;
   }
@@ -1589,14 +1595,25 @@ nav ul li img {
 #orders-main-body-panel-right-inside-panel-button-notifikasi,
 #orders-main-body-panel-right-inside-panel-button-password,
 #orders-main-body-panel-right-inside-panel-button-security {
-  width: 80%;
-  height: 20%;
-  border: 2px solid rgb(202, 202, 202);
-  border-radius: 30px;
-  background-color: white;
-  margin: 10px;
-  font-size: 24px;
-  font-weight: 500;
+    width: 80%;
+    height: 20%;
+    border: 2px solid rgb(202, 202, 202);
+    border-radius: 30px;
+    background-color: white;
+    margin: 10px;
+    font-size: 24px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+#orders-main-body-panel-right-inside-panel-button-email:hover,
+#orders-main-body-panel-right-inside-panel-button-notifikasi:hover,
+#orders-main-body-panel-right-inside-panel-button-password:hover,
+#orders-main-body-panel-right-inside-panel-button-security:hover {
+    background-color: #f0f0f0; /* Change background color on hover */
+    color: #333; /* Change text color on hover */
+    transform: scale(1.1); /* Scale up slightly on hover */
 }
 
 @media screen and (max-width: 767px) {
@@ -1681,7 +1698,8 @@ nav ul li img {
   color: gray;
 }
 
-#btnlogin {
+#btnlogin,
+#btnpayment {
   width: 160px;
   margin: 8px;
   border-radius: 20px;
@@ -1692,7 +1710,8 @@ nav ul li img {
   );
 }
 
-#btnlogin:hover {
+#btnlogin:hover,
+#btnpayment:hover {
   background: linear-gradient(
     180deg,
     rgb(166.9, 146.98, 255) 0%,
@@ -1700,7 +1719,8 @@ nav ul li img {
   );
 }
 
-.textbtnlogin {
+.textbtnlogin,
+.textbtnpayment {
   font-family: "League Spartan", Helvetica;
   font-weight: 400;
   color: #ffffff;
@@ -1783,12 +1803,14 @@ input[type="Password"] {
     font-size: 16px;
   }
 
-  #btnlogin {
+  #btnlogin,
+  #btnpayment {
     width: 200px;
     margin: 12px;
   }
 
-  .textbtnlogin {
+  .textbtnlogin,
+  .textbtnpayment {
     font-size: 20px;
     padding: 10px;
   }
@@ -2087,10 +2109,8 @@ input[type="Password"] {
 }
 
 label {
-  margin-top: 10px;
   display: block;
   margin-bottom: 4px;
-  padding-left: 8px;
 }
 
 .data-container {
@@ -2130,8 +2150,8 @@ label {
   margin-bottom: 20px;
 }
 
-input[type="text"],
-input[type="password"] {
+.form-group input[type="text"],
+.form-group input[type="password"] {
   height: 40px;
   width: 100%;
   padding: 10px;
@@ -2140,7 +2160,12 @@ input[type="password"] {
   border-radius: 10px;
 }
 
-#age-group {
+.labelPassenger {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.age-group {
   width: 520px;
   padding: 8px;
   font-size: 16px;
@@ -2148,15 +2173,15 @@ input[type="password"] {
   border-radius: 10px;
   background-color: white;
   cursor: pointer;
+  color: gray;
 }
 
-#age-group:hover {
+.age-group:hover {
   border-color: #888;
 }
 
-#age-group:focus {
+.age-group:focus {
   outline: none;
-  border-color: #ffffff;
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
@@ -2170,8 +2195,9 @@ input[type="password"] {
 
 .labelcustomer {
   display: block;
+  margin-bottom: 10px;
+  padding-top: 10px;
   padding-left: 8px;
-  font-size: 12px;
 }
 .select-usia {
   padding-bottom: 22px;
@@ -2193,6 +2219,17 @@ input[type="password"] {
   border: 1px solid #ddd;
   border-radius: 17px;
   margin-bottom: 20px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.bagasi-container:hover {
+  background-color: #f3e5f5; /* Soft purple background */
+  border-color: #d1c4e9; /* Soft purple border */
+}
+
+.bagasi-container.selected {
+  background-color: #d1c4e9; /* Soft purple background for selected */
+  border-color: #7e57c2; /* Darker purple border for selected */
 }
 
 .labelbagasi {
@@ -2200,6 +2237,44 @@ input[type="password"] {
   margin-bottom: 0px;
   padding: 30px;
   padding-left: 8px;
+}
+
+.pay-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.pay-overlay-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.pay-overlay-content button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#confirm-payment {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#cancel-payment {
+  background-color: #f44336;
+  color: white;
 }
 
 /* Additional styles for the dropdown menu */
