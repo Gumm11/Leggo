@@ -364,6 +364,8 @@ body {
   background-color: #ffffff;
   width: 500px;
   border-radius: 70px;
+
+  user-select: none;
 }
 
 .search-flight-main-panel-text {
@@ -784,6 +786,8 @@ body {
   border-radius: 30px;
 
   background-color: #ffffff;
+
+  user-select: none;
 }
 
 .list-flight-information-card {
@@ -793,6 +797,7 @@ body {
   border-radius: 30px;
   margin: 20px;
   background-color: #ffffff;
+  user-select: none;
   transition: transform 0.2s, box-shadow 0.2s; /* Add transition for smooth effect */
 }
 
@@ -853,6 +858,7 @@ body {
 
 .select-return-label {
   color: white;
+  user-select: none;
 }
 
 @media screen and (max-width: 767px) {
@@ -1087,6 +1093,8 @@ body {
 
   width: 500px;
   height: 450px;
+
+  user-select: none;
 }
 
 .account-main-body-panel-right-box {
