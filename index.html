@@ -207,6 +207,14 @@
         const searchInput = document.getElementById('index-search-input');
         const suggestionsContainer = document.getElementById('suggestions-container');
 
+        suggestionsContainer.addEventListener('click', (event) => {
+        if (event.target.classList.contains('suggestion')) {
+            searchInput.value = event.target.textContent;
+            suggestionsContainer.innerHTML = '';
+            navigateTo('search-flight.html');
+        }
+        });
+
         searchInput.addEventListener('input', () => {
             const query = searchInput.value;
             if (query.length > 0) {
@@ -314,7 +322,9 @@
         });
 
         function navigateTo(url) {
-            window.location.href = url;
+        const searchInput = document.getElementById('index-search-input');
+        const destination = encodeURIComponent(searchInput.value);
+        window.location.href = `${url}?destination=${destination}`;
         }
     </script>
 </body>
