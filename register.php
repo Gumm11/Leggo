@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+// Periksa apakah pengguna sudah login melalui session atau cookie
+if (!isset($_SESSION['user_id']) && isset($_COOKIE['user_id'])) {
+    $_SESSION['user_id'] = $_COOKIE['user_id'];
+    $_SESSION['username'] = $_COOKIE['username'];
+}
+
+if (isset($_SESSION['user_id'])) {
+    header('Location: index.html');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,18 +24,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <base href="https://localhost/github/leggo/">
-    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script type="text/javascript">
-    (function(){
-        emailjs.init("-VGKTqsJ_In5TCCke");
-        console.log("EmailJS initialized");
-    })();
-</script>
 </head>
 
 <body>
-    <script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("-VGKTqsJ_In5TCCke");
+            console.log("EmailJS initialized");
+        })();
+
         function validateForm() {
             let email = document.getElementById("register-email").value;
             let username = document.getElementById("register-username").value;
@@ -67,138 +80,104 @@
         }
 
         function validatePhoneNumber(phoneNumber) {
-            const re = /^[0-9]{10,15}$/; // Adjust the regex based on the phone number format you expect
+            const re = /^[0-9]{10,15}$/;
             return re.test(phoneNumber);
         }
 
-        function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, '\\$&');
-            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        async function checkExistingData() {
+            let email = document.getElementById("register-email").value;
+            let username = document.getElementById("register-username").value;
+            let phoneNumber = document.getElementById("register-phone-number").value;
+
+            let response = await fetch('public/php/check_existing.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    username: username,
+                    phone_number: phoneNumber
+                })
+            });
+
+            let result = await response.json();
+            return result;
         }
 
-        // Cek "error" atau "success" dalam parameter dalam URL
-        window.onload = function () {
-            testEmailJs();
-            var error = getParameterByName('error');
-            var success = getParameterByName('success');
-            if (error) {
-                document.getElementById('error-message').innerHTML = error;
-            }
-            if (success) {
-                alert(success);
-            }
-        };
+        async function requestOtp() {
+            if (validateForm()) {
+                let checkResult = await checkExistingData();
 
-        function submitForm(event) {
-    event.preventDefault();
-    console.log("Form submission started");
-
-    if (validateForm()) {
-        console.log("Form validation passed");
-        const formData = new FormData(document.getElementById('registerForm'));
-        
-        fetch('register_process.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            console.log("Fetch response received", response);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Data received from server", data);
-            if (data.success) {
-                console.log("Attempting to send OTP via email");
-                return emailjs.send('service_5ongxey', 'template_xcnd58y', {
-                    email: data.email,
-                    otp: data.otp
-                });
-            } else {
-                throw new Error(data.errors.join(', '));
-            }
-        })
-        .then((response) => {
-            console.log('EmailJS SUCCESS!', response.status, response.text);
-            document.getElementById('registration-form').style.display = 'none';
-            document.getElementById('otp-form').style.display = 'block';
-        })
-        .catch(error => {
-            console.error('Failed:', error);
-            let errorMessage = 'An error occurred: ';
-            if (error.name === 'EmailJsResponseStatus') {
-                errorMessage += 'Failed to send email. ';
-                if (error.text) {
-                    errorMessage += error.text;
+                if (checkResult.exists) {
+                    alert(checkResult.message);
+                    return;
                 }
-            } else {
-                errorMessage += error.message;
-            }
-            document.getElementById('error-message').innerHTML = errorMessage;
-        });
-    } else {
-        console.log("Form validation failed");
-    }
-}
 
-function testEmailJs() {
-    console.log("Testing EmailJS");
-    emailjs.send('service_5ongxey', 'template_xcnd58y', {
-        email: 'test@example.com',
-        otp: '123456'
-    })
-    .then(function(response) {
-        console.log('EmailJS TEST SUCCESS!', response.status, response.text);
-    }, function(error) {
-        console.log('EmailJS TEST FAILED...', error);
-    });
-}
-  
-function verifyOTP() {
-    const otp = document.getElementById('otp').value;
-    fetch('otp_verification.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'otp=' + otp
-    })
-    .then(response => {
-        if (!response.ok) {
-            return response.text().then(text => {
-                throw new Error(`HTTP error! status: ${response.status}, message: ${text}`);
+                let email = document.getElementById("register-email").value;
+                let otp = Math.floor(100000 + Math.random() * 900000);
+                sessionStorage.setItem("generatedOtp", otp); // Store OTP in session storage
+                sendOtp(email, otp).then(() => {
+                    document.getElementById("register-otp").style.display = 'block';
+                    document.getElementById("btnvalidate").style.display = 'block';
+                    document.getElementById("btnregister").style.display = 'none';
+                    alert('OTP telah dikirim ke email Anda. Silakan masukkan OTP untuk melanjutkan.');
+                }).catch(error => {
+                    console.log('Failed to send OTP', error);
+                    alert('Failed to send OTP: ' + error.text);
+                });
+            }
+        }
+
+        function sendOtp(email, otp) {
+            console.log(`Sending OTP: ${otp} to email: ${email}`);
+            return emailjs.send('service_5ongxey', 'template_xcnd58y', {
+                email: email,
+                otp: otp
+            }).then(function (response) {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('OTP sent successfully: ' + response.text);
+            }, function (error) {
+                console.log('FAILED...', error);
+                alert('Failed to send OTP: ' + JSON.stringify(error));
             });
         }
-        return response.json();
-    })
-    .then(data => {
-        if (data.success) {
-            alert('Registration successful!');
-            window.location.href = 'login.php';
-        } else {
-            document.getElementById('otp-error-message').innerHTML = data.error;
+
+        async function validateOtp() {
+            let enteredOtp = document.getElementById("register-otp").value;
+            let generatedOtp = sessionStorage.getItem("generatedOtp");
+
+            if (enteredOtp === generatedOtp) {
+                sessionStorage.setItem("otpValidated", true);
+                alert('OTP berhasil divalidasi. Data Anda akan disimpan.');
+                // Submit the form data
+                let formData = new FormData(document.getElementById("register-form"));
+                formData.append('otpValidated', 'true'); // Add OTP validated status to form data
+
+                let response = await fetch('public/php/submit.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                let result = await response.json();
+                if (result.success) {
+                    alert('Registration successful! Redirecting to login.');
+                    window.location.href = 'login.php';
+                } else {
+                    alert('Registration failed: ' + result.message);
+                }
+            } else {
+                alert('OTP tidak valid. Silakan coba lagi.');
+            }
         }
-    })
-    .catch(error => {
-        console.error('Failed to verify OTP:', error);
-        document.getElementById('otp-error-message').innerHTML = 'An error occurred: ' + error.message;
-    });
-}
     </script>
 
     <div class="bg-purpleRadiant">
         <div class="login-img-container">
             <div class="login-body">
                 <img id="login-logo" src="https://ik.imagekit.io/iwrtsyly3o/Leggo/Logo.png">
-                <form id="registerForm" onsubmit="submitForm(event)">
-                    <div id="registration-form" class="login-body-col">
+                <form id="register-form" onsubmit="return validateForm()">
+                    <div class="login-body-col">
                         <div class="login-body-header-text">
                             Register
                             <div class="error-text" style="margin-top: 15px">
@@ -209,10 +188,13 @@ function verifyOTP() {
                         <input type="text" id="register-email" name="email" placeholder="Alamat email">
                         <input type="text" id="register-phone-number" name="phone_number" placeholder="Nomor Telepon">
                         <input type="password" id="register-password" name="password" placeholder="Password">
-                        <input type="password" id="register-confirm-password" name="confirm_password"
-                            placeholder="Confirm Password">
-                        <button type="submit" id="btnregister">
-                            <p class="textbtnregister">Register</p>
+                        <input type="password" id="register-confirm-password" name="confirm_password" placeholder="Confirm Password">
+                        <input type="text" id="register-otp" name="otp" placeholder="Masukkan OTP" style="display: none;">
+                        <button type="button" id="btnregister" onclick="requestOtp()">
+                            <p class="textbtnregister">Request OTP</p>
+                        </button>
+                        <button type="button" id="btnvalidate" onclick="validateOtp()" style="display: none;">
+                            <p class="textbtnvalidate">Validate OTP</p>
                         </button>
                         <div class="posisibuatakun">
                             <p class="sudah-punya-akun">
@@ -222,18 +204,6 @@ function verifyOTP() {
                         </div>
                     </div>
                 </form>
-                <div id="otp-form" style="display: none;" class="login-body-col">
-                    <div class="login-body-header-text">
-                        OTP Verification
-                        <div class="error-text" style="margin-top: 15px">
-                            <label id="otp-error-message" style="color: red; font-size: 20px;"></label>
-                        </div>
-                    </div>
-                    <input type="text" id="otp" name="otp" placeholder="Enter OTP">
-                    <button onclick="verifyOTP()" id="btnverify">
-                        <p class="textbtnverify">Verify OTP</p>
-                    </button>
-                </div>
             </div>
         </div>
     </div>

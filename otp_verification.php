@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'public/php/database.php';
+require 'database.php';
 
 // Enable error reporting for debugging
 error_reporting(E_ALL);
@@ -8,10 +8,7 @@ ini_set('display_errors', 0);
 
 header('Content-Type: application/json');
 
-function sendJsonResponse($success, $message) {
-    echo json_encode(['success' => $success, 'message' => $message]);
-    exit;
-}
+$response = [];
 
 try {
     if ($_SERVER["REQUEST_METHOD"] != "POST") {
@@ -19,8 +16,9 @@ try {
     }
 
     $otp = isset($_POST["otp"]) ? $_POST["otp"] : '';
+    $email = isset($_POST["email"]) ? $_POST["email"] : '';
 
-    if (!isset($_SESSION['otp']) || !isset($_SESSION['username']) || !isset($_SESSION['email']) || !isset($_SESSION['password']) || !isset($_SESSION['phone_number'])) {
+    if (!isset($_SESSION['otp']) || !isset($_SESSION['username']) || !isset($_SESSION['email']) || !isset($_SESSION['phone_number']) || !isset($_SESSION['password'])) {
         throw new Exception('Session data is missing. Please try registering again.');
     }
 
@@ -30,7 +28,7 @@ try {
 
     $username = $_SESSION['username'];
     $email = $_SESSION['email'];
-    $password = password_hash($_SESSION['password'], PASSWORD_BCRYPT);
+    $password = $_SESSION['password'];
     $phone_number = $_SESSION['phone_number'];
 
     $sql = "INSERT INTO users (username, email, password, phone_number) VALUES (?, ?, ?, ?)";
@@ -48,9 +46,11 @@ try {
 
     session_unset();
     session_destroy();
-    sendJsonResponse(true, 'Registration successful!');
+    $response = ['success' => true, 'message' => 'Registration successful!'];
 
 } catch (Exception $e) {
-    sendJsonResponse(false, $e->getMessage());
+    $response = ['success' => false, 'message' => $e->getMessage()];
 }
+
+echo json_encode($response);
 ?>
