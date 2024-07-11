@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -49,6 +50,61 @@
         </div>
     </div>
 
+    <script>
+        const globeImage = document.getElementById('globe-image');
+        const planeImage = document.getElementById('plane-image');
+        const worldtourImage = document.getElementById('worldtour-image');
+
+        // Set the display property of the globe, plane, and camera images based on the current media width
+        function updateImageDisplay() {
+            const mediaWidth = window.innerWidth;
+            if (mediaWidth < 1200 || mediaWidth > 1900) {
+                globeImage.style.display = 'none';
+                planeImage.style.display = 'none';
+            } else {
+                globeImage.style.display = 'initial';
+                planeImage.style.display = 'initial';
+            }
+
+            if (mediaWidth < 900) {
+                worldtourImage.style.display = 'none';
+            } else {
+                worldtourImage.style.display = 'initial';
+            }
+        }
+
+        // Call the updateImageDisplay function when the website is first loaded
+        updateImageDisplay();
+
+        window.addEventListener('resize', () => {
+            updateImageDisplay();
+        });
+
+        // Fetch user information and update the menu accordingly
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('public/php/get_username.php')
+                .then(response => response.json())
+                .then(data => {
+                    const userLink = document.getElementById('userLink');
+                    const dropdownContent = document.getElementById('dropdown-content');
+                    
+                    userLink.textContent = data.username;
+                    
+                    if (data.logged_in) {
+                        dropdownContent.innerHTML = `
+                            <a href="account.html">Account</a>
+                            <a href="public/php/logout.php">Logout</a>
+                        `;
+                    } else {
+                        dropdownContent.innerHTML = `
+                            <a href="login.php">Login</a>
+                        `;
+                    }
+                })
+                .catch(error => console.error('Error fetching username:', error));
+        });
+    </script>
+
     <div class="index-body">
         <div class="index-body-main">
             <div class="index-text" style="color: black">
@@ -56,7 +112,30 @@
             </div>
             <div class="index-body-main-recommendation">
                 <div class="index-body-main-recommendation-inside" id="recommendation-container">
-                    <!-- Cards will be dynamically generated here -->
+                    <!-- <div class="index-body-main-recommendation-panel">
+                        <img src="https://ik.imagekit.io/iwrtsyly3o/Leggo/attraction_1.png" alt="National Monument"
+                            style="border-radius: 10px;">
+                        <p style="text-align: center;">
+                            <span style="font-size: 20px; font-weight: bold;">National Monument</span><br>
+                            Jakarta
+                        </p>
+                    </div>
+                    <div class="index-body-main-recommendation-panel">
+                        <img src="https://ik.imagekit.io/iwrtsyly3o/Leggo/attraction_2.png" alt="Twin Tower"
+                            style="border-radius: 10px;">
+                        <p style="text-align: center;">
+                            <span style="font-size: 20px; font-weight: bold;">Twin Tower</span><br>
+                            Kuala Lumpur
+                        </p>
+                    </div>
+                    <div class="index-body-main-recommendation-panel">
+                        <img src="https://ik.imagekit.io/iwrtsyly3o/Leggo/attraction_3.png" alt="Kuta Beach"
+                            style="border-radius: 10px;">
+                        <p style="text-align: center;">
+                            <span style="font-size: 20px; font-weight: bold;">Kuta Beach</span><br>
+                            Bali
+                        </p>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -64,7 +143,37 @@
     <script src="public/js/loadRecommendationCard.js"></script>
 
     <script>
-        // Other existing scripts
+        const userLink = document.getElementById("userLink");
+        const accountLink = document.getElementById("accountLink");
+
+        userLink.addEventListener("click", (event) => {
+            if (window.matchMedia("(max-width: 1020px)").matches) {
+                // redirect to mobile account page
+                window.location.href = "maccount.html";
+                event.preventDefault();
+            }
+        });
+
+        accountLink.addEventListener("click", (event) => {
+            if (window.matchMedia("(max-width: 1020px)").matches) {
+                // redirect to mobile account page
+                window.location.href = "maccount.html";
+                event.preventDefault();
+            }
+        });
+
+        const inputElement = document.getElementById('index-search-input');
+
+        inputElement.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                navigateTo('search-flight.html');
+            }
+        });
+
+        function navigateTo(url) {
+            window.location.href = url;
+        }
     </script>
 </body>
+
 </html>
