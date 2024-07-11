@@ -8,11 +8,42 @@ $response = [];
 
 $email_or_username = $_POST['email'];
 $password = $_POST['password'];
+$cf_response = $_POST['cf-turnstile-response']; 
 
 // Check if email/username or password is empty
 if (empty($email_or_username) || empty($password)) {
     $response['status'] = 'error';
     $response['message'] = 'Semua field harus diisi!';
+    echo json_encode($response);
+    exit();
+}
+
+// Verify the Turnstile response
+$secret = '0x4AAAAAAAe4BYa8_BiIFcIa-ERRM3iIfBA'; 
+$remoteIp = $_SERVER['REMOTE_ADDR'];
+
+$verifyUrl = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+$data = [
+    'secret' => $secret,
+    'response' => $cf_response,
+    'remoteip' => $remoteIp,
+];
+
+$options = [
+    'http' => [
+        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+        'method'  => 'POST',
+        'content' => http_build_query($data),
+    ],
+];
+
+$context  = stream_context_create($options);
+$result = file_get_contents($verifyUrl, false, $context);
+$resultData = json_decode($result, true);
+
+if (!$resultData['success']) {
+    $response['status'] = 'error';
+    $response['message'] = 'Captcha verification failed. Please try again.';
     echo json_encode($response);
     exit();
 }
