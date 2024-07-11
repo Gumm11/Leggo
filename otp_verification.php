@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'database.php';
+include 'public/php/database.php';
 
 // Enable error reporting for debugging
 error_reporting(E_ALL);
