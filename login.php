@@ -1,6 +1,12 @@
-</html>
 <?php
 session_start();
+
+// Periksa apakah pengguna sudah login melalui session atau cookie
+if (!isset($_SESSION['user_id']) && isset($_COOKIE['user_id'])) {
+    $_SESSION['user_id'] = $_COOKIE['user_id'];
+    $_SESSION['username'] = $_COOKIE['username'];
+}
+
 if (isset($_SESSION['user_id'])) {
     header('Location: index.html');
     exit();
@@ -9,7 +15,6 @@ if (isset($_SESSION['user_id'])) {
 
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,7 +38,6 @@ if (isset($_SESSION['user_id'])) {
         }
     </style>
 </head>
-
 <body>
     <div id="popup" class="popup"></div>
     <div class="bg-purpleRadiant">
@@ -44,8 +48,7 @@ if (isset($_SESSION['user_id'])) {
                     <div class="login-body-col">
                         <div class="login-body-header-text">
                             Log in
-                            <div id="error-message" class="error-text"
-                                style="color: red; font-size: 20px; margin-top: 15px"></div>
+                            <div id="error-message" class="error-text" style="color: red; font-size: 20px; margin-top: 15px"></div>
                         </div>
                         <input type="text" id="login-email" name="email" placeholder="Username atau Alamat Email">
                         <input type="password" id="login-password" name="password" placeholder="Password">
@@ -70,7 +73,7 @@ if (isset($_SESSION['user_id'])) {
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function (event) {
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
             const email = document.getElementById('login-email').value;
@@ -80,7 +83,7 @@ if (isset($_SESSION['user_id'])) {
             xhr.open('POST', 'public/php/authenticate.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-            xhr.onreadystatechange = function () {
+            xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     if (xhr.status === 200) {
                         const result = JSON.parse(xhr.responseText);
@@ -111,5 +114,4 @@ if (isset($_SESSION['user_id'])) {
         });
     </script>
 </body>
-
 </html>
