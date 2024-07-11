@@ -3,7 +3,7 @@
 $host = 'localhost';
 $dbname = 'db_leggo';
 $username = 'root';
-$password = '0000';
+$password = '123';
 
 // Membuat koneksi ke database
 $conn = new mysqli($host, $username, $password, $dbname);

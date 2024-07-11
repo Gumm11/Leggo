@@ -1730,7 +1730,9 @@ nav ul li img {
   align-items: center;
 
   width: 300px;
-  height: 300px;
+  height: fit-content;
+  padding: 50px;
+
   border-radius: 30px;
   box-shadow: inset 0px 0px 10px #00000040;
   margin-bottom: 30px;
@@ -1847,7 +1849,8 @@ input[type="Password"] {
 
   .login-body-col {
     width: 500px;
-    height: 450px;
+    height: fit-content;
+    padding: 50px;
   }
 
   .login-body-header-text {
@@ -1927,7 +1930,6 @@ cssCopy code.login-img-container {
   justify-content: center;
   align-items: center;
   width: 300px;
-  height: 350px; /* Increased height to accommodate the new input field */
   border-radius: 30px;
   box-shadow: inset 0px 0px 10px #00000040;
   margin-bottom: 30px;
@@ -1940,7 +1942,8 @@ cssCopy code.login-img-container {
 #register-password,
 #register-confirm-password,
 #register-username,
-#register-phone-number {
+#register-phone-number,
+#register-otp {
   /* Added styles for the new input field */
   box-shadow: inset 0px 0px 10px #00000040;
   width: 260px;
@@ -1951,7 +1954,8 @@ cssCopy code.login-img-container {
   font-size: 12px;
   color: gray;
 }
-#btnregister {
+#btnregister,
+#btnvalidate {
   /* Modified styles for the register button */
   width: 160px;
   margin: 8px;
@@ -1963,7 +1967,8 @@ cssCopy code.login-img-container {
   );
 }
 
-#btnregister:hover {
+#btnregister:hover,
+#btnvalidate:hover {
   background: linear-gradient(
     180deg,
     rgb(166.9, 146.98, 255) 0%,
@@ -1981,7 +1986,8 @@ cssCopy code.login-img-container {
   text-align: center;
 }
 
-.textbtnregister {
+.textbtnregister,
+.textbtnvalidate {
   /* Added styles for the register button text */
   font-family: "League Spartan", Helvetica;
   font-weight: 400;
@@ -2040,7 +2046,6 @@ input[type="Password"] {
   }
   .login-body-col {
     width: 500px;
-    height: 550px; /* Increased height to accommodate the new input field */
   }
 
   .login-body-header-text {
@@ -2051,7 +2056,8 @@ input[type="Password"] {
   #register-password,
   #register-confirm-password,
   #register-username,
-  #register-phone-number {
+  #register-phone-number,
+  #register-otp {
     width: 400px;
     margin: 12px;
     padding: 20px;
@@ -2059,12 +2065,14 @@ input[type="Password"] {
     font-size: 16px;
   }
 
-  #btnregister {
+  #btnregister,
+  #btnvalidate {
     width: 200px;
     margin: 12px;
   }
 
-  .textbtnregister {
+  .textbtnregister,
+  .textbtnvalidate {
     font-size: 20px;
     padding: 10px;
   }
