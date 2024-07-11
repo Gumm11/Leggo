@@ -956,9 +956,19 @@ body {
     margin-top: 20px;
   }
 
-  .list-flight-information-panel {
+  .list-flight-information-panel,
+  .no-flight-message{
     width: 300px;
     border-radius: 24px;
+  }
+  
+  .no-flight-message a {
+      font-size: 14px;
+  }
+  
+  #back-to-search {
+      font-size: 12px;
+      font-weight: normal;
   }
 
   .list-flight-information {
