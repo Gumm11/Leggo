@@ -3,7 +3,7 @@
 $host = 'localhost';
 $dbname = 'db_leggo';
 $username = 'root';
-$password = '123';
+$password = '0000';
 
 // Membuat koneksi ke database
 $conn = new mysqli($host, $username, $password, $dbname);
@@ -16,4 +16,3 @@ if ($conn->connect_error) {
 // Mengatur charset ke utf8mb4
 $conn->set_charset("utf8mb4");
 
-?>
