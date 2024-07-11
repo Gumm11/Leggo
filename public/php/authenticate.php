@@ -49,6 +49,11 @@ $response['user'] = [
     'email' => $user['email'],
     'phone_number' => $user['phone_number']
 ];
+
+// Set cookie yang bertahan selama 30 hari
+setcookie('user_id', $user['Id_users'], time() + (30 * 24 * 60 * 60), "/");
+setcookie('username', $user['username'], time() + (30 * 24 * 60 * 60), "/");
+
 echo json_encode($response);
 exit();
 ?>

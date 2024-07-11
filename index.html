@@ -135,7 +135,10 @@
                 Welcome,
             </div>
             <div>
-                <input type="text" id="index-search-input" placeholder="Let's travel, where do you want to go?" autocomplete="off">
+                <input type="text" id="index-search-input" value="Let's travel, where do you want to go?" style="color: gray" autocomplete="off"
+                    onfocus="if(this.value==='Let\'s travel, where do you want to go?'){this.value=''; this.style.color='black'}" 
+                    onblur="if(this.value===''){this.value='Let\'s travel, where do you want to go?'; this.style.color='gray'}" 
+                    oninput="this.style.color='black'">
                 <div id="suggestions-container" class="suggestions-container"></div>
             </div>
         </div>
@@ -276,6 +279,7 @@
     <script src="public/js/loadRecommendationCard.js"></script>
 
     <script>
+        
         const userLink = document.getElementById("userLink");
         const accountLink = document.getElementById("accountLink");
 
