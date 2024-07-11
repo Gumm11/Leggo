@@ -1,11 +1,3 @@
-<?php
-session_start();
-if (isset($_SESSION['user_id'])) {
-    header('Location: index.html');
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +9,14 @@ if (isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <base href="https://localhost/github/leggo/">
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init("-VGKTqsJ_In5TCCke");
+        console.log("EmailJS initialized");
+    })();
+</script>
 </head>
 
 <body>
@@ -83,6 +83,7 @@ if (isset($_SESSION['user_id'])) {
 
         // Cek "error" atau "success" dalam parameter dalam URL
         window.onload = function () {
+            testEmailJs();
             var error = getParameterByName('error');
             var success = getParameterByName('success');
             if (error) {
@@ -92,14 +93,112 @@ if (isset($_SESSION['user_id'])) {
                 alert(success);
             }
         };
+
+        function submitForm(event) {
+    event.preventDefault();
+    console.log("Form submission started");
+
+    if (validateForm()) {
+        console.log("Form validation passed");
+        const formData = new FormData(document.getElementById('registerForm'));
+        
+        fetch('register_process.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            console.log("Fetch response received", response);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Data received from server", data);
+            if (data.success) {
+                console.log("Attempting to send OTP via email");
+                return emailjs.send('service_5ongxey', 'template_xcnd58y', {
+                    email: data.email,
+                    otp: data.otp
+                });
+            } else {
+                throw new Error(data.errors.join(', '));
+            }
+        })
+        .then((response) => {
+            console.log('EmailJS SUCCESS!', response.status, response.text);
+            document.getElementById('registration-form').style.display = 'none';
+            document.getElementById('otp-form').style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Failed:', error);
+            let errorMessage = 'An error occurred: ';
+            if (error.name === 'EmailJsResponseStatus') {
+                errorMessage += 'Failed to send email. ';
+                if (error.text) {
+                    errorMessage += error.text;
+                }
+            } else {
+                errorMessage += error.message;
+            }
+            document.getElementById('error-message').innerHTML = errorMessage;
+        });
+    } else {
+        console.log("Form validation failed");
+    }
+}
+
+function testEmailJs() {
+    console.log("Testing EmailJS");
+    emailjs.send('service_5ongxey', 'template_xcnd58y', {
+        email: 'test@example.com',
+        otp: '123456'
+    })
+    .then(function(response) {
+        console.log('EmailJS TEST SUCCESS!', response.status, response.text);
+    }, function(error) {
+        console.log('EmailJS TEST FAILED...', error);
+    });
+}
+  
+function verifyOTP() {
+    const otp = document.getElementById('otp').value;
+    fetch('otp_verification.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'otp=' + otp
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.text().then(text => {
+                throw new Error(`HTTP error! status: ${response.status}, message: ${text}`);
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            alert('Registration successful!');
+            window.location.href = 'login.php';
+        } else {
+            document.getElementById('otp-error-message').innerHTML = data.error;
+        }
+    })
+    .catch(error => {
+        console.error('Failed to verify OTP:', error);
+        document.getElementById('otp-error-message').innerHTML = 'An error occurred: ' + error.message;
+    });
+}
     </script>
 
     <div class="bg-purpleRadiant">
         <div class="login-img-container">
             <div class="login-body">
                 <img id="login-logo" src="https://ik.imagekit.io/iwrtsyly3o/Leggo/Logo.png">
-                <form action="public/php/submit.php" method="post" onsubmit="return validateForm()">
-                    <div class="login-body-col">
+                <form id="registerForm" onsubmit="submitForm(event)">
+                    <div id="registration-form" class="login-body-col">
                         <div class="login-body-header-text">
                             Register
                             <div class="error-text" style="margin-top: 15px">
@@ -112,7 +211,7 @@ if (isset($_SESSION['user_id'])) {
                         <input type="password" id="register-password" name="password" placeholder="Password">
                         <input type="password" id="register-confirm-password" name="confirm_password"
                             placeholder="Confirm Password">
-                        <button id="btnregister">
+                        <button type="submit" id="btnregister">
                             <p class="textbtnregister">Register</p>
                         </button>
                         <div class="posisibuatakun">
@@ -123,6 +222,18 @@ if (isset($_SESSION['user_id'])) {
                         </div>
                     </div>
                 </form>
+                <div id="otp-form" style="display: none;" class="login-body-col">
+                    <div class="login-body-header-text">
+                        OTP Verification
+                        <div class="error-text" style="margin-top: 15px">
+                            <label id="otp-error-message" style="color: red; font-size: 20px;"></label>
+                        </div>
+                    </div>
+                    <input type="text" id="otp" name="otp" placeholder="Enter OTP">
+                    <button onclick="verifyOTP()" id="btnverify">
+                        <p class="textbtnverify">Verify OTP</p>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
