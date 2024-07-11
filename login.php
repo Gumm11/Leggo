@@ -19,6 +19,7 @@ if (isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <base href="https://localhost/github/leggo/">
     <title>Leggo</title>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <style>
         .popup {
             position: fixed;
@@ -49,6 +50,8 @@ if (isset($_SESSION['user_id'])) {
                         </div>
                         <input type="text" id="login-email" name="email" placeholder="Username atau Alamat Email">
                         <input type="password" id="login-password" name="password" placeholder="Password">
+                         <!-- Turnstile widget -->
+                         <div class="cf-turnstile" data-sitekey="0x4AAAAAAAe4BaRv1l7omN2G"></div><br><br>
                         <button type="submit" id="btnlogin">
                             <p class="textbtnlogin">Log in</p>
                         </button>
