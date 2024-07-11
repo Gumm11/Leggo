@@ -149,6 +149,8 @@ body {
   font-weight: bold;
   color: #605ff1;
   margin: 20px;
+
+  user-select: none;
 }
 
 .index-header-image {
@@ -177,6 +179,8 @@ body {
   border-radius: 70px;
 
   background: #ffffff;
+
+  user-select: none;
 }
 
 .index-body-main {
@@ -854,6 +858,40 @@ body {
 
 .list-flight-nav ul li a {
   color: #ffffff;
+}
+
+#back-to-search {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 10px;
+  background-color: #a7acff;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#back-to-search:hover{
+  background-color: #949aff; /* Change background color on hover */
+  transform: scale(1.05); /* Slightly increase the size on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect on hover */
+}
+
+.no-flight-message {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  padding: 20px;
+  border-radius: 30px;
+  margin: 20px;
+  background-color: #ffffff;
+  user-select: none;
+}
+
+.no-flight-message p {
+  font-size: 20px;
+  margin: 5px;
 }
 
 .select-return-label {

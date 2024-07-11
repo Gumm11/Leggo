@@ -41,6 +41,19 @@ async function fetchFlights(departureLocation, arrivalLocation, date, ticketClas
                         await createFlightCard(penerbangan, isReturn);
                     }
                 })();
+            } else {
+                // Jika tidak ada penerbangan yang tersedia
+                let div = isReturn ? document.querySelector("#return-flight-container") : document.querySelector("#list-flight-container");
+                let noFlightMessage = document.createElement('div');
+                noFlightMessage.className = 'no-flight-message';
+                noFlightMessage.innerHTML = `<p>Tidak ada penerbangan yang tersedia.</p>
+                                             <button id="back-to-search">Kembali ke Pencarian</button>`;
+                div.appendChild(noFlightMessage);
+
+                // Event listener untuk tombol kembali ke pencarian
+                document.getElementById('back-to-search').addEventListener('click', function() {
+                    window.location.href = 'search-flight.html';
+                });
             }
         })
         .catch((error) => {
