@@ -213,8 +213,8 @@
             suggestionsContainer.innerHTML = '';
             navigateTo('search-flight.html');
         }
-        });
-
+    });
+    
         searchInput.addEventListener('input', () => {
             const query = searchInput.value;
             if (query.length > 0) {
@@ -278,12 +278,34 @@
             </div>
             <div class="index-body-main-recommendation">
                 <div class="index-body-main-recommendation-inside" id="recommendation-container">
-                    <!-- Recommendations will be dynamically loaded here -->
+                    <!-- <div class="index-body-main-recommendation-panel">
+                        <img src="https://ik.imagekit.io/iwrtsyly3o/Leggo/attraction_1.png" alt="National Monument"
+                            style="border-radius: 10px;">
+                        <p style="text-align: center;">
+                            <span style="font-size: 20px; font-weight: bold;">National Monument</span><br>
+                            Jakarta
+                        </p>
+                    </div>
+                    <div class="index-body-main-recommendation-panel">
+                        <img src="https://ik.imagekit.io/iwrtsyly3o/Leggo/attraction_2.png" alt="Twin Tower"
+                            style="border-radius: 10px;">
+                        <p style="text-align: center;">
+                            <span style="font-size: 20px; font-weight: bold;">Twin Tower</span><br>
+                            Kuala Lumpur
+                        </p>
+                    </div>
+                    <div class="index-body-main-recommendation-panel">
+                        <img src="https://ik.imagekit.io/iwrtsyly3o/Leggo/attraction_3.png" alt="Kuta Beach"
+                            style="border-radius: 10px;">
+                        <p style="text-align: center;">
+                            <span style="font-size: 20px; font-weight: bold;">Kuta Beach</span><br>
+                            Bali
+                        </p>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
-
     <script src="public/js/loadRecommendationCard.js"></script>
 
     <script>
@@ -320,11 +342,14 @@
                 navigateTo('search-flight.html');
             }
         });
+        function navigateTo(url) {
+            const searchInput = document.getElementById('index-search-input');
+    const destination = encodeURIComponent(searchInput.value);
+    window.location.href = `${url}?destination=${destination}`;
+    }
 
         function navigateTo(url) {
-        const searchInput = document.getElementById('index-search-input');
-        const destination = encodeURIComponent(searchInput.value);
-        window.location.href = `${url}?destination=${destination}`;
+            window.location.href = url;
         }
     </script>
 </body>
