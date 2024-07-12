@@ -159,6 +159,16 @@
                     })
                     .catch(error => console.error('Error fetching username:', error));
             });
+
+            document.addEventListener('DOMContentLoaded', () => {
+             const urlParams = new URLSearchParams(window.location.search);
+             const destination = urlParams.get('destination');
+
+            if (destination) {
+            document.getElementById('search-flight-main-panel-to').value = destination;
+            }
+});
+
         </script>
 
         <script src="public/js/togglePulangPergi.js"></script>
