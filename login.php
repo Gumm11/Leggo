@@ -52,6 +52,9 @@ if (isset($_SESSION['user_id'])) {
                         </div>
                         <input type="text" id="login-email" name="email" placeholder="Username atau Alamat Email">
                         <input type="password" id="login-password" name="password" placeholder="Password">
+                        <label>
+                            <input type="checkbox" id="remember-me" name="remember_me"> Remember Me
+                        </label>
                         <button type="submit" id="btnlogin">
                             <p class="textbtnlogin">Log in</p>
                         </button>
@@ -78,6 +81,7 @@ if (isset($_SESSION['user_id'])) {
 
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
+            const rememberMe = document.getElementById('remember-me').checked;
 
             const xhr = new XMLHttpRequest();
             xhr.open('POST', 'public/php/authenticate.php', true);
@@ -110,7 +114,7 @@ if (isset($_SESSION['user_id'])) {
                 }
             };
 
-            xhr.send(`email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
+            xhr.send(`email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&remember_me=${encodeURIComponent(rememberMe)}`);
         });
     </script>
 </body>

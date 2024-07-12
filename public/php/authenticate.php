@@ -8,6 +8,7 @@ $response = [];
 
 $email_or_username = $_POST['email'];
 $password = $_POST['password'];
+$remember_me = isset($_POST['remember_me']) && $_POST['remember_me'] === 'true';
 
 // Check if email/username or password is empty
 if (empty($email_or_username) || empty($password)) {
@@ -50,9 +51,11 @@ $response['user'] = [
     'phone_number' => $user['phone_number']
 ];
 
-// Set cookie yang bertahan selama 30 hari
-setcookie('user_id', $user['Id_users'], time() + (30 * 24 * 60 * 60), "/");
-setcookie('username', $user['username'], time() + (30 * 24 * 60 * 60), "/");
+// Set cookie yang bertahan selama 30 hari jika remember me diaktifkan
+if ($remember_me) {
+    setcookie('user_id', $user['Id_users'], time() + (30 * 24 * 60 * 60), "/");
+    setcookie('username', $user['username'], time() + (30 * 24 * 60 * 60), "/");
+}
 
 echo json_encode($response);
 exit();
