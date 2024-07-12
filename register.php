@@ -1,18 +1,3 @@
-<?php
-session_start();
-
-// Periksa apakah pengguna sudah login melalui session atau cookie
-if (!isset($_SESSION['user_id']) && isset($_COOKIE['user_id'])) {
-    $_SESSION['user_id'] = $_COOKIE['user_id'];
-    $_SESSION['username'] = $_COOKIE['username'];
-}
-
-if (isset($_SESSION['user_id'])) {
-    header('Location: index.html');
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +16,7 @@ if (isset($_SESSION['user_id'])) {
     <script type="text/javascript">
         (function () {
             emailjs.init("-VGKTqsJ_In5TCCke");
-            console.log("EmailJS initialized");
+            //console.log("EmailJS initialized");
         })();
 
         function validateForm() {
@@ -110,7 +95,7 @@ if (isset($_SESSION['user_id'])) {
                 let checkResult = await checkExistingData();
 
                 if (checkResult.exists) {
-                    alert(checkResult.message);
+                    document.getElementById("error-message").innerHTML = checkResult.message.replace(/\n/g, "<br>");
                     return;
                 }
 
@@ -123,23 +108,23 @@ if (isset($_SESSION['user_id'])) {
                     document.getElementById("btnregister").style.display = 'none';
                     alert('OTP telah dikirim ke email Anda. Silakan masukkan OTP untuk melanjutkan.');
                 }).catch(error => {
-                    console.log('Failed to send OTP', error);
-                    alert('Failed to send OTP: ' + error.text);
+                    //console.log('Failed to send OTP', error);
+                    //alert('Failed to send OTP: ' + error.text);
                 });
             }
         }
 
         function sendOtp(email, otp) {
-            console.log(`Sending OTP: ${otp} to email: ${email}`);
+            //console.log(`Sending OTP: ${otp} to email: ${email}`);
             return emailjs.send('service_5ongxey', 'template_xcnd58y', {
                 email: email,
                 otp: otp
             }).then(function (response) {
-                console.log('SUCCESS!', response.status, response.text);
-                alert('OTP sent successfully: ' + response.text);
+                //console.log('SUCCESS!', response.status, response.text);
+                //alert('OTP sent successfully: ' + response.text);
             }, function (error) {
-                console.log('FAILED...', error);
-                alert('Failed to send OTP: ' + JSON.stringify(error));
+                //console.log('FAILED...', error);
+                //alert('Failed to send OTP: ' + JSON.stringify(error));
             });
         }
 

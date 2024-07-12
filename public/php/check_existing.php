@@ -24,16 +24,24 @@ $stmt_phone->bind_param("s", $phone_number);
 $stmt_phone->execute();
 $result_phone = $stmt_phone->get_result();
 
+$messages = [];
+
 if ($result_username->num_rows > 0) {
     $response['exists'] = true;
-    $response['message'] = 'Username sudah terdaftar, silakan gunakan yang lain!';
-} elseif ($result_email->num_rows > 0) {
-    $response['exists'] = true;
-    $response['message'] = 'Email sudah terdaftar, silakan gunakan yang lain!';
-} elseif ($result_phone->num_rows > 0) {
-    $response['exists'] = true;
-    $response['message'] = 'Nomor telepon sudah terdaftar, silakan gunakan yang lain!';
+    $messages[] = 'Username sudah terdaftar';
 }
+
+if ($result_email->num_rows > 0) {
+    $response['exists'] = true;
+    $messages[] = 'Email sudah terdaftar';
+}
+
+if ($result_phone->num_rows > 0) {
+    $response['exists'] = true;
+    $messages[] = 'Nomor telepon sudah terdaftar';
+}
+
+$response['message'] = implode("\n", $messages);
 
 echo json_encode($response);
 
