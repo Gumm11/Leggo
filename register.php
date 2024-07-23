@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <base href="https://localhost/github/leggo/">
+    <!--<base href="https://localhost/github/leggo/">-->
 </head>
 
 <body>
@@ -160,7 +160,7 @@
     <div class="bg-purpleRadiant">
         <div class="login-img-container">
             <div class="login-body">
-                <img id="login-logo" src="https://ik.imagekit.io/iwrtsyly3o/Leggo/Logo.png">
+                <img onclick="window.location.href='./'" id="login-logo" src="https://ik.imagekit.io/iwrtsyly3o/Leggo/Logo.png">
                 <form id="register-form" onsubmit="return validateForm()">
                     <div class="login-body-col">
                         <div class="login-body-header-text">

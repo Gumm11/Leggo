@@ -2,6 +2,8 @@
 session_start();
 session_unset();
 
+include_once 'config.php';
+
 // Menghapus cookie sesi
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
@@ -16,6 +18,8 @@ setcookie('user_id', '', time() - 3600, "/");
 setcookie('username', '', time() - 3600, "/");
 
 session_destroy();
-header("Location: https://localhost/github/leggo/login.php");
+//header("Location: https://localhost/github/leggo/login.php");
+header("Location: " . BASE_URL . "login.php");
+
 exit();
 ?>

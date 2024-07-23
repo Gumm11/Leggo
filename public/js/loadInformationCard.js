@@ -14,7 +14,7 @@ async function createInformationCard() {
     const ticketClass = urlParams.get('ticketClass');
     const departureDate = urlParams.get('departureDate');
 
-    const response = await fetch("http://localhost/github/leggo/public/php/bandara_kota.php")
+    const response = await fetch("./leggo/public/php/bandara_kota.php")
     const data = await response.json();
 
     const departureAirport = data.find(penerbangan => penerbangan.Nama_kota === departureLocation)?.Kode_bandara;

@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <base href="https://localhost/github/leggo/">
+    <!--<base href="https://localhost/github/leggo/">-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <title>Leggo</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <style>
-         .index-body {
+        .index-body {
             min-width: 320px;
         }
 
@@ -34,7 +34,8 @@
             gap: 10px;
             scroll-snap-type: x mandatory;
             width: 100%;
-            margin: 60px auto; /* Center the carousel */
+            margin: 60px auto;
+            /* Center the carousel */
         }
 
         #promo-carousel img {
@@ -46,8 +47,10 @@
         }
 
         .index-body-main {
-            padding: 60px; /* Adjust padding as needed */
-            background-color: #f9f9f9; /* Example background color */
+            padding: 60px;
+            /* Adjust padding as needed */
+            background-color: #f9f9f9;
+            /* Example background color */
         }
 
         .index-body-main-recommendation {
@@ -109,7 +112,7 @@
 <body style="min-width: 320px;">
     <div class="index-nav">
         <div class="logo">
-            <a href="">Leggo</a>
+            <a href="./">Leggo</a>
         </div>
         <nav id="nav-index">
             <ul>
@@ -131,17 +134,21 @@
                 Welcome,
             </div>
             <div>
-                <input type="text" id="index-search-input" value="Let's travel, where do you want to go?" style="color: gray" autocomplete="off"
-                    onfocus="if(this.value==='Let\'s travel, where do you want to go?'){this.value=''; this.style.color='black'}" 
-                    onblur="if(this.value===''){this.value='Let\'s travel, where do you want to go?'; this.style.color='gray'}" 
+                <input type="text" id="index-search-input" value="Let's travel, where do you want to go?"
+                    style="color: gray" autocomplete="off"
+                    onfocus="if(this.value==='Let\'s travel, where do you want to go?'){this.value=''; this.style.color='black'}"
+                    onblur="if(this.value===''){this.value='Let\'s travel, where do you want to go?'; this.style.color='gray'}"
                     oninput="this.style.color='black'">
                 <div id="suggestions-container" class="suggestions-container"></div>
             </div>
         </div>
         <div class="index-header-image">
-            <img src="public/Resources/WorldTour.png" alt="World Tour" id="worldtour-image" style="position: absolute; top: 400px;" />
-            <img src="public/Resources/Globe.png" alt="Globe" id="globe-image" style="position: absolute; left: 0; top: 650px" />
-            <img src="public/Resources/Plane.png" alt="Plane" id="plane-image" style="position: absolute; right: 1%; top: 600px" />
+            <img src="public/Resources/WorldTour.png" alt="World Tour" id="worldtour-image"
+                style="position: absolute; top: 400px;" />
+            <img src="public/Resources/Globe.png" alt="Globe" id="globe-image"
+                style="position: absolute; left: 0; top: 650px" />
+            <img src="public/Resources/Plane.png" alt="Plane" id="plane-image"
+                style="position: absolute; right: 1%; top: 600px" />
         </div>
     </div>
 
@@ -204,13 +211,13 @@
         const suggestionsContainer = document.getElementById('suggestions-container');
 
         suggestionsContainer.addEventListener('click', (event) => {
-        if (event.target.classList.contains('suggestion')) {
-            searchInput.value = event.target.textContent;
-            suggestionsContainer.innerHTML = '';
-            navigateTo('search-flight.html');
-        }
-    });
-    
+            if (event.target.classList.contains('suggestion')) {
+                searchInput.value = event.target.textContent;
+                suggestionsContainer.innerHTML = '';
+                navigateTo('search-flight.html');
+            }
+        });
+
         searchInput.addEventListener('input', () => {
             const query = searchInput.value;
             if (query.length > 0) {
@@ -252,16 +259,20 @@
             <div id="promo-carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="public/Resources/slide1.png" class="d-block w-100" alt="Promo Slide 1" style="max-height:400px; width:100%;">
+                        <img src="public/Resources/slide1.png" class="d-block w-100" alt="Promo Slide 1"
+                            style="max-height:400px; width:100%;">
                     </div>
                     <div class="carousel-item">
-                        <img src="public/Resources/slide2.png" class="d-block w-100" alt="Promo Slide 2" style="max-height: 400px; width: 100%;">
+                        <img src="public/Resources/slide2.png" class="d-block w-100" alt="Promo Slide 2"
+                            style="max-height: 400px; width: 100%;">
                     </div>
                     <div class="carousel-item">
-                        <img src="public/Resources/slide3.png" class="d-block w-100" alt="Promo Slide 2" style="max-height: 400px; width: 100%;">
+                        <img src="public/Resources/slide3.png" class="d-block w-100" alt="Promo Slide 2"
+                            style="max-height: 400px; width: 100%;">
                     </div>
                     <div class="carousel-item">
-                        <img src="public/Resources/slide4.png" class="d-block w-100" alt="Promo Slide 2" style="max-height: 400px; width: 100%;">
+                        <img src="public/Resources/slide4.png" class="d-block w-100" alt="Promo Slide 2"
+                            style="max-height: 400px; width: 100%;">
                     </div>
                     <!-- Add more carousel items as needed -->
                 </div>
@@ -305,7 +316,7 @@
     <script src="public/js/loadRecommendationCard.js"></script>
 
     <script>
-        
+
         const userLink = document.getElementById("userLink");
         const accountLink = document.getElementById("accountLink");
 
@@ -325,12 +336,12 @@
             }
         });
 
-        $(document).ready(function() {
-          $('#promo-carousel').carousel({
-           interval: 2000 
-          });
+        $(document).ready(function () {
+            $('#promo-carousel').carousel({
+                interval: 2000
+            });
         });
-       
+
         const inputElement = document.getElementById('index-search-input');
 
         inputElement.addEventListener('keydown', function (event) {
@@ -340,12 +351,8 @@
         });
         function navigateTo(url) {
             const searchInput = document.getElementById('index-search-input');
-    const destination = encodeURIComponent(searchInput.value);
-    window.location.href = `${url}?destination=${destination}`;
-    }
-
-        function navigateTo(url) {
-            window.location.href = url;
+            const destination = encodeURIComponent(searchInput.value);
+            window.location.href = `${url}?destination=${destination}`;
         }
     </script>
 </body>

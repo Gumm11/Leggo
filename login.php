@@ -22,8 +22,9 @@ if (isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <base href="https://localhost/github/leggo/">
+    <!--<base href="https://leggo.my.id/">-->
     <title>Leggo</title>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <style>
         .popup {
             position: fixed;
@@ -43,7 +44,7 @@ if (isset($_SESSION['user_id'])) {
     <div class="bg-purpleRadiant">
         <div class="login-img-container">
             <div class="login-body">
-                <img id="login-logo" src="https://ik.imagekit.io/iwrtsyly3o/Leggo/Logo.png">
+                <img onclick="window.location.href='./'" id="login-logo" src="https://ik.imagekit.io/iwrtsyly3o/Leggo/Logo.png">
                 <form id="loginForm">
                     <div class="login-body-col">
                         <div class="login-body-header-text">
@@ -52,6 +53,7 @@ if (isset($_SESSION['user_id'])) {
                         </div>
                         <input type="text" id="login-email" name="email" placeholder="Username atau Alamat Email">
                         <input type="password" id="login-password" name="password" placeholder="Password">
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAe4BaRv1l7omN2G"></div>
                         <label>
                             <input type="checkbox" id="remember-me" name="remember_me"> Remember Me
                         </label>
@@ -76,46 +78,54 @@ if (isset($_SESSION['user_id'])) {
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            const rememberMe = document.getElementById('remember-me').checked;
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+        const rememberMe = document.getElementById('remember-me').checked;
+        
+        // Get the Turnstile response token
+        const turnstileResponse = turnstile.getResponse();
 
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'public/php/authenticate.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        if (!turnstileResponse) {
+            alert('Please complete the captcha');
+            return;
+        }
 
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        const result = JSON.parse(xhr.responseText);
-                        if (result.status === 'success') {
-                            const user = result.user;
-                            const popup = document.getElementById('popup');
-                            popup.innerHTML = `
-                                <p>Login berhasil!</p>
-                                <p>Username: ${user.username}</p>
-                                <p>Email: ${user.email}</p>
-                                <p>Phone Number: ${user.phone_number}</p>
-                            `;
-                            popup.style.display = 'block';
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'public/php/authenticate.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-                            setTimeout(() => {
-                                window.location.href = 'index.html';
-                            }, 1000);
-                        } else {
-                            document.getElementById('error-message').textContent = result.message;
-                        }
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    const result = JSON.parse(xhr.responseText);
+                    if (result.status === 'success') {
+                        const user = result.user;
+                        const popup = document.getElementById('popup');
+                        popup.innerHTML = `
+                            <p>Login berhasil!</p>
+                            <p>Username: ${user.username}</p>
+                            <p>Email: ${user.email}</p>
+                            <p>Phone Number: ${user.phone_number}</p>
+                        `;
+                        popup.style.display = 'block';
+
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1000);
                     } else {
-                        document.getElementById('error-message').textContent = 'An error occurred during login.';
+                        document.getElementById('error-message').textContent = result.message;
                     }
+                } else {
+                    document.getElementById('error-message').textContent = 'An error occurred during login.';
                 }
-            };
+            }
+        };
 
-            xhr.send(`email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&remember_me=${encodeURIComponent(rememberMe)}`);
-        });
+        xhr.send(`email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&remember_me=${encodeURIComponent(rememberMe)}&cf-turnstile-response=${encodeURIComponent(turnstileResponse)}`);
+    });
     </script>
 </body>
 </html>

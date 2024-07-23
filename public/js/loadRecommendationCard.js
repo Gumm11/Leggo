@@ -40,7 +40,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function loadRecommendationCards() {
   try {
-    const response = await fetch("http://localhost/github/leggo/public/php/kota.php");
+    //const response = await fetch("http://localhost/github/leggo/public/php/kota.php");
+    const response = await fetch("./public/php/kota.php");
+
     const data = await response.json();
     if (data && data.length > 0) {
       const shuffledData = data.slice();

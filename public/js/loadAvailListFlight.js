@@ -16,7 +16,8 @@ let selectedReturnFlight = null;
 
 async function fetchFlights(departureLocation, arrivalLocation, date, ticketClass, passengers, isReturn) {
     console.log(`Fetching flights: ${departureLocation} to ${arrivalLocation} on ${date} (isReturn: ${isReturn})`);
-    let url = 'http://localhost/github/leggo/public/php/list_avail.php';
+    //let url = 'http://localhost/github/leggo/public/php/list_avail.php';
+    let url = './public/php/list_avail.php';
     let queryParams = [
         `departure=${encodeURIComponent(departureLocation)}`,
         `arrival=${encodeURIComponent(arrivalLocation)}`,

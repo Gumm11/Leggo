@@ -41,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const url = `https://localhost/github/leggo/list-flight.html?departure=${encodeURIComponent(departureLocation)}&arrival=${encodeURIComponent(arrivalLocation)}&departureDate=${encodeURIComponent(departureDate)}&returnDate=${encodeURIComponent(returnDate)}&ticketClass=${encodeURIComponent(ticketClass)}&passengers=${encodeURIComponent(passengers)}`;
+        //const url = `https://localhost/github/leggo/list-flight.html?departure=${encodeURIComponent(departureLocation)}&arrival=${encodeURIComponent(arrivalLocation)}&departureDate=${encodeURIComponent(departureDate)}&returnDate=${encodeURIComponent(returnDate)}&ticketClass=${encodeURIComponent(ticketClass)}&passengers=${encodeURIComponent(passengers)}`;
+        const url = `./list-flight.html?departure=${encodeURIComponent(departureLocation)}&arrival=${encodeURIComponent(arrivalLocation)}&departureDate=${encodeURIComponent(departureDate)}&returnDate=${encodeURIComponent(returnDate)}&ticketClass=${encodeURIComponent(ticketClass)}&passengers=${encodeURIComponent(passengers)}`;
         window.location.href = url;
     });
 });
